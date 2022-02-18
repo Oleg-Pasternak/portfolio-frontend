@@ -1,13 +1,9 @@
-import Head from 'next/head'
+import Head from '../components/Head'
 
 export default function Home() {
   return (
     <div>
-      <Head>
-        <title>Pasternak</title>
-        <meta name="description" content="Portfolio" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Head page="メインページ" />
       <div id='three-js' />
       <body>
         <h1>FRONT END DEVELOPER</h1>
