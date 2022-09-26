@@ -2,7 +2,7 @@ import styles from './styles.module.scss';
 import { useEffect, useState, useCallback } from 'react';
 
 export default function Hero() {
-  const [title, setTitle] = useState("Hello");
+  let [title, setTitle] = useState("Hello");
   const titles = [
     'Hello',
     'Hola',
@@ -20,15 +20,19 @@ export default function Hero() {
 		'Ciao'
 	];
 
-	const shuffle = useCallback(() => {
-			const index = Math.floor(Math.random() * titles.length);
-			setTitle(titles[index]);
-	}, []);
+	const updateTitle = () => {
+    // get index of title based on it from titles array
+    const index = titles.indexOf(title);
+    
+    // get next index
+    const nextIndex = index + 1 === titles.length ? 0 : index + 1;
+		setTitle(titles[nextIndex]);
+	};
 
 	useEffect(() => {
-			const intervalID = setInterval(shuffle, 3000);
+			const intervalID = setInterval(updateTitle, 800);
 			return () => clearInterval(intervalID);
-	}, [shuffle])
+	}, [updateTitle])
 
   return (
     <div className={styles.hero}>
