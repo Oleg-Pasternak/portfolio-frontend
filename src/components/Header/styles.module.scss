@@ -13,6 +13,24 @@
             letter-spacing: 2px;
             font-size: 12px;
             text-transform: uppercase;
+            a {
+                position: relative;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0; bottom: -5px;
+                    width: 0%;
+                    height: 1px;
+                    background-color: black;
+                    transition: all 0.3s;
+                }
+                &:hover {
+                    &::before {
+                        width: 100%;
+                        transition: all 0.3s;
+                    }
+                }
+            }
         }
     }
 }
