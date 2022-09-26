@@ -1,4 +1,11 @@
 .hero {
     width: 100%;
-    padding-top: 120px;
+    padding-top: 200px;
+    position: relative;
+}
+
+.heroTitle {
+    font-size: 80px;
+    position: absolute;
+    top: 180px;
 }
