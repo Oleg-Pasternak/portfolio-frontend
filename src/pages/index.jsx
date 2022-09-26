@@ -7,7 +7,9 @@ export default function Home() {
       <Head page="メインページ" />
       <Header />
       <div id='three-js' />
-      <h1>FRONT END DEVELOPER</h1>
+      <h1>Hello!
+        I'm Oleg Pasternak
+      </h1>
     </body>
   )
 }

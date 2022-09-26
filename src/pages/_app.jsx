@@ -4,9 +4,9 @@ import ThreeJs from '../../threejs/three';
 
 function MyApp({ Component, pageProps }) {
 
-  // useEffect(() => {
-  //   ThreeJs();
-  // });
+  useEffect(() => {
+    ThreeJs();
+  });
 
   return <Component {...pageProps} />
 }
