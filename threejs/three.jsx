@@ -29,8 +29,8 @@ export default function Three() {
   camera.position.z = 6
   cameraGroup.add(camera)
 
-  const controls = new OrbitControls( camera, renderer.domElement );
-  controls.update();
+//   const controls = new OrbitControls( camera, renderer.domElement );
+//   controls.update();
 
   // Get scroll position
   let scrollY = window.scrollY
@@ -109,7 +109,6 @@ loader.load(
 
   var animate = function () {
       requestAnimationFrame( animate );
-      controls.update();
       renderer.render( scene, camera );
   };
   animate();

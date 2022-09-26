@@ -2,9 +2,9 @@ html,
 body {
   padding: 20px 30px;
   margin: 0;
-  background-color: #fefefe;
   color: rgb(21, 21, 21);
   font-family: Bebas Neue;
+  
 }
 
 a {
@@ -21,6 +21,8 @@ a {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
+  -webkit-filter: blur(70px);
 }
 
 h1 {
