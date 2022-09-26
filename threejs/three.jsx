@@ -109,6 +109,7 @@ loader.load(
 
   var animate = function () {
       requestAnimationFrame( animate );
+      // controls.update();
       renderer.render( scene, camera );
   };
   animate();
