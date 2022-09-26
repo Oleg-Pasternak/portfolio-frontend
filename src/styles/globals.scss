@@ -18,7 +18,7 @@ a {
 
 
 .page-loaded {
-  -webkit-filter: blur(30px) !important;
+  -webkit-filter: blur(4px) !important;
   transition: all 2s;
 }
 
@@ -28,12 +28,12 @@ a {
   top: 0;
   left: 0;
   z-index: -1;
-  -webkit-filter: blur(80px);
-  transition: all 3s;
+  -webkit-filter: blur(250px);
+  transition: all 2s;
 }
 
 h1 {
-  font-size: 115px;
+  font-size: 125px;
 }
 
 

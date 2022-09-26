@@ -60,7 +60,7 @@ export default function Three() {
   // const cube = new THREE.Mesh( geometry, material );
   // scene.add( cube );
 
-  const directionalLight = new THREE.DirectionalLight('#C92626', 1)
+  const directionalLight = new THREE.DirectionalLight('#fff', 1)
   directionalLight.position.set(2, 2, 5)
   scene.add(directionalLight)
 
