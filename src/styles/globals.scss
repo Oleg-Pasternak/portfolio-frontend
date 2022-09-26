@@ -3,7 +3,7 @@ body {
   padding: 20px 30px;
   margin: 0;
   color: rgb(21, 21, 21);
-  font-family: Bebas Neue;
+  font-family: 'DM Sans', sans-serif;
   
 }
 
@@ -47,6 +47,8 @@ a {
 
 h1 {
   font-size: 125px;
+  font-weight: 600;
+  font-family: 'Bebas Neue';
 }
 
 
@@ -80,5 +82,12 @@ h1 {
   font-family: 'Bebas Neue';
   src: local('Bebas Neue Bold'), local('BebasNeueBold'), url('../../public/fonts/bebasneuebold.woff2') format('woff2'), url('../../public/fonts/bebasneuebold.woff') format('woff'), url('../../public/fonts/bebasneuebold.ttf') format('truetype');
   font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: local('DM Sans Regular'), local('DMSans'), url('../../public/fonts/dmsans-regular.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
 }

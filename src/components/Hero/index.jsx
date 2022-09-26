@@ -2,7 +2,7 @@ import styles from './styles.module.scss';
 import { useEffect, useState, useCallback } from 'react';
 
 export default function Hero() {
-  const [title, setTitle] = useState(false);
+  const [title, setTitle] = useState("Hello");
   const titles = [
     'Hello',
     'Hola',
@@ -13,6 +13,11 @@ export default function Hero() {
     'Kaixo',
     '你好',
     'こんにちは',
+		'Ç’kemi',
+		'اسلا عليكم',
+		'Вітаю',
+		'Aloha',
+		'Ciao'
 	];
 
 	const shuffle = useCallback(() => {
