@@ -2,22 +2,22 @@ import styles from './styles.module.scss';
 import { useEffect, useState, useCallback } from 'react';
 
 export default function Hero() {
-  let [title, setTitle] = useState("Hello");
+  let [title, setTitle] = useState("Hello!");
   const titles = [
-    'Hello',
-    'Hola',
-    'Olá',
-    'Hei',
-    '여보세요',
-    'γεια',
-    'Kaixo',
-    '你好',
-    'こんにちは',
-		'Ç’kemi',
-		'اسلا عليكم',
-		'Вітаю',
-		'Aloha',
-		'Ciao'
+    'Hello!',
+    'Hola!',
+    'Olá!',
+    'Hei!',
+    '여보세요!',
+    'γεια!',
+    'Kaixo!',
+    '你好!',
+    'こんにちは!',
+		'Ç’kemi!',
+		'اسلا عليكم!',
+		'Вітаю!',
+		'Aloha!',
+		'Ciao!'
 	];
 
 	const updateTitle = () => {
@@ -30,15 +30,18 @@ export default function Hero() {
 	};
 
 	useEffect(() => {
-			const intervalID = setInterval(updateTitle, 800);
+			const intervalID = setInterval(updateTitle, 3000);
+			setTimeout(() => {
+				updateTitle
+			}, 3000);
 			return () => clearInterval(intervalID);
 	}, [updateTitle])
 
   return (
     <div className={styles.hero}>
-			<div className={styles.heroTitle}>
-				{title}
-			</div>
+      {titles.map((title_value, index) => (
+        <div key={index} className={title_value == title ? styles.visible : styles.heroTitle}>{title_value}</div> 
+      ))}
       <h1>
         I'm Oleg Pasternak
       </h1>

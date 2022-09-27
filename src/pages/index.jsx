@@ -5,21 +5,20 @@ import Head from 'src/components/Head';
 import { Gradient } from 'src/components/Gradient'
 
 export default function Home() {
-  const [isLoad, setLoad] = useState(false);
+  const [isLoad, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Create your instance
     const gradient = new Gradient()
-
-    // Call `initGradient` with the selector to your canvas
     gradient.initGradient('#gradient-canvas')
+    setIsLoaded(true);
   }, []);
 
   return (
     <body>
       <Head page="メインページ" />
       <Header />
-      <canvas id="gradient-canvas" data-transition-in />
+      <canvas className={isLoad ? 'page-loaded' : ''} id="gradient-canvas" data-transition-in />
+      <div  id="three-js" />
       <Hero />
     </body>
   )
