@@ -8,4 +8,10 @@
     @media (max-width: 768px) {
         display: none;
     }
+    ul {
+        display: flex;
+        li {
+            margin-left: 55px;
+        }
+    }
 }
