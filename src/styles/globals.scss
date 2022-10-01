@@ -4,7 +4,10 @@ body {
   margin: 0;
   color: rgb(21, 21, 21);
   font-family: 'DM Sans', sans-serif;
-  
+  overflow-x: hidden;
+  @media (max-width: 768px) {
+    padding: 10px 7px;
+  }
 }
 
 a {
@@ -48,6 +51,36 @@ h1 {
   font-size: 125px;
   font-weight: 00;
   font-family: 'Bebas Neue';
+  @media (max-width: 768px) {
+    font-size: 75px;
+  }
+}
+
+ul {
+  list-style-type: none;
+  li {
+      letter-spacing: 2px;
+      font-size: 12px;
+      text-transform: uppercase;
+      a {
+          position: relative;
+          &::before {
+              content: '';
+              position: absolute;
+              left: 0; bottom: -5px;
+              width: 0%;
+              height: 1px;
+              background-color: black;
+              transition: all 0.3s;
+          }
+          &:hover {
+              &::before {
+                  width: 100%;
+                  transition: all 0.3s;
+              }
+          }
+      }
+  }
 }
 
 
