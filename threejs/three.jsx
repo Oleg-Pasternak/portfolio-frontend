@@ -99,8 +99,8 @@ export default function Three() {
           vUv = (uv - vec2(0.5))*0.8 + vec2(0.5);
           vPosition = position;
           vec3 pos = position;
-          pos.y += sin(PI*vUv.x)*0.05;
-          pos.z += sin(PI*vUv.x)*0.05;
+          pos.y += sin(PI*vUv.x)*0.07;
+          pos.z += sin(PI*vUv.x)*0.07;
           // wave
           // pos.z += sin(position.x * 15.0 + uTime) * 0.04 * (1.0 - uProgress);
           pos.y += sin(uTime*0.3) * 0.08;
@@ -143,12 +143,58 @@ export default function Three() {
 
   // rotate group
   group.rotation.x = -0.3
-  group.rotation.y = -0.7
-  group.rotation.z = -0.2
+  group.rotation.y = -0.9
+  group.rotation.z = -0.3
 
   const origin_position_x = group.position.x
   const origin_position_y = group.position.y
   const origin_position_z = group.position.z
+
+  document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+  document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+  function onDocumentMouseDown( event )
+    {
+        event.preventDefault();
+        var mouse = new THREE.Vector2();
+        mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+        mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+        var raycaster = new THREE.Raycaster();
+        raycaster.setFromCamera( mouse, camera );
+        var intersects = raycaster.intersectObjects( meshes );
+        var matched_marker = null;
+        if(intersects.length > 0)
+        {
+            //$('html,body').css('cursor','pointer');//mouse cursor change
+            for ( var i = 0;  intersects.length > 0 && i < intersects.length; i++)
+            {
+                window.open(intersects[0].object.userData.URL);
+            }
+        }
+        else {
+              //$('html,body').css('cursor','cursor');
+        }
+    }
+    function onDocumentMouseMove(event) {
+        var mouse = new THREE.Vector2();
+        mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+        mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+        var raycaster = new THREE.Raycaster();
+        raycaster.setFromCamera( mouse, camera );
+        var intersects = raycaster.intersectObjects( meshes );
+        var html = document.getElementById('main-container')
+        console.log(intersects)
+        if(intersects.length > 0) {
+          if(html) {
+            html.style = "cursor:pointer";
+            console.log('pointer')
+          }
+        } else {
+          if(html) {
+            html.style = "cursor:default";
+          }
+        }
+      }
   
   // Animate
   function animate() {
@@ -170,7 +216,7 @@ export default function Three() {
       mesh.material.uniforms.distanceFromCenter.value = dist
     })
     // get forwar vector of group based on its rotation
-    const forward = new THREE.Vector3(0.07,1,0)
+    const forward = new THREE.Vector3(0.1,1,0)
     // move group towards forward vector
     group.position.x = origin_position_x + forward.x * -position * 1.2
     group.position.y = origin_position_y + forward.y * -position * 1.2
