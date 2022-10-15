@@ -1,11 +1,16 @@
 import { useEffect, useState, useCallback } from 'react';
 import ProjectPreview from 'src/components/ProjectPreview'
+import data from './data'
 
 export function Boiler() {
-
+  console.log(data)
   return (
-    <div>
-      <ProjectPreview />
+    <div id='boiler'>
+      {data.map((project, key) => {
+        return (
+          <ProjectPreview data={project} id={key} />
+        )
+      })}
     </div>
   )
 }

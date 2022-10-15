@@ -1,8 +1,7 @@
 .projectPreview {
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    opacity: 0.2;
-    padding: 10px;
-    margin-top: 200px;
+    width: 200px;
+    display: none;
+    img {
+        width: 60px;
+    }
 }

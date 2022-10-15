@@ -18,10 +18,11 @@ export default function Home() {
     <div>
       <Head page="メインページ" />
       <Header />
-      <canvas className={isLoad ? 'page-loaded' : ''} id="gradient-canvas" data-transition-in />
-      <div  id="three-js" />
       <Hero />
       <Boiler />
+
+      <canvas className={isLoad ? 'page-loaded' : ''} id="gradient-canvas" data-transition-in />
+      <div id="container" />
     </div>
   )
 }

@@ -7,8 +7,9 @@
     font-size: 40px;
     font-weight: 500;
     position: absolute;
-    top: 190px;
+    top: -50px;
     opacity: 0;
+    -webkit-filter: blur(3px);
     transition: all 0.3s;
     @media (max-width: 768px) {
         top: 100px;
@@ -20,9 +21,11 @@
     font-size: 40px;
     font-weight: 500;
     position: absolute;
-    top: 200px;
+    left: 0;
+    top: -70px;
     opacity: 1;
     transition: all 1s;
+    -webkit-filter: blur(0px);
     @media (max-width: 768px) {
         top: 110px;
         font-size: 30px;

@@ -4,7 +4,8 @@ body {
   margin: 0;
   color: rgb(21, 21, 21);
   font-family: 'DM Sans', sans-serif;
-  overflow-x: hidden;
+  overflow: hidden;
+  min-height: 500px;
   @media (max-width: 768px) {
     padding: 10px 7px;
   }
@@ -24,13 +25,14 @@ a {
   transition: all 2s;
 }
 
-#three-js {
-  width: 100%;
-  position: absolute;
+#container {
+  width: 100vw;
+  height: 100vw;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 0;
-  display: none;
+  z-index: 1;
+  pointer-events: none;
 }
 
 #gradient-canvas {
@@ -58,10 +60,42 @@ a {
   -webkit-filter: blur(180px)
 }
 
+#block {
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  opacity: 0.7;
+  padding: 10px;
+}
+
+.projects {
+  position: absolute;
+  top: 100px;
+  height: 10px;
+  background-color: #000;
+}
+
+.project-2 {
+  top: 200px;
+}
+
+.project-3 {
+  top: 300px;
+}
+
+.project-4 {
+  top: 400px;
+}
+
+.project-5 {
+  top: 500px;
+}
+
 h1 {
-  font-size: 125px;
+  font-size: 105px;
   font-weight: 00;
   font-family: 'Bebas Neue';
+  margin-top: 200px;
   @media (max-width: 768px) {
     font-size: 75px;
   }
@@ -69,29 +103,29 @@ h1 {
 
 ul {
   list-style-type: none;
-  li {
-      letter-spacing: 2px;
-      font-size: 12px;
-      text-transform: uppercase;
-      a {
-          position: relative;
-          &::before {
-              content: '';
-              position: absolute;
-              left: 0; bottom: -5px;
-              width: 0%;
-              height: 1px;
-              background-color: black;
-              transition: all 0.3s;
-          }
-          &:hover {
-              &::before {
-                  width: 100%;
-                  transition: all 0.3s;
-              }
-          }
-      }
-  }
+  // li {
+  //     letter-spacing: 2px;
+  //     font-size: 12px;
+  //     text-transform: uppercase;
+  //     a {
+  //         position: relative;
+  //         &::before {
+  //             content: '';
+  //             position: absolute;
+  //             left: 0; bottom: -5px;
+  //             width: 0%;
+  //             height: 1px;
+  //             background-color: black;
+  //             transition: all 0.3s;
+  //         }
+  //         &:hover {
+  //             &::before {
+  //                 width: 100%;
+  //                 transition: all 0.3s;
+  //             }
+  //         }
+  //     }
+  // }
 }
 
 
