@@ -183,11 +183,9 @@ export default function Three() {
         raycaster.setFromCamera( mouse, camera );
         var intersects = raycaster.intersectObjects( meshes );
         var html = document.getElementById('main-container')
-        console.log(intersects)
         if(intersects.length > 0) {
           if(html) {
             html.style = "cursor:pointer";
-            console.log('pointer')
           }
         } else {
           if(html) {
