@@ -93,13 +93,18 @@ export default function Three() {
         uniform float uTime;
         uniform float uProgress;
         uniform float uAlpha;
+        float PI = 3.14159265358979323846264338;
 
         void main() {
-          vUv = (uv - vec2(0.5))*0.9 + vec2(0.5);
+          vUv = (uv - vec2(0.5))*0.8 + vec2(0.5);
           vPosition = position;
           vec3 pos = position;
+          pos.y += sin(PI*vUv.x)*0.05;
+          pos.z += sin(PI*vUv.x)*0.05;
           // wave
           // pos.z += sin(position.x * 15.0 + uTime) * 0.04 * (1.0 - uProgress);
+          pos.y += sin(uTime*0.3) * 0.08;
+          vUv.y += sin(uTime*0.3) * 0.05;
           gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
         }
       `,
@@ -110,6 +115,7 @@ export default function Three() {
         uniform float uProgress;
         uniform float uAlpha;
         varying vec2 vUv;
+
         void main() {
           vec2 newUV = vUv;
           vec4 color = texture2D(uTexture, newUV);
@@ -171,79 +177,4 @@ export default function Three() {
     group.position.z = origin_position_z + forward.z * -position * 1.2
   }
   animate();
-
-  
-
-
-
-    // let imagesToGL = Array.from(document.getElementsByClassName("img"));
-  // let geometry = new THREE.PlaneBufferGeometry(1.5, 1, 20, 20);
-
-  // const vertexShader = () => {
-  //   return `
-  //       varying vec2 vUv; 
-
-  //       void main() {
-  //           vUv = uv; 
-
-  //           vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
-  //           gl_Position = projectionMatrix * modelViewPosition; 
-  //       }
-  //   `;
-  // }
-
-  // const fragmentShader = () => {
-  //   return `
-  //       uniform sampler2D texture1; 
-  //       uniform sampler2D texture2; 
-  //       varying vec2 vUv;
-
-  //       void main() {
-  //           vec4 color1 = texture2D(texture1, vUv);
-  //           vec4 color2 = texture2D(texture2, vUv);
-  //           //vec4 fColor = mix(color1, color2, vUv.y);
-  //           //fColor.a = 1.0;
-  //           gl_FragColor = color1;
-  //       }
-  //   `;
-  // }
-  
-  // function htmlToWebgl() {
-
-  //   imagesToGL.forEach((image) => {
-  //     let texture = new THREE.Texture(image);
-  //     texture.needsUpdate = true;
-  
-  //     let material = new THREE.ShaderMaterial({
-  //       uniforms: {
-  //         uTime: { type: "f", value: 0 },
-  //         uDirection: { type: "f", value: 0 },
-  //         uProgress: { type: "f", value: 0 },
-  //         uMouseSpeed: { type: "f", value: 0 },
-  //         uMouse: { type: "v2", value: new THREE.Vector2(0, 0) },
-  //         uTexture: new THREE.Uniform(texture),
-  //         uResolution: { type: "v4", value: new THREE.Vector4() },
-  //       },
-  
-  //       vertexShader: vertexShader(),
-  //       fragmentShader: fragmentShader(),
-  
-  //     });
-  
-  //     let mesh = new THREE.Mesh(geometry, material);
-  //     mesh.userData.image = image;
-  //     mesh.userData.material = material;
-  //     mesh.position.set(0,0,0)
-
-  //     scene.add(mesh);
-  
-  //   });
-  // }
-  // htmlToWebgl();
-
-  // function animate() {
-  //   requestAnimationFrame( animate );
-  //   renderer.render( scene, camera );
-  // }
-  // animate();
 }
