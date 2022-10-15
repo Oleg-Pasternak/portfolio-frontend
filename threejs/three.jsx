@@ -28,8 +28,6 @@ function raf() {
   // limit position
   position = Math.max(0, Math.min(2.5, position))
 
-  console.log(position)
-
   if (boiler) {
     boiler.style.transform = `translate(0,${-position*100 + 50}px)`
     window.requestAnimationFrame(raf)
@@ -84,42 +82,39 @@ export default function Three() {
     const material = new THREE.ShaderMaterial({
       uniforms: {
         uTexture: { value: texture },
-        uTime: { value: 0 },
+        distanceFromCenter: {type: 'f', value: 0},
+        uTime: { type: 'f', value: 0 },
         uProgress: { value: 0 },
         uAlpha: { value: 1 }
       },
-      // vertex shader with wave effect
       vertexShader: `
         varying vec2 vUv;
         varying vec3 vPosition;
         uniform float uTime;
         uniform float uProgress;
         uniform float uAlpha;
-        //float PI = 3.14159265358979323846264338;
 
         void main() {
           vUv = (uv - vec2(0.5))*0.9 + vec2(0.5);
           vPosition = position;
           vec3 pos = position;
-          //pos.y += sin(PI*uv.x)*0.1
-          //pos.z += sin(PI*uv.x)*0.1
           // wave
           // pos.z += sin(position.x * 15.0 + uTime) * 0.04 * (1.0 - uProgress);
-          pos.y += sin(uTime*0.3) * 0.15;
-          vUv.y += sin(uTime*0.3) * 0.09;
           gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
         }
       `,
       fragmentShader: `
         uniform sampler2D uTexture;
         uniform float uTime;
+        uniform float distanceFromCenter;
         uniform float uProgress;
         uniform float uAlpha;
         varying vec2 vUv;
         void main() {
           vec2 newUV = vUv;
           vec4 color = texture2D(uTexture, newUV);
-          gl_FragColor = vec4(color.rgb, color.a * uAlpha);
+          gl_FragColor = color;
+          gl_FragColor.a = clamp(distanceFromCenter, 0.2, 1.);
         }
       `,
       transparent: true
@@ -155,15 +150,18 @@ export default function Three() {
     renderer.render( scene, camera );
     // Update time
     meshes.forEach((mesh, i) => {
+      let dist = Math.min(Math.abs(position - i),1);
+      dist = 1 - dist**2;
       mesh.material.uniforms.uTime.value = performance.now() * 0.001
-      mesh.material.uniforms.uProgress.value = Math.min(Math.abs(position - i),1)
-      mesh.material.uniforms.uProgress.value = 1 - mesh.material.uniforms.uProgress.value**2
+      mesh.material.uniforms.uProgress.value = dist / 2
       //mesh.material.uniforms.uAlpha.value = Math.min(Math.abs(position - i),1)
       //mesh.material.uniforms.uAlpha.value = 1 - mesh.material.uniforms.uAlpha.value**2
       // scale
       mesh.scale.x = 1 + 0.2*mesh.material.uniforms.uProgress.value
       mesh.scale.y = 1 + 0.2*mesh.material.uniforms.uProgress.value
       mesh.scale.z = 1 + 0.2*mesh.material.uniforms.uProgress.value 
+      
+      mesh.material.uniforms.distanceFromCenter.value = dist
     })
     // get forwar vector of group based on its rotation
     const forward = new THREE.Vector3(0.07,1,0)
@@ -171,15 +169,6 @@ export default function Three() {
     group.position.x = origin_position_x + forward.x * -position * 1.2
     group.position.y = origin_position_y + forward.y * -position * 1.2
     group.position.z = origin_position_z + forward.z * -position * 1.2
-
-
-
-
-
-
-
-
-    
   }
   animate();
 
