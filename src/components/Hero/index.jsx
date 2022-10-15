@@ -42,9 +42,7 @@ export default function Hero() {
       {titles.map((title_value, index) => (
         <div key={index} className={title_value == title ? styles.visible : styles.heroTitle}>{title_value}</div> 
       ))}
-      <h1>
-        I'm Oleg Pasternak
-      </h1>
+      <h1 style={{maxWidth:500}}>I'm Oleg Pasternak </h1>
     </div>
   )
 }
