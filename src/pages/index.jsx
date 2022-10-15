@@ -4,14 +4,14 @@ import { useEffect, useState } from 'react';
 import Head from 'src/components/Head';
 import { Gradient } from 'src/components/Gradient'
 import { Boiler } from 'src/components/Boiler'
+import ThreeJs from '../../threejs/three';
 
 export default function Home() {
   const [isLoad, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const gradient = new Gradient()
-    gradient.initGradient('#gradient-canvas')
     setIsLoaded(true);
+    ThreeJs();
   }, []);
 
   return (

@@ -3,7 +3,6 @@ import ProjectPreview from 'src/components/ProjectPreview'
 import data from './data'
 
 export function Boiler() {
-  console.log(data)
   return (
     <div id='boiler'>
       {data.map((project, key) => {

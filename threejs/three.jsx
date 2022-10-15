@@ -1,10 +1,12 @@
 import * as THREE from 'three';
-
+import { Gradient } from 'src/components/Gradient'
 
 let speed = 0;
 let position = 0;
-let rounded = 0;
+let rounded = 1;
 let isBrowser = typeof window !== "undefined"
+const gradient = new Gradient()
+let isMouseOver = false
 
 //SCROLL
 function raf() {
@@ -27,6 +29,14 @@ function raf() {
 
   // limit position
   position = Math.max(0, Math.min(2.5, position))
+
+  var gradientId = document.getElementById('gradient-canvas')
+  // check if slide in dataset has changed or dataset.slide does not exist
+  if (!gradientId.dataset.slide || gradientId.dataset.slide.toString() != rounded.toString()) {
+    gradientId.dataset.slide = rounded
+  //container.dataset.slide = Math.round(position+1)
+    gradient.initGradient('#gradient-canvas')
+  }
 
   if (boiler) {
     boiler.style.transform = `translate(0,${-position*100 + 50}px)`
@@ -76,6 +86,7 @@ export default function Three() {
   // Get images
   let images = [... document.querySelectorAll('.img')]
   let meshes = []
+  let geometries = []
   // Use images as texture for planes in the scene, using shaderMaterial
   images.forEach((img, i) => {
     const texture = new THREE.TextureLoader().load(img.src)
@@ -125,13 +136,14 @@ export default function Three() {
       `,
       transparent: true
     })
-    const geometry = new THREE.PlaneGeometry(2,1,20,20)
+    const geometry = new THREE.PlaneBufferGeometry(2,1,40,20)
     const mesh = new THREE.Mesh(geometry, material)
     mesh.position.x = 1.8
     mesh.position.y = i * 1.2
     mesh.position.z = 0
     scene.add(mesh)
     meshes.push(mesh)
+    geometries.push(geometry)
   })
 
   // Group all meshes in a group
@@ -182,14 +194,16 @@ export default function Three() {
         var raycaster = new THREE.Raycaster();
         raycaster.setFromCamera( mouse, camera );
         var intersects = raycaster.intersectObjects( meshes );
-        var html = document.getElementById('main-container')
+        var container = document.getElementById('main-container')
         if(intersects.length > 0) {
-          if(html) {
-            html.style = "cursor:pointer";
+          if(container) {
+            container.style = "cursor:pointer";
+            isMouseOver = true
           }
         } else {
-          if(html) {
-            html.style = "cursor:default";
+          if(container) {
+            container.style = "cursor:default";
+            isMouseOver = false
           }
         }
       }
@@ -212,7 +226,29 @@ export default function Three() {
       mesh.scale.z = 1 + 0.2*mesh.material.uniforms.uProgress.value 
       
       mesh.material.uniforms.distanceFromCenter.value = dist
+
+      if (isMouseOver) {
+        // edit geometry of mesh
+        const geometry = geometries[i]
+        const vertices = geometry.attributes.position.array
+        for (let i = 0; i < 121; i += 3) {
+          const x = vertices[i]
+          const y = vertices[i + 1]
+          const z = vertices[i + 2]
+          vertices[i+2] = Math.sin(x * 6 + performance.now() * 0.01) * 0.01 * mesh.material.uniforms.uProgress.value
+        }
+        for (let i = vertices.length; i > vertices.length - 121; i -= 3) {
+          const x = vertices[i]
+          const y = vertices[i + 1]
+          const z = vertices[i + 2]
+          vertices[i+2] = Math.sin(x * 6 + performance.now() * 0.01) * 0.01 * mesh.material.uniforms.uProgress.value
+        }
+        geometry.attributes.position.needsUpdate = true
+      }
+
     })
+    
+
     // get forwar vector of group based on its rotation
     const forward = new THREE.Vector3(0.1,1,0)
     // move group towards forward vector
