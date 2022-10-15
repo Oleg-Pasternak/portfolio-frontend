@@ -2,10 +2,10 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    z-index: 99;
 }
 
 .menu {
-    z-index: 99;
     @media (max-width: 768px) {
         display: none;
     }

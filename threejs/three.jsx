@@ -187,26 +187,27 @@ export default function Three() {
               //$('html,body').css('cursor','cursor');
         }
     }
-    function onDocumentMouseMove(event) {
-        var mouse = new THREE.Vector2();
-        mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-        mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-        var raycaster = new THREE.Raycaster();
-        raycaster.setFromCamera( mouse, camera );
-        var intersects = raycaster.intersectObjects( meshes );
-        var container = document.getElementById('main-container')
-        if(intersects.length > 0) {
-          if(container) {
-            container.style = "cursor:pointer";
-            isMouseOver = true
-          }
-        } else {
-          if(container) {
-            container.style = "cursor:default";
-            isMouseOver = false
-          }
+  function onDocumentMouseMove(event) {
+      var mouse = new THREE.Vector2();
+      mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+      mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+      var raycaster = new THREE.Raycaster();
+      raycaster.setFromCamera( mouse, camera );
+      var intersects = raycaster.intersectObjects( meshes );
+      var container = document.getElementById('main-container')
+      if(intersects.length > 0) {
+        if(container) {
+          container.style = "cursor:pointer";
+          isMouseOver = true
+        }
+      } else {
+        if(container) {
+          container.style = "cursor:default";
+          isMouseOver = false
         }
       }
+  }
+
   
   // Animate
   function animate() {

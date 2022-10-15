@@ -14,19 +14,6 @@ export default class Header extends Component {
                 <div className={styles.logo}>
                     <Logo />
                 </div>
-                <div className={styles.menu}>
-                    <ul>
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact</a>
-                        </li>
-                    </ul>
-                </div>
                 <Navbar />
             </div>
         );
