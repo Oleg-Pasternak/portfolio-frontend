@@ -26,7 +26,9 @@ function raf() {
   position += Math.sign(diff)*Math.pow(Math.abs(diff),0.7)*0.015;
 
   // limit position
-  position = Math.max(0, Math.min(3, position))
+  position = Math.max(0, Math.min(2.5, position))
+
+  console.log(position)
 
   if (boiler) {
     boiler.style.transform = `translate(0,${-position*100 + 50}px)`
@@ -93,14 +95,18 @@ export default function Three() {
         uniform float uTime;
         uniform float uProgress;
         uniform float uAlpha;
+        //float PI = 3.14159265358979323846264338;
 
         void main() {
-          vUv = uv;
+          vUv = (uv - vec2(0.5))*0.9 + vec2(0.5);
           vPosition = position;
           vec3 pos = position;
+          //pos.y += sin(PI*uv.x)*0.1
+          //pos.z += sin(PI*uv.x)*0.1
           // wave
           // pos.z += sin(position.x * 15.0 + uTime) * 0.04 * (1.0 - uProgress);
-          pos.y += sin(position.z * 10.0 + uTime) * 0.1 * (1.0);
+          pos.y += sin(uTime*0.3) * 0.15;
+          vUv.y += sin(uTime*0.3) * 0.09;
           gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
         }
       `,
