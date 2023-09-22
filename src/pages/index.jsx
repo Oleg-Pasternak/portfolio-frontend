@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div id='main-container'>
-      <Head page="メインページ" />
+      <Head page="Main Page" />
       <Header />
       <Hero />
       <Boiler />
