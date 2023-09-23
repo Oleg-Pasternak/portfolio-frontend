@@ -98,8 +98,9 @@ export default function Three() {
         distanceFromCenter: {type: 'f', value: 0},
         uTime: { type: 'f', value: 0 },
         uProgress: { value: 0 },
-        uAlpha: { value: 1 },
-        uRot: { value: 0.07 }
+        uAlpha: { value: 0.9 },
+        uRot: { value: 0.07 },
+        uZoom: { value: 0.8 }
       },
       vertexShader: `
         varying vec2 vUv;
@@ -108,10 +109,11 @@ export default function Three() {
         uniform float uProgress;
         uniform float uAlpha;
         uniform float uRot;
+        uniform float uZoom;
         float PI = 3.14159265358979323846264338;
 
         void main() {
-          vUv = (uv - vec2(0.5))*0.8 + vec2(0.5);
+          vUv = (uv - vec2(0.5))*uZoom + vec2(0.5);
           vPosition = position;
           vec3 pos = position;
           pos.y += sin(PI*vUv.x)*uRot;
@@ -183,7 +185,8 @@ export default function Three() {
             //$('html,body').css('cursor','pointer');//mouse cursor change
             for ( var i = 0;  intersects.length > 0 && i < intersects.length; i++)
             {
-                window.open(intersects[0].object.userData.URL);
+              console.log(intersects)
+                // window.open(intersects[0].object.userData.URL);
             }
         }
         else {
@@ -232,23 +235,28 @@ export default function Three() {
 
       if (isMouseOver) {
         if (i == hoveredImageIndex) {
-          if ( mesh.material.uniforms.uRot.value > 0.06) {
-            mesh.material.uniforms.uRot.value -= 0.001
+          if ( mesh.material.uniforms.uRot.value > 0.065) {
+            mesh.material.uniforms.uRot.value -= 0.002
           }
-          if (mesh.material.uniforms.uAlpha.value < 1.2) {
-            mesh.material.uniforms.uAlpha.value += 0.01
+          if (mesh.material.uniforms.uAlpha.value < 1.1) {
+            mesh.material.uniforms.uAlpha.value += 0.02
           }
+          if (mesh.material.uniforms.uZoom.value > 0.78) {
+            mesh.material.uniforms.uZoom.value -= 0.0025
+          }
+          document.getElementById('gradient-canvas').classList.add('gradient-focused')
         }
       } else {
         if (mesh.material.uniforms.uRot.value < 0.07) {
-          mesh.material.uniforms.uRot.value += 0.001
+          mesh.material.uniforms.uRot.value += 0.002
         }
-        if (mesh.material.uniforms.uAlpha.value > 1) {
+        if (mesh.material.uniforms.uAlpha.value > 0.9) {
           mesh.material.uniforms.uAlpha.value -= 0.02
         }
-        mesh.rotation.x = 0
-        mesh.rotation.y = 0
-        mesh.rotation.z = 0
+        if (mesh.material.uniforms.uZoom.value < 0.8) {
+          mesh.material.uniforms.uZoom.value += 0.003
+        }
+        document.getElementById('gradient-canvas').classList.remove('gradient-focused')
       }
 
 

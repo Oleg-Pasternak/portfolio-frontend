@@ -24,6 +24,10 @@ a {
   transition: all 2s;
 }
 
+.gradient-focused {
+  -webkit-filter: blur(50px) !important;
+}
+
 #container {
   width: 100vw;
   height: 100vw;
