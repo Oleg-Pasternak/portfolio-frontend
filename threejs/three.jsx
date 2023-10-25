@@ -6,9 +6,10 @@ let position = 0;
 let rounded = 1;
 let isBrowser = typeof window !== "undefined"
 const gradient = new Gradient()
-let isMouseOver = false
-
+let isMouseOver = false;
 let hoveredImageIndex = -1;
+let clickedImageIndex = -1;
+let onExitAnimation = false;
 
 //SCROLL
 function raf() {
@@ -40,7 +41,7 @@ function raf() {
     gradient.initGradient('#gradient-canvas')
   }
 
-  if (boiler) {
+  if (boiler && !onExitAnimation) {
     boiler.style.transform = `translate(0,${-position*100 + 50}px)`
     window.requestAnimationFrame(raf)
   }
@@ -100,7 +101,9 @@ export default function Three() {
         uProgress: { value: 0 },
         uAlpha: { value: 0.9 },
         uRot: { value: 0.07 },
-        uZoom: { value: 0.8 }
+        uZoom: { value: 0.8 },
+        uSize: { value: 1.0 },
+        minDist: { value: 0.2 }
       },
       vertexShader: `
         varying vec2 vUv;
@@ -110,6 +113,7 @@ export default function Three() {
         uniform float uAlpha;
         uniform float uRot;
         uniform float uZoom;
+        uniform float uSize;
         float PI = 3.14159265358979323846264338;
 
         void main() {
@@ -120,7 +124,7 @@ export default function Three() {
           pos.z += sin(PI*vUv.x)*uRot;
           pos.y += sin(uTime*0.3) * uRot;
           vUv.y += sin(uTime*0.3) * uRot;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, uSize);
         }
       `,
       fragmentShader: `
@@ -129,6 +133,7 @@ export default function Three() {
         uniform float distanceFromCenter;
         uniform float uProgress;
         uniform float uAlpha;
+        uniform float minDist;
         varying vec2 vUv;
 
         void main() {
@@ -136,12 +141,12 @@ export default function Three() {
           vec4 color = texture2D(uTexture, newUV);
           gl_FragColor = color;
           vec3 adjustedColor = color.rgb * uAlpha;
-          gl_FragColor = vec4(adjustedColor, clamp(distanceFromCenter, 0.2, 1.));
+          gl_FragColor = vec4(adjustedColor, clamp(distanceFromCenter, minDist, 1.));
         }
       `,
       transparent: true
     })
-    const geometry = new THREE.PlaneBufferGeometry(2,1,40,20)
+    const geometry = new THREE.PlaneBufferGeometry(2,1.2,40,20)
     const mesh = new THREE.Mesh(geometry, material)
     mesh.position.x = 1.8
     mesh.position.y = i * 1.2
@@ -163,9 +168,9 @@ export default function Three() {
   group.rotation.y = -0.9
   group.rotation.z = -0.3
 
-  const origin_position_x = group.position.x
-  const origin_position_y = group.position.y
-  const origin_position_z = group.position.z
+  var origin_position_x = group.position.x
+  var origin_position_y = group.position.y
+  var origin_position_z = group.position.z
 
   document.addEventListener( 'mousedown', onDocumentMouseDown, false );
   document.addEventListener( 'mousemove', onDocumentMouseMove, false );
@@ -186,11 +191,14 @@ export default function Three() {
             for ( var i = 0;  intersects.length > 0 && i < intersects.length; i++)
             {
               console.log(intersects)
+              onExitAnimation = true
+              clickedImageIndex = meshes.indexOf(intersects[0].object);
                 // window.open(intersects[0].object.userData.URL);
             }
         }
         else {
               //$('html,body').css('cursor','cursor');
+              clickedImageIndex = -1
         }
     }
   function onDocumentMouseMove(event) {
@@ -202,7 +210,7 @@ export default function Three() {
       var intersects = raycaster.intersectObjects(meshes);
       var container = document.getElementById('main-container');
       if (intersects.length > 0) {
-        if (container) {
+        if (container && !onExitAnimation) {
           container.style.cursor = "pointer";
           hoveredImageIndex = meshes.indexOf(intersects[0].object);
           isMouseOver = true
@@ -233,30 +241,77 @@ export default function Three() {
       
       mesh.material.uniforms.distanceFromCenter.value = dist
 
-      if (isMouseOver) {
-        if (i == hoveredImageIndex) {
-          if ( mesh.material.uniforms.uRot.value > 0.065) {
-            mesh.material.uniforms.uRot.value -= 0.002
+      if (onExitAnimation) {
+        if (i == clickedImageIndex) {
+          document.getElementById('inner').classList.add('inner-hidden')
+          // document.getElementById('gradient-canvas').classList.add('inner-hidden')
+          if (mesh.material.uniforms.uRot.value > 0) {
+            mesh.material.uniforms.uRot.value -= 0.01
           }
-          if (mesh.material.uniforms.uAlpha.value < 1.1) {
-            mesh.material.uniforms.uAlpha.value += 0.02
+          if (mesh.material.uniforms.uAlpha.value < 0.9) {
+            mesh.material.uniforms.uAlpha.value -= 0.02
           }
-          if (mesh.material.uniforms.uZoom.value > 0.78) {
-            mesh.material.uniforms.uZoom.value -= 0.0025
+          if (mesh.material.uniforms.uZoom.value > 0.99) {
+            mesh.material.uniforms.uZoom.value -= 0.001
           }
-          document.getElementById('gradient-canvas').classList.add('gradient-focused')
+          if (mesh.material.uniforms.uSize.value > 0.6) {
+            mesh.material.uniforms.uSize.value -= 0.01
+          }
+          if (mesh.material.uniforms.uProgress.value > 0) {
+            mesh.material.uniforms.uProgress.value -= 0.001
+          }
+          if (mesh.material.uniforms.uTime.value > 0) {
+            mesh.material.uniforms.uTime.value -= 0.001
+          }
+          if (mesh.position.x > 0) {
+            mesh.position.x -= 0.1
+          }
+          if (mesh.position.y < 0) {
+            mesh.position.y += 0.1
+          }
+          if (mesh.position.z > 0.1) {
+            mesh.position.z -= 0.1
+          }
+          if (group.rotation.x < 0) {
+            group.rotation.x += 0.01
+          }
+          if (group.rotation.y < 0) {
+            group.rotation.y += 0.01
+          }
+          if (group.rotation.z < 0) {
+            group.rotation.z += 0.01
+          }
+        } else {
+          if (mesh.material.uniforms.minDist.value > 0) {
+            mesh.material.uniforms.minDist.value -= 0.1
+          }
         }
       } else {
-        if (mesh.material.uniforms.uRot.value < 0.07) {
-          mesh.material.uniforms.uRot.value += 0.002
+        if (isMouseOver && !onExitAnimation) {
+          if (i == hoveredImageIndex) {
+            if ( mesh.material.uniforms.uRot.value > 0.067) {
+              mesh.material.uniforms.uRot.value -= 0.001
+            }
+            if (mesh.material.uniforms.uAlpha.value < 1.1) {
+              mesh.material.uniforms.uAlpha.value += 0.02
+            }
+            if (mesh.material.uniforms.uZoom.value > 0.78) {
+              mesh.material.uniforms.uZoom.value -= 0.001
+            }
+            document.getElementById('gradient-canvas').classList.add('gradient-focused')
+          }
+        } else {
+          if (mesh.material.uniforms.uRot.value < 0.07) {
+            mesh.material.uniforms.uRot.value += 0.0005
+          }
+          if (mesh.material.uniforms.uAlpha.value > 0.9) {
+            mesh.material.uniforms.uAlpha.value -= 0.02
+          }
+          if (mesh.material.uniforms.uZoom.value < 0.8) {
+            mesh.material.uniforms.uZoom.value += 0.001
+          }
+          document.getElementById('gradient-canvas').classList.remove('gradient-focused')
         }
-        if (mesh.material.uniforms.uAlpha.value > 0.9) {
-          mesh.material.uniforms.uAlpha.value -= 0.02
-        }
-        if (mesh.material.uniforms.uZoom.value < 0.8) {
-          mesh.material.uniforms.uZoom.value += 0.003
-        }
-        document.getElementById('gradient-canvas').classList.remove('gradient-focused')
       }
 
 

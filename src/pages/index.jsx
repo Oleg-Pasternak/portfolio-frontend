@@ -18,7 +18,9 @@ export default function Home() {
     <div id='main-container'>
       <Head page="Main Page" />
       <Header />
-      <Hero />
+      <div id="inner">
+        <Hero />
+      </div>
       <Boiler />
 
       <canvas className={isLoad ? 'page-loaded' : ''} id="gradient-canvas" data-transition-in />

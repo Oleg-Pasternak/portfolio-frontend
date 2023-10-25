@@ -24,6 +24,15 @@ a {
   transition: all 2s;
 }
 
+#inner {
+  transition: all 1s;
+}
+
+.inner-hidden {
+  opacity: 0;
+  transition: all 1s;
+}
+
 .gradient-focused {
   -webkit-filter: blur(50px) !important;
 }
