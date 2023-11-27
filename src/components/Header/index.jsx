@@ -1,6 +1,5 @@
 import Logo from 'public/assets/logo.jsx';
 import styles from './styles.module.scss';
-import Navbar from 'src/components/Navbar';
 import {Component} from 'react';
 
 export default class Header extends Component {
@@ -14,7 +13,6 @@ export default class Header extends Component {
                 <div className={styles.logo}>
                     <Logo />
                 </div>
-                <Navbar />
             </div>
         );
     }

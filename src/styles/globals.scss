@@ -2,9 +2,9 @@ html,
 body {
   padding: 20px 30px;
   margin: 0;
-  color: rgb(21, 21, 21);
-  font-family: 'DM Sans', sans-serif;
-  overflow: hidden;
+  color: #aaa;
+  font-family: 'Roboto', sans-serif;
+  background-color: #FBFBFB;
   @media (max-width: 768px) {
     padding: 10px 7px;
   }
@@ -24,93 +24,10 @@ a {
   transition: all 2s;
 }
 
-#inner {
-  transition: all 1s;
-}
-
-.inner-hidden {
-  opacity: 0;
-  transition: all 1s;
-}
-
-.gradient-focused {
-  -webkit-filter: blur(50px) !important;
-}
-
-#container {
-  width: 100vw;
-  height: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  pointer-events: none;
-  
-}
-
-#main-container {
-  height: 49vw;
-}
-
-#gradient-canvas {
-  width:100%;
-  height:100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: -2;
-  -webkit-filter: blur(180px);
-  transition: all 0.8s;
-}
-
-#gradient-canvas[data-slide='0'] {
-  --gradient-color-1: #FAF3DD; 
-  --gradient-color-2: #FFA69E; 
-  --gradient-color-3: #B8F2E6;  
-  --gradient-color-4: #AED9E0;
-  transition: all 0.8s;
-}
-#gradient-canvas[data-slide='1'] {
-  --gradient-color-1: #006494; 
-  --gradient-color-2: #247BA0; 
-  --gradient-color-3: #1B98E0;  
-  --gradient-color-4: #E8F1F2;
-  transition: all 0.8s;
-}
-#gradient-canvas[data-slide='2'] {
-  --gradient-color-1: #A7BED3; 
-  --gradient-color-2: #C6E2E9; 
-  --gradient-color-3: #F1FFC4;  
-  --gradient-color-4: #FFCAAF;
-  transition: all 0.8s;
-}
-#gradient-canvas[data-slide='3'] {
-  --gradient-color-1: #E5F9E0; 
-  --gradient-color-2: #A3F7B5; 
-  --gradient-color-3: #40C9A2;  
-  --gradient-color-4: #2F9C95;
-  transition: all 0.8s;
-}
-#gradient-canvas[data-slide='4'] {
-  --gradient-color-1: #A7BED3; 
-  --gradient-color-2: #C6E2E9; 
-  --gradient-color-3: #F1FFC4;  
-  --gradient-color-4: #FFCAAF;
-  transition: all 0.8s;
-}
-
-#block {
-  width: 100px;
-  height: 100px;
-  background-color: #fff;
-  opacity: 0.7;
-  padding: 10px;
-}
-
 h1 {
   font-size: 135px;
   font-weight: 800;
-  font-family: 'Bebas Neue';
+  font-family: 'Roboto';
   margin-top: 200px;
   letter-spacing: 0.02em;
   @media (max-width: 768px) {
@@ -149,39 +66,22 @@ ul {
 /* ../../public/fonts */
 
 @font-face {
-  font-family: 'Bebas Neue';
-  src: local('Bebas Neue Thin'), local('BebasNeue-Thin'), url('../../public/fonts/bebasneuethin.woff2') format('woff2'), url('../../public/fonts/bebasneuethin.woff') format('woff'), url('../../public/fonts/bebasneuethin.ttf') format('truetype');
-  font-weight: 100;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Bebas Neue';
-  src: local('Bebas Neue Light'), local('BebasNeue-Light'), url('../../public/fonts/bebasneuelight.woff2') format('woff2'), url('../../public/fonts/bebasneuelight.woff') format('woff'), url('../../public/fonts/bebasneuelight.ttf') format('truetype');
-  font-weight: 200;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Bebas Neue';
-  src: local('Bebas Neue Book'), local('BebasNeueBook'), url('../../public/fonts/bebasneuebook.woff2') format('woff2'), url('../../public/fonts/bebasneuebook.woff') format('woff'), url('../../public/fonts/bebasneuebook.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Bebas Neue';
-  src: local('Bebas Neue Regular'), local('BebasNeueRegular'), url('../../public/fonts/bebasneueregular.woff2') format('woff2'), url('../../public/fonts/bebasneueregular.woff') format('woff'), url('../../public/fonts/bebasneueregular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Bebas Neue';
-  src: local('Bebas Neue Bold'), local('BebasNeueBold'), url('../../public/fonts/bebasneuebold.woff2') format('woff2'), url('../../public/fonts/bebasneuebold.woff') format('woff'), url('../../public/fonts/bebasneuebold.ttf') format('truetype');
-  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  src: local('Inter'), url('../../public/fonts/Inter.ttf') format('truetype');
+  font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'DM Sans';
-  src: local('DM Sans Regular'), local('DMSans'), url('../../public/fonts/dmsans-regular.ttf') format('truetype');
-  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  src: local('Roboto'), url('../../public/fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: local('Roboto-Medium'), url('../../public/fonts/Roboto-Medium.ttf') format('truetype');
+  font-weight: normal;
   font-style: normal;
 }

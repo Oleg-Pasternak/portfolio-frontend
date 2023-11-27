@@ -1,29 +1,32 @@
 import Header from 'src/components/Header';
-import Hero from 'src/components/Hero';
 import { useEffect, useState } from 'react';
 import Head from 'src/components/Head';
-import { Gradient } from 'src/components/Gradient'
 import { Boiler } from 'src/components/Boiler'
-import ThreeJs from '../../threejs/three';
+import axios from 'axios'
 
 export default function Home() {
-  const [isLoad, setIsLoaded] = useState(false);
+
+  const [stocks, setStocks] = useState([]);
 
   useEffect(() => {
-    setIsLoaded(true);
-    ThreeJs();
-  }, []);
+    axios.get('http://127.0.0.1:5001/api/stocks')
+      .then((res) => {
+        setStocks(res.data)
+      })
+  }, [])
 
   return (
     <div id='main-container'>
       <Head page="Main Page" />
       <Header />
-      <div id="inner">
-        <Hero />
-      </div>
       <Boiler />
-
-      <canvas className={isLoad ? 'page-loaded' : ''} id="gradient-canvas" data-transition-in />
+      {stocks && (
+        <ul>
+          {stocks.map((stock) => {
+            return <li>{stock.title} - {stock.price}</li>
+          })}
+        </ul>
+      )}
       <div id="container" />
     </div>
   )
