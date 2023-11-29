@@ -9,7 +9,9 @@ export default function (props) {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
             <meta name="theme-color" content="#000000" />
-            <title>Pasternak | {props.page}</title>
+            {props.title && (
+                <title>Pasternak | {props.page}</title>
+            )}
         </Head>
     )
 }
