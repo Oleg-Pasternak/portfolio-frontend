@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    a {
+        display: flex;
+        align-items: center;
+        span {
+            &:hover {
+                color: #343434;
+                transition: all 0.3s;
+            }
+        }
+    }
+}

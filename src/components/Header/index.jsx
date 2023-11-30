@@ -13,6 +13,9 @@ export default class Header extends Component {
                 <Link href='/'>
                     <Logo />
                 </Link>
+                <Link href='/'>
+                    <span>Get in touch</span>
+                </Link>
             </div>
         );
     }

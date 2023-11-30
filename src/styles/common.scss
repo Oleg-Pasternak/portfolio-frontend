@@ -39,6 +39,12 @@ p {
   margin: 0;
 }
 
+span {
+    font-size: 14px;
+    color: #aaa;
+    transition: all 0.3s;
+}
+
 /* Reset default cursor styles */
 * {
     cursor: none;
