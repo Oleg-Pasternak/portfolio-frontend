@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Head from 'src/components/Head';
 import { Boiler } from 'src/components/Boiler'
 import Hero from 'src/components/Hero'
+import Footer from 'src/components/Footer'
 import axios from 'axios'
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Boiler />
+      <Footer />
     </div>
   )
 }

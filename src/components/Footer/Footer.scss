@@ -1,0 +1,30 @@
+.footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    &-text {
+        text-align: center;
+        max-width: 400px;
+        margin-bottom: 50px;
+        span {
+            font-weight: 300;
+        }
+        a {
+            text-decoration: underline;
+        }
+    }
+    &-inner {
+        display: flex;
+        height: 80px;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        font-weight: 300;
+    }
+    &-links {
+        display: flex;
+
+    }
+}
