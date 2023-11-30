@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 
 function MyApp({ Component, pageProps }) {
   const scrollContainerRef = useRef(null);
+  const cursorRef = useRef(null);
 
   useEffect(() => {
     // Initialize Lenis
@@ -33,15 +34,29 @@ function MyApp({ Component, pageProps }) {
       });
     });
 
+    // Custom Cursor
+    const onMouseMove = (e) => {
+      gsap.to(cursorRef.current, {
+        x: e.clientX,
+        y: e.clientY,
+        duration: 0.3,
+        ease: 'power2.out',
+      });
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+
     // Cleanup: Remove event listeners and destroy Lenis when the component unmounts
     return () => {
+      window.removeEventListener('mousemove', onMouseMove);
       lenis.destroy();
     };
   }, []);
 
   return (
-    <div ref={scrollContainerRef}>
+    <div ref={scrollContainerRef} style={{position: 'relative'}}>
       <Component {...pageProps} />
+      <div className="cursor" ref={cursorRef} />
     </div>
   );
 }

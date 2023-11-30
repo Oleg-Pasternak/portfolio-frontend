@@ -21,11 +21,6 @@ a {
   box-sizing: border-box;
 }
 
-.page-loaded {
-  -webkit-filter: blur(0px) !important;
-  transition: all 2s;
-}
-
 h1 {
     font-size: 64px;
     font-family: 'THICCCBOI', THICCCBOI-Medium;
@@ -44,29 +39,21 @@ p {
   margin: 0;
 }
 
-ul {
-  list-style-type: none;
-  // li {
-  //     letter-spacing: 2px;
-  //     font-size: 12px;
-  //     text-transform: uppercase;
-  //     a {
-  //         position: relative;
-  //         &::before {
-  //             content: '';
-  //             position: absolute;
-  //             left: 0; bottom: -5px;
-  //             width: 0%;
-  //             height: 1px;
-  //             background-color: black;
-  //             transition: all 0.3s;
-  //         }
-  //         &:hover {
-  //             &::before {
-  //                 width: 100%;
-  //                 transition: all 0.3s;
-  //             }
-  //         }
-  //     }
-  // }
-}
+/* Reset default cursor styles */
+* {
+    cursor: none;
+  }
+  
+  /* Define styles for the custom cursor */
+  .cursor {
+    position: fixed;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #fff; /* Adjust the color as needed */
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: difference; /* This blend mode helps the cursor stand out on various backgrounds */
+    z-index: 9999; /* Make sure the cursor stays on top of other elements */
+    transform: translate(-50%, -50%);
+  }
