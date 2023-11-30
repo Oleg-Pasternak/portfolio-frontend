@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-export default function (props) {
+export default function HeadComponent (props) {
     return (
         <Head>
             {props.children}
@@ -9,7 +9,7 @@ export default function (props) {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
             <meta name="theme-color" content="#000000" />
-            {props.title && (
+            {props.page && (
                 <title>Pasternak | {props.page}</title>
             )}
         </Head>

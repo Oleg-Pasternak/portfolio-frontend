@@ -3,7 +3,7 @@ import ProjectPreview from 'src/components/ProjectPreview'
 
 export function Boiler() {
   return (
-    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+    <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap'}}>
       {/* {data.map((project, key) => {
         return (
           <ProjectPreview data={project} id={key} />
