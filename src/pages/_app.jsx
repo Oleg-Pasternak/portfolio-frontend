@@ -1,4 +1,4 @@
-import '../styles/globals.scss';
+import '../styles/main.scss';
 import { gsap } from 'gsap';
 import Lenis from '@studio-freight/lenis';
 import { useEffect, useRef } from 'react';

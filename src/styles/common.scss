@@ -2,8 +2,9 @@ html,
 body {
   padding: 20px 30px;
   margin: 0;
-  color: #aaa;
+  color: #999;
   font-family: 'Roboto', sans-serif;
+  font-weight: normal;
   background-color: #FBFBFB;
   height: 200vw;
   @media (max-width: 768px) {
@@ -26,14 +27,21 @@ a {
 }
 
 h1 {
-  font-size: 135px;
-  font-weight: 800;
-  font-family: 'Roboto';
-  margin-top: 200px;
-  letter-spacing: 0.02em;
-  @media (max-width: 768px) {
-    font-size: 75px;
-  }
+    font-size: 64px;
+    font-family: 'THICCCBOI', THICCCBOI-Medium;
+    font-weight: 500;
+    background: -webkit-linear-gradient(90deg, #DD5E89 0%, #F7BB97 100%, #F7BB97 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+p {
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.8px;
+  margin: 0;
 }
 
 ul {
@@ -61,38 +69,4 @@ ul {
   //         }
   //     }
   // }
-}
-
-.project-preview {
-  background-color: rgb(220, 220, 220);
-  width: 49.5%;
-  height: 400px;
-  border-radius: 5px;
-  background: rgba(232, 232, 232, 0.50);
-  backdrop-filter: blur(20px);
-  margin-top: 100px;
-}
-
-
-/* ../../public/fonts */
-
-@font-face {
-  font-family: 'Inter', sans-serif;
-  src: local('Inter'), url('../../public/fonts/Inter.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Roboto', sans-serif;
-  src: local('Roboto'), url('../../public/fonts/Roboto-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Roboto', sans-serif;
-  src: local('Roboto-Medium'), url('../../public/fonts/Roboto-Medium.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
