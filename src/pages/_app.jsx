@@ -35,7 +35,8 @@ function MyApp({ Component, pageProps }) {
     });
 
     const onMouseMove = (e) => {
-      const isLink = e.target.tagName.toLowerCase() === 'svg';
+      const tagName = e.target.tagName.toLowerCase()
+      const isLink = tagName === 'svg' || tagName === 'a';
     
       gsap.to(cursorRef.current, {
         left: e.clientX,
