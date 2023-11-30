@@ -56,4 +56,7 @@ p {
     mix-blend-mode: difference; /* This blend mode helps the cursor stand out on various backgrounds */
     z-index: 9999; /* Make sure the cursor stays on top of other elements */
     transform: translate(-50%, -50%);
+    .enlarged {
+        transform: scale(1.5); /* Adjust the scale factor for enlargement */
+    }
   }

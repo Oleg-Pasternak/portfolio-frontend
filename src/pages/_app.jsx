@@ -34,11 +34,13 @@ function MyApp({ Component, pageProps }) {
       });
     });
 
-    // Custom Cursor
     const onMouseMove = (e) => {
+      const isLink = e.target.tagName.toLowerCase() === 'svg';
+    
       gsap.to(cursorRef.current, {
-        x: e.clientX,
-        y: e.clientY,
+        left: e.clientX,
+        top: e.clientY,
+        scale: isLink ? 1.5 : 1, // Adjust the scale factor as needed
         duration: 0.3,
         ease: 'power2.out',
       });

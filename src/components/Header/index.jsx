@@ -1,4 +1,5 @@
 import Logo from 'public/assets/logo.jsx';
+import Link from 'next/link';
 import {Component} from 'react';
 
 export default class Header extends Component {
@@ -9,7 +10,9 @@ export default class Header extends Component {
     render() {
         return (
             <div className="header">
-                <Logo />
+                <Link href='/'>
+                    <Logo />
+                </Link>
             </div>
         );
     }
