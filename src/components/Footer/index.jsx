@@ -11,7 +11,7 @@ const Footer = () => {
             </span>
         </div>
         <div className="footer-inner">
-            <span>2023</span>
+            <span>© 2023</span>
             <div className="footer-links">
                 <Link href='/'>
                     <div className="github" />

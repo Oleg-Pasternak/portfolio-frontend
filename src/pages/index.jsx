@@ -4,6 +4,7 @@ import Head from 'src/components/Head';
 import { Boiler } from 'src/components/Boiler'
 import Hero from 'src/components/Hero'
 import Footer from 'src/components/Footer'
+import ScrollMovingAnimation from 'src/components/ScrollMovingAnimation';
 import axios from 'axios'
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Head page="Main Page" />
       <Header />
       <Hero />
+      <ScrollMovingAnimation />
       <Boiler />
       <Footer />
     </div>
