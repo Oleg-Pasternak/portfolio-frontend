@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.29",
+    "apollo-client": "^2.6.10",
+    "apollo-link-context": "^1.0.20",
+    "apollo-link-http": "^1.5.17",
     "axios": "^1.6.0",
     "classnames": "^2.3.2",
     "file-loader": "^6.2.0",
