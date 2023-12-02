@@ -1,6 +1,14 @@
 // next.config.js
 module.exports = {
-  webpack: (config, { isServer }) => {
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && isServer) {
+      // Enable build caching for production builds on the server
+      config.cache = {
+        type: 'filesystem',
+      };
+    }
+
+    // Add the SCSS/Sass loader configuration
     if (!isServer) {
       config.module.rules.push({
         test: /\.(scss|sass)$/,
