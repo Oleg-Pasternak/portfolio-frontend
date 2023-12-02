@@ -10,7 +10,7 @@ export default function HeadComponent (props) {
             <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
             <meta name="theme-color" content="#000000" />
             {props.page && (
-                <title>Pasternak | {props.page}</title>
+                <title>{props.page}</title>
             )}
         </Head>
     )

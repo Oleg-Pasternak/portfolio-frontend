@@ -17,7 +17,7 @@ export default function Home(props) {
 
   return (
     <div id='main-container'>
-      <Head page="Main Page" />
+      <Head page={landing.seoTitle} />
       <Header 
         logo={settings.pageIcon}
         contactEmail={settings.contactEmail}

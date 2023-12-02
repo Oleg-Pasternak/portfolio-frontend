@@ -14,6 +14,7 @@ export const GET_INITIAL_DATA = gql`
       color1
       color2
       pageDescription
+      seoTitle
       content {
         __typename
         ...ProjectsBlock
