@@ -1,24 +1,21 @@
-import Link from 'next/link';
+import { Parser as HtmlToReactParser } from 'html-to-react';
+var htmlToReactParser = new HtmlToReactParser()
 
-const Footer = () => {
+const Footer = (props) => {
   return (
     <div className="footer">
         <div className="footer-text">
-            <span>
-                Looking for a skilled developer to turn your ideas into reality? 
-                <Link href='#' passHref>Get in touch </Link> 
-                to explore the possibilities.
-            </span>
+            {htmlToReactParser.parse(props.footerText)}
         </div>
         <div className="footer-inner">
             <span>© 2023</span>
             <div className="footer-links">
-                <Link href='/' passHref>
+                <a href={props.githubLink} target='_blank'>
                     <div className="github" />
-                </Link>
-                <Link href='/' passHref>
+                </a>
+                <a href={props.linkedinLink} target='_blank'>
                     <div className="linkedin" />
-                </Link>
+                </a>
             </div>
         </div>
     </div>

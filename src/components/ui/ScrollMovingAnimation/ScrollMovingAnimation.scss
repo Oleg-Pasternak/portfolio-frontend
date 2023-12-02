@@ -3,7 +3,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 150%;
+    margin-left: -400px;
     .square, .line, .rectangle {
         width: 100px;
         height: 100px;

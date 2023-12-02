@@ -26,7 +26,7 @@ export default function Hero(props) {
       <div className='hero'>
         <div className="hero-inner">
             <h1 
-                style={{background: `-webkit-linear-gradient(90deg, ${props.color1} 0%, ${props.color2} 100%, ${props.color2} 100%)`, backgroundClip: 'revert-layer'}}
+                style={{background: `-webkit-linear-gradient(30deg, ${props.color1} 0%, ${props.color2} 100%, ${props.color2} 100%)`, backgroundClip: 'revert-layer'}}
                 ref={titleRef}
             >
                 {props.title}

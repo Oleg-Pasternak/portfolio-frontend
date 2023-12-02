@@ -23,9 +23,9 @@ const ScrollMovingAnimation = (props) => {
   useEffect(() => {
     const tl = gsap.timeline();
 
-    tl.to(squareRef.current, { y: -100 + scrollY * 0.4, x: 0 + scrollY * 0.1, duration: 1 });
-    tl.to(lineRef.current, { y: -100 + scrollY * 0.4, x: 0 - scrollY * 0.4, duration: 1 }, '-=1');
-    tl.to(rectangleRef.current, { y: 20 - scrollY * 0.05, x: -150 - scrollY * 0.02, duration: 1 }, '-=1');
+    tl.to(squareRef.current, { y: -100 + scrollY * 0.4, x: 400 + scrollY * 0.1, duration: 1 });
+    tl.to(lineRef.current, { y: -100 + scrollY * 0.4, x: -450 - scrollY * 0.4, duration: 1.4 }, '-=1');
+    tl.to(rectangleRef.current, { y: 20 - scrollY * 0.05, x: -20 - scrollY * 0.02, duration: 1.1}, '-=1');
   }, [scrollY]);
 
   return (
@@ -33,7 +33,7 @@ const ScrollMovingAnimation = (props) => {
       <div 
         ref={squareRef} 
         className="square"
-        style={{background: `-webkit-linear-gradient(90deg, ${props.color1} 0%, ${props.color2} 100%, ${props.color2} 100%)`}}
+        style={{background: `-webkit-linear-gradient(30deg, ${props.color1} 0%, ${props.color2} 100%, ${props.color2} 100%)`}}
       />
       <div 
         ref={rectangleRef} 
@@ -43,7 +43,7 @@ const ScrollMovingAnimation = (props) => {
       <div 
         ref={lineRef} 
         className="line" 
-        style={{background: `-webkit-linear-gradient(90deg, ${props.color1} 0%, ${props.color2} 100%, ${props.color2} 100%)`}}
+        style={{background: `-webkit-linear-gradient(1200deg, ${props.color1} 0%, ${props.color2} 100%, ${props.color2} 100%)`}}
       />
     </div>
   );

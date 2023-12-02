@@ -1,7 +1,10 @@
-html,
+html {
+  margin: 0;
+  overflow: hidden;
+}
+
 body {
   padding: 25px 30px;
-  margin: 0;
   color: #999;
   font-family: 'Roboto', sans-serif;
   font-weight: normal;
