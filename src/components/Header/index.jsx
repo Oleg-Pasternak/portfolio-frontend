@@ -8,7 +8,7 @@ const Header = (props) => {
             <Link href='/' passHref>
                 <Logo image={props.logo} />
             </Link>
-            <a href={`mailto:${props.contactEmail}`} passHref>
+            <a href={`mailto:${props.contactEmail}`}>
                 <span>Get in Touch</span>
             </a>
         </div>
