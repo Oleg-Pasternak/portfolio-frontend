@@ -8,7 +8,6 @@
         width: 100px;
         height: 100px;
         transform: rotate(10deg);
-        background: -webkit-linear-gradient(90deg, #DD5E89 0%, #F7BB97 100%, #F7BB97 100%);
         margin: 20px;
     }
 
@@ -20,13 +19,11 @@
         width: 2px;
         height: 350px;
         transform: rotate(45deg);
-        background: -webkit-linear-gradient(90deg, #DD5E89 0%, #F7BB97 100%, #F7BB97 100%);
     }
     
     .rectangle {
         width: 180px;
         height: 80px;
         transform: rotate(25deg);
-        background: -webkit-linear-gradient(90deg, #DD5E89 0%, #F7BB97 100%, #F7BB97 100%);
     }
 }

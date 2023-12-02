@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
-const ScrollMovingAnimation = () => {
+const ScrollMovingAnimation = (props) => {
   const squareRef = useRef(null);
   const lineRef = useRef(null);
   const rectangleRef = useRef(null);
@@ -30,9 +30,21 @@ const ScrollMovingAnimation = () => {
 
   return (
     <div className="scroll-moving-container">
-      <div ref={squareRef} className="square"></div>
-      <div ref={rectangleRef} className="rectangle"></div>
-      <div ref={lineRef} className="line"></div>
+      <div 
+        ref={squareRef} 
+        className="square"
+        style={{background: `-webkit-linear-gradient(90deg, ${props.color1} 0%, #F7BB97 100%, ${props.color2} 100%)`}}
+      />
+      <div 
+        ref={rectangleRef} 
+        className="rectangle" 
+        style={{background: `-webkit-linear-gradient(90deg, ${props.color1} 0%, #F7BB97 100%, ${props.color2} 100%)`}}
+      />
+      <div 
+        ref={lineRef} 
+        className="line" 
+        style={{background: `-webkit-linear-gradient(90deg, ${props.color1} 0%, #F7BB97 100%, ${props.color2} 100%)`}}
+      />
     </div>
   );
 };

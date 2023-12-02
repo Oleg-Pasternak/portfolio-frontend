@@ -1,15 +1,15 @@
 import { gql } from '@apollo/client';
 
 export const GET_INITIAL_DATA = gql`
-  query {
-    settings {
+  query($site: String) {
+    settings (site: $site) {
       pageIcon
       footerText
       contactEmail
       githubLink
       linkedinLink
     }
-  landing {
+  landing (site: $site) {
       title
       color1
       color2

@@ -8,7 +8,7 @@ export function Boiler(props) {
   const pageData = props.pageData.content
   return (
     <div className='boiler'>
-		<ScrollMovingAnimation />
+		<ScrollMovingAnimation color1={props.color1} color2={props.color2} />
 		{pageData.map((section, index) => {
 			if (section.__typename) {
 				let Component = components[section.__typename];
