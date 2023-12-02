@@ -33,17 +33,17 @@ const ScrollMovingAnimation = (props) => {
       <div 
         ref={squareRef} 
         className="square"
-        style={{background: `-webkit-linear-gradient(90deg, ${props.color1} 0%, #F7BB97 100%, ${props.color2} 100%)`}}
+        style={{background: `-webkit-linear-gradient(90deg, ${props.color1} 0%, ${props.color2} 100%, ${props.color2} 100%)`}}
       />
       <div 
         ref={rectangleRef} 
         className="rectangle" 
-        style={{background: `-webkit-linear-gradient(90deg, ${props.color1} 0%, #F7BB97 100%, ${props.color2} 100%)`}}
+        style={{background: `-webkit-linear-gradient(90deg, ${props.color1} 0%, ${props.color2} 100%, ${props.color2} 100%)`}}
       />
       <div 
         ref={lineRef} 
         className="line" 
-        style={{background: `-webkit-linear-gradient(90deg, ${props.color1} 0%, #F7BB97 100%, ${props.color2} 100%)`}}
+        style={{background: `-webkit-linear-gradient(90deg, ${props.color1} 0%, ${props.color2} 100%, ${props.color2} 100%)`}}
       />
     </div>
   );
