@@ -1,4 +1,13 @@
 .projects {
     margin-top: 80px;
     width: 100%;
+    display: flex;
+    .projects-padding {
+        &:nth-child(2n+1) {
+            margin-right: 10px;
+        }
+        &:nth-child(2n) {
+            margin-left: 10px !important;
+        }
+    }
 }

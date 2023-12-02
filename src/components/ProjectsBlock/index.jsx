@@ -9,8 +9,8 @@ export function ProjectsBlock(props) {
     <div className='projects'>
         {projects.map((project, index) => {
             return (
-                <Col md={6} key={index}>
-                    <ProjectPreview {...project} />
+                <Col md={6} className='projects-padding'>
+                    <ProjectPreview {...project} key={index} />
                 </Col>
             )
         })}

@@ -29,8 +29,8 @@ h1 {
     font-size: 64px;
     font-family: 'THICCCBOI', THICCCBOI-Medium;
     font-weight: 500;
-    background: -webkit-linear-gradient(90deg, #DD5E89 0%, #F7BB97 100%, #F7BB97 100%);
-    background-clip: text;
+    background: none;
+    background-clip: revert-layer;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
