@@ -14,9 +14,9 @@ export function StackBlock(props) {
             <h2>{leftSide.title}</h2>
             {leftIcons && (
                 <div className="stack-block__icons">
-                    {leftIcons.map((icon, index) => {
+                    {leftIcons.map((icon, idx) => {
                         return (
-                            <img src={icon.rendition.url} alt="Icon" />
+                            <img src={icon.rendition.url} alt="Icon" key={idx} />
                         )
                     })}
                 </div>
@@ -31,9 +31,9 @@ export function StackBlock(props) {
             <h2>{rightSide.title}</h2>
             {rightIcons && (
                 <div className="stack-block__icons">
-                    {rightIcons.map((icon, index) => {
+                    {rightIcons.map((icon, idx) => {
                         return (
-                            <img src={icon.rendition.url} alt="Icon" key={index} />
+                            <img src={icon.rendition.url} alt="Icon" key={idx}/>
                         )
                     })}
                 </div>
