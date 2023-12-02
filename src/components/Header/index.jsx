@@ -6,10 +6,10 @@ const Header = (props) => {
     console.log(props)
     return (
         <div className="header">
-            <Link href='/'>
+            <Link href='/' passHref>
                 <Logo image={props.logo} />
             </Link>
-            <Link href='/'>
+            <Link href='/' passHref>
                 <span>Get in Touch</span>
             </Link>
         </div>

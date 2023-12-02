@@ -2,8 +2,9 @@
 	background-color: rgb(220, 220, 220);
 	width: 100%;
 	border-radius: 5px;
-	background: rgba(232, 232, 232, 0.50);
+	background: rgba(232, 232, 232, 0.5);
 	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
 	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
