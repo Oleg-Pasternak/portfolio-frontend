@@ -2,6 +2,8 @@ import '../styles/main.scss';
 import { gsap } from 'gsap';
 import Lenis from '@studio-freight/lenis';
 import { useEffect, useRef } from 'react';
+import Context from 'src/Context';
+
 
 function MyApp({ Component, pageProps }) {
   const scrollContainerRef = useRef(null);
@@ -57,10 +59,12 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <div ref={scrollContainerRef} style={{position: 'relative'}}>
-      <Component {...pageProps} />
-      <div className="cursor" ref={cursorRef} />
-    </div>
+    <Context.Provider>
+      <div ref={scrollContainerRef} style={{position: 'relative'}}>
+        <Component {...pageProps} />
+        <div className="cursor" ref={cursorRef} />
+      </div>
+    </Context.Provider>
   );
 }
 

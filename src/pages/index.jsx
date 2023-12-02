@@ -5,7 +5,7 @@ import { Boiler } from 'src/components/_Boiler'
 import Hero from 'src/components/Hero'
 import Footer from 'src/components/Footer'
 import { GET_INITIAL_DATA } from 'src/graphql/index.jsx';
-import client from 'src/utils/apollo_client';
+import {clients_dict} from 'src/utils/apollo_client';
 import axios from 'axios'
 
 export default function Home(props) {
@@ -43,10 +43,16 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps(context) {
-  let result = await client.query({
+  let domain = context.req.headers.host
+  let query_data = {
     query: GET_INITIAL_DATA,
-    fetchPolicy: 'no-cache',
-  });
+  }
+  if (!(domain in clients_dict)) {
+    domain = "default";
+    query_data["fetchPolicy"] = 'no-cache';
+  }
+  
+  const result = await clients_dict[domain].query(query_data);
   return {
     props: {
       query_data: result.data,
