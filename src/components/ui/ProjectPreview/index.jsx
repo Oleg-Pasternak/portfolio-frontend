@@ -1,6 +1,5 @@
 
 export function ProjectPreview(props) {
-  console.log(props)
   return (
     <div className='project-preview'>
       <img src={props.previewImage.rendition.url} alt="Project Image" />
