@@ -73,34 +73,7 @@ span {
         transform: scale(1.5); /* Adjust the scale factor for enlargement */
     }
 }
-
-.scroll-moving-container {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  
+.section {
     width: 100%;
-  }
-  
-  .square, .line, .rectangle {
-    width: 100px;
-    height: 100px;
-    transform: rotate(10deg);
-    background: -webkit-linear-gradient(90deg, #DD5E89 0%, #F7BB97 100%, #F7BB97 100%);
-    margin: 20px;
-  }
-  
-  .line {
-    width: 2px;
-    height: 350px;
-    transform: rotate(45deg);
-    background: -webkit-linear-gradient(90deg, #DD5E89 0%, #F7BB97 100%, #F7BB97 100%);
-  }
-  
-  .rectangle {
-    width: 180px;
-    height: 80px;
-    transform: rotate(25deg);
-    background: -webkit-linear-gradient(90deg, #DD5E89 0%, #F7BB97 100%, #F7BB97 100%);
-  }
-  
+}

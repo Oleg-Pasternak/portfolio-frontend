@@ -1,17 +1,19 @@
-import Logo from 'public/assets/logo.jsx';
+import { Logo } from 'src/components/ui/Logo';
 import Link from 'next/link';
 
-const Header = () => {
-  return (
-    <div className="header">
-      <Link href='/'>
-        <Logo />
-      </Link>
-      <Link href='/'>
-        <span>Get in Touch</span>
-      </Link>
-    </div>
-  );
+const Header = (props) => {
+
+    console.log(props)
+    return (
+        <div className="header">
+            <Link href='/'>
+                <Logo image={props.logo} />
+            </Link>
+            <Link href='/'>
+                <span>Get in Touch</span>
+            </Link>
+        </div>
+    );
 };
 
 export default Header;

@@ -1,5 +1,11 @@
 {
-    "compilerOptions": {
-      "baseUrl": "."
-    }
+  "compilerOptions": {
+      "target": "ES6",
+      "module": "commonjs",
+      "allowSyntheticDefaultImports": true,
+      "baseUrl": "./",
+      "moduleResolution": "node",
+      "jsx": "react"
+  },
+  "exclude": ["node_modules", ".next", ".tmp"]
 }
