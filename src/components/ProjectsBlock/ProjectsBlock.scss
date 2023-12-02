@@ -2,12 +2,13 @@
     margin-top: 80px;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     .projects-padding {
         &:nth-child(2n+1) {
-            margin-right: 10px;
+            padding-right: 10px !important;
         }
         &:nth-child(2n) {
-            margin-left: 10px !important;
+            padding-left: 10px !important;
         }
     }
 }

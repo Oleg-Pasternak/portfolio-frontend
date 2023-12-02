@@ -16,9 +16,10 @@
     }
     
     .line {
-        width: 2px;
+        width: 8px;
         height: 350px;
         transform: rotate(45deg);
+        border-radius: 8px;
     }
     
     .rectangle {

@@ -23,9 +23,9 @@ const ScrollMovingAnimation = (props) => {
   useEffect(() => {
     const tl = gsap.timeline();
 
-    tl.to(squareRef.current, { y: -100 + scrollY * 0.3, x: 0 + scrollY * 0.1, duration: 1 });
-    tl.to(lineRef.current, { y: -100 + scrollY * 0.6, x: 0 - scrollY * 0.08, duration: 1 }, '-=1');
-    tl.to(rectangleRef.current, { y: 20 + scrollY * 0.05, x: -150 + scrollY * 0.05, duration: 1 }, '-=1');
+    tl.to(squareRef.current, { y: -100 + scrollY * 0.4, x: 0 + scrollY * 0.1, duration: 1 });
+    tl.to(lineRef.current, { y: -100 + scrollY * 0.4, x: 0 - scrollY * 0.4, duration: 1 }, '-=1');
+    tl.to(rectangleRef.current, { y: 20 - scrollY * 0.05, x: -150 - scrollY * 0.02, duration: 1 }, '-=1');
   }, [scrollY]);
 
   return (
