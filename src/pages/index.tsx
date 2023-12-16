@@ -1,19 +1,24 @@
 import Header from 'src/components/Header';
-import { useEffect, useState } from 'react';
 import Head from 'src/components/Head';
-import { Boiler } from 'src/components/_Boiler'
+import Boiler  from 'src/components/_Boiler'
 import Hero from 'src/components/Hero'
 import Footer from 'src/components/Footer'
 import { GET_INITIAL_DATA } from 'src/graphql/index.jsx';
 import client from 'src/utils/apollo_client';
-import axios from 'axios'
+import { GetServerSidePropsContext } from 'next';
+import { WebsiteSettings, Landing } from "src/constants/interfaces";
 
-export default function Home(props) {
+interface QueryData {
+  settings: WebsiteSettings;
+  landing: Landing;
+}
 
-  const settings = props.query_data.settings
-  const landing = props.query_data.landing
 
-  console.log(settings, landing)
+export default function Home(props: { query_data: QueryData }) {
+  const settings: WebsiteSettings = props.query_data.settings
+  const landing: Landing = props.query_data.landing
+
+  console.log(props)
 
   return (
     <div id='main-container'>
@@ -42,7 +47,7 @@ export default function Home(props) {
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const domain = context.req.headers.host
 
   let result = await client.query({

@@ -8,6 +8,8 @@ export function StackBlock(props) {
   const leftIcons = leftSide.content[0].icons
   const rightIcons = rightSide.content[0].icons
 
+  return null;
+
   return (
     <div className="stack-block">
         <div className="stack-block-left">

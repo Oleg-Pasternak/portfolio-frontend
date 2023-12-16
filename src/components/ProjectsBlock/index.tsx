@@ -1,9 +1,13 @@
+import React from 'react';
 import { ProjectPreview } from "src/components/ui/ProjectPreview"
-import { Container, Row, Col } from 'react-grid-system';
+import { Col } from 'react-grid-system';
+import { ProjectItem } from "src/constants/interfaces";
 
-export function ProjectsBlock(props) {
+interface ProjectsBlockProps {
+  projects: ProjectItem[];
+}
 
-  const projects = props.projects
+export const ProjectsBlock: React.FC<ProjectsBlockProps> = ({ projects }) => {
   
   return (
     <div className='projects'>
@@ -17,3 +21,5 @@ export function ProjectsBlock(props) {
     </div>
   )
 }
+
+export default ProjectsBlock;

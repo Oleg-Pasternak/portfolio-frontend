@@ -3,7 +3,7 @@ var htmlToReactParser = new HtmlToReactParser()
 
 const Footer = (props) => {
   return (
-    <div className="footer">
+    <footer className="footer">
         <div className="footer-text">
             {htmlToReactParser.parse(props.footerText)}
         </div>
@@ -18,7 +18,7 @@ const Footer = (props) => {
                 </a>
             </div>
         </div>
-    </div>
+    </footer>
   );
 };
 
