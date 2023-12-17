@@ -3,27 +3,27 @@ import { gsap } from 'gsap';
 import parse from 'html-react-parser';
 
 interface HeroProps {
-    title: string;
-    description: string;
-    color1: string;
-    color2: string;
+  title: string;
+  description: string;
+  color1: string;
+  color2: string;
 }
 
 export default function Hero(props : HeroProps) {
-    const titleRef = useRef(null);
+  const titleRef = useRef(null);
 
-    useEffect(() => {
-        const text = titleRef.current;
-    
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: text,
-                scrub: 1,
-                trigger: ".scroll-trigger-ready__worm-wrap",
-                start: "top 90%",
-                end: "bottom 30%",
-            },
-          });
+  useEffect(() => {
+    const text = titleRef.current;
+  
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: text,
+        scrub: 1,
+        start: "top 90%",
+        end: "bottom 30%",
+      },
+    });
+        
     }, []);
 
     
