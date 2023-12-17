@@ -1,5 +1,5 @@
 import { Parser as HtmlToReactParser } from 'html-to-react';
-var htmlToReactParser = new HtmlToReactParser()
+let htmlToReactParser: any = new HtmlToReactParser()
 
 const Footer = (props) => {
   return (
