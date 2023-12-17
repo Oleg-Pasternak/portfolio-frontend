@@ -1,6 +1,13 @@
 import parse from 'html-react-parser';
+import React, { ReactElement } from 'react';
 
-const Footer = (props) => {
+interface FooterProps {
+    footerText: string;
+    githubLink: string;
+    linkedinLink: string;
+}
+
+const Footer = (props: FooterProps): ReactElement => {
   return (
     <footer className="footer">
         <div className="footer-text">
@@ -19,6 +26,6 @@ const Footer = (props) => {
         </div>
     </footer>
   );
-};
+}
 
 export default Footer;

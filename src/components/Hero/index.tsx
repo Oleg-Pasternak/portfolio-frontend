@@ -1,10 +1,15 @@
 import { useRef, useEffect } from "react";
 import { gsap } from 'gsap';
-import { Parser as HtmlToReactParser } from 'html-to-react';
-var htmlToReactParser = new HtmlToReactParser()
+import parse from 'html-react-parser';
 
+interface HeroProps {
+    title: string;
+    description: string;
+    color1: string;
+    color2: string;
+}
 
-export default function Hero(props) {
+export default function Hero(props : HeroProps) {
     const titleRef = useRef(null);
 
     useEffect(() => {
@@ -31,7 +36,7 @@ export default function Hero(props) {
             >
                 {props.title}
             </h1>
-            {htmlToReactParser.parse(props.description)}
+            {parse(props.description)}
         </div>
       </div>
     )
