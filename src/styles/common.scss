@@ -88,6 +88,12 @@ button {
   line-height: 150%;
   color: $white;
   border-radius: 15px;
+  transition: $transition;
+  &:hover {
+    background-color: $white;
+    color: $darkGrey;
+    transition: $transition;
+  }
 }
 
 .full-width {

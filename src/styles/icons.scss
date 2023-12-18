@@ -30,6 +30,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: 1px solid $darkGrey;
+    &:hover {
+      border: 1px solid $darkGrey;
+      &::after {
+        filter: grayscale(100%) brightness(30%) contrast(120%);
+      }
+    }
     &:after {
       content: '';
       display: block;
@@ -46,10 +53,10 @@
 .apple {
   button {
     display: block;
-    width: 27px;
-    height: 30px;
+    width: 25px;
+    height: 28px;
     background: url('/assets/img/apple.svg');
-    background-size: 27px 30px;
+    background-size: 25px 28px;
     transition: $transition;
     padding: 0;
     &:hover {

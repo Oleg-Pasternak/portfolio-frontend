@@ -29,8 +29,6 @@ export default function Hero(props : HeroProps) {
         end: "bottom 30%",
       },
     });
-
-    gsap.fromTo('.hero-inner', {opacity: 0}, {opacity: 1, duration: 1})
         
   }, []);
 

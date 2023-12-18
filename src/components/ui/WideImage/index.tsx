@@ -3,12 +3,12 @@ import { ImageProps } from 'src/constants/interfaces';
 import gsap from 'gsap';
 
 export const WideImage = (props: ImageProps) => {
-    const image = props.image.rendition.url
+  const image = props.image.rendition.url
 
-    useEffect(() => {
-      gsap.fromTo('.wide-image', {y: 50}, {y: 0, duration: 1})
-      gsap.fromTo('.wide-image', {opacity: 0}, {opacity: 1, duration: 2})
-    }, []);
+  useEffect(() => {
+    gsap.fromTo('.wide-image', {y: 50}, {y: 0, duration: 1})
+    gsap.fromTo('.wide-image', {opacity: 0}, {opacity: 1, duration: 2})
+  }, []);
 
   
     return (

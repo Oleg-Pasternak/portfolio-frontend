@@ -14,6 +14,7 @@ const Header = (props: HeaderProps) => {
         <header className="header">
             <Link href='/' passHref>
                 <Img image={{ ...props.logo, url: '', __typename: '' }} svg={true} />
+                Logo
             </Link>
             <a href={`mailto:${props.contactEmail}`}>
                 <span>Get in Touch</span>
