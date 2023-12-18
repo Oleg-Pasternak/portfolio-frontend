@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
-const ScrollMovingAnimation = (props) => {
+interface ScrollMovingAnimationProps {
+  color1: string;
+  color2: string;
+}
+
+const ScrollMovingAnimation = (props: ScrollMovingAnimationProps) => {
   const squareRef = useRef(null);
   const lineRef = useRef(null);
   const rectangleRef = useRef(null);
