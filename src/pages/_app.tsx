@@ -1,11 +1,17 @@
 import '../styles/main.scss';
 import { gsap } from 'gsap';
+import TweenTarget from 'gsap';
+import DOMTarget from 'gsap';
 import Lenis from '@studio-freight/lenis';
 import { useEffect, useRef } from 'react';
 import Context from 'src/Context';
 
+interface MyAppProps {
+  Component: React.ComponentType;
+  pageProps: any;
+}
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: MyAppProps) {
   const scrollContainerRef = useRef(null);
   const cursorRef = useRef(null);
 
@@ -24,10 +30,11 @@ function MyApp({ Component, pageProps }) {
     // Set up ScrollTrigger
     gsap.registerPlugin(Lenis); // Register Lenis as a GSAP plugin
     gsap.utils.toArray('.animate-me').forEach((element) => {
-      gsap.to(element, {
+
+        gsap.to(element as typeof TweenTarget, {
         opacity: 1,
         scrollTrigger: {
-          trigger: element,
+          trigger: element as DOMTarget,
           start: 'top bottom', // Adjust as needed
           end: 'bottom top', // Adjust as needed
           scrub: true,
@@ -36,10 +43,10 @@ function MyApp({ Component, pageProps }) {
       });
     });
 
-    const onMouseMove = (e) => {
-      const tagName = e.target.tagName.toLowerCase()
+    const onMouseMove = (e: React.MouseEvent) => {
+      const tagName = (e.target as Element).tagName.toLowerCase();
       const isLink = tagName === 'svg' || tagName === 'a' || tagName === 'span' || tagName === 'img';
-    
+
       gsap.to(cursorRef.current, {
         left: e.clientX,
         top: e.clientY,
@@ -49,17 +56,22 @@ function MyApp({ Component, pageProps }) {
       });
     };
 
-    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mousemove', onMouseMove as unknown as EventListener);
 
     // Cleanup: Remove event listeners and destroy Lenis when the component unmounts
     return () => {
-      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mousemove', onMouseMove as unknown as EventListener);
       lenis.destroy();
     };
   }, []);
 
+  const value = {
+    scrollContainerRef,
+    cursorRef,
+  };
+
   return (
-    <Context.Provider>
+    <Context.Provider value={value}>
       <div ref={scrollContainerRef} style={{position: 'relative'}}>
         <Component {...pageProps} />
         <div className="cursor" ref={cursorRef} />
