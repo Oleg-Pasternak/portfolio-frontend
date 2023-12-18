@@ -4,16 +4,17 @@ import React from 'react';
 interface ButtonProps {
     onClick?: () => void;
     disabled?: boolean;
-    children: React.ReactNode;
+    children?: React.ReactNode;
     link?: string;
+    ios?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ onClick, disabled, children, link }) => {
+const Button: React.FC<ButtonProps> = ({ onClick, disabled, children, link, ios }) => {
     if (link) {
         return (
-            <div className="button">
+            <div className={ios ? 'button apple' : 'button external'}>
                 <a href={link} target='_blank' rel="noreferrer">
-                    <button className='external'>
+                    <button>
                         {children}
                     </button>
                 </a>

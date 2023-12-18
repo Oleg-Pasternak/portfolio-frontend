@@ -26,17 +26,35 @@
 }
 
 .external {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  &:after {
-    content: '';
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &:after {
+      content: '';
+      display: block;
+      width: 13px;
+      height: 13px;
+      background: url('/assets/img/external.svg');
+      background-size: 13px 13px;
+      transition: $transition;
+      margin-left: 8px;
+    }
+  }
+}
+
+.apple {
+  button {
     display: block;
-    width: 13px;
-    height: 13px;
-    background: url('/assets/img/external.svg');
-    background-size: 13px 13px;
+    width: 27px;
+    height: 30px;
+    background: url('/assets/img/apple.svg');
+    background-size: 27px 30px;
     transition: $transition;
-    margin-left: 8px;
+    padding: 0;
+    &:hover {
+        filter: grayscale(100%) brightness(30%) contrast(120%);
+        transition: $transition;
+    }
   }
 }

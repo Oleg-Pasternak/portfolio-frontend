@@ -8,9 +8,9 @@ import Button from "src/components/ui/Button";
 interface HeroProps {
   title: string;
   description: string;
-  mainVideoPreview?: Rendition;
   projectLogo?: Rendition;
   websiteUrl?: string;
+  iosUrl?: string;
   color1?: string;
   color2?: string;
 }
@@ -51,13 +51,21 @@ export default function Hero(props : HeroProps) {
             <div className="hero-inner-description">
               {parse(props.description)}
             </div>
-            {props.websiteUrl && (
-              <Button 
-                link={props.websiteUrl}
-              >
-                Open
-              </Button>
-            )}
+            <div className="hero-inner-buttons">
+              {props.websiteUrl && (
+                <Button 
+                  link={props.websiteUrl}
+                >
+                  Open
+                </Button>
+              )}
+              {props.iosUrl && (
+                <Button 
+                  link={props.iosUrl}
+                  ios
+                />
+              )}
+            </div>
         </div>
       </div>
     )

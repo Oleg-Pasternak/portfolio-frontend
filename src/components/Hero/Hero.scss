@@ -20,8 +20,13 @@
             text-align: center;
             margin-top: 30px;
         }
-        button {
+        &-buttons {
             margin-top: 40px;
+            display: flex;
+            align-items: center;
+            .apple {
+                margin-left: 20px;
+            }
         }
     }
 }

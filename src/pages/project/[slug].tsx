@@ -32,11 +32,14 @@ export default function Project(props: { query_data: QueryData }) {
           <Hero 
             title={project.title}
             description={project.description}
-            mainVideoPreview={project.mainVideoPreview}
             projectLogo={project.projectLogo}
             websiteUrl={project.websiteUrl}
+            iosUrl={project.iosUrl}
           />
-          <WideImage image={project.mainVideoPreview} maxHeight="initial" />
+          <WideImage 
+            image={project.mainVideoPreview} 
+            maxHeight="initial" 
+          />
           <Boiler 
             pageData={project} 
           />
