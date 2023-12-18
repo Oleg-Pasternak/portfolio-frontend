@@ -9,7 +9,6 @@ export const WideImage = (props: ImageProps) => {
     const handleScroll = () => {
       if (imageRef.current) {
         const scrollY = window.scrollY;
-        console.log(scrollY);
         const translateY = scrollY * 0.1; // Invert the calculation
     
         gsap.to(imageRef.current, { y: translateY, ease: 'none', duration: 0.05 });

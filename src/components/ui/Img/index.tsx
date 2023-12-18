@@ -1,5 +1,10 @@
 import { ReactSVG } from "react-svg";
-import { Rendition } from "src/constants/interfaces";
+
+interface Rendition {
+  rendition: {
+    url: string;
+  };
+}
 
 interface ImgProps {
   image: string | Rendition;

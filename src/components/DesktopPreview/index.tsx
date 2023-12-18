@@ -13,7 +13,7 @@ export const DesktopPreview = (props: DesktopPreviewProps) => {
       <div className='desktop-preview full-width' style={{background: (`linear-gradient(150deg, ${props.color1 ? props.color1 : '#FBD460'} 10%, ${props.color2 ? props.color2 : 'EDBA23'} 80%)`)}}>
         <div className="desktop-preview-images">
           {props.images.map((image, index) => (
-                <Img key={index} image={{ ...image, url: '', __typename: '' }} />
+                <Img key={index} image={image} />
           ))}
         </div>
       </div>
