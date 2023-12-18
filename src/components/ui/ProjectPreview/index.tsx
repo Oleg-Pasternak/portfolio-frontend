@@ -1,24 +1,15 @@
 import React, { ReactElement } from 'react';
-
-interface Rendition {
-  url: string;
-  // Другие свойства и типы, если они есть
-}
-
+import { Rendition } from 'src/types';
 interface ProjectPreviewProps {
   previewImage: {
     rendition: Rendition;
-    // Другие свойства и типы, если они есть
   };
   page: {
     title: string;
-    // Другие свойства и типы, если они есть
   };
   employer: {
     title: string;
-    // Другие свойства и типы, если они есть
   };
-  // Другие свойства и типы, если они есть
 }
 
 export function ProjectPreview(props: ProjectPreviewProps): ReactElement {
