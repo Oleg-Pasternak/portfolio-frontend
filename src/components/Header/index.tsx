@@ -4,14 +4,13 @@ import Link from 'next/link';
 interface HeaderProps {
     logo: string;
     contactEmail: string;
-    alt: string;
 }
 
 const Header = (props: HeaderProps) => {
     return (
         <header className="header">
             <Link href='/' passHref>
-                <Logo image={props.logo} alt={props.alt} />
+                <Logo image={props.logo} />
             </Link>
             <a href={`mailto:${props.contactEmail}`}>
                 <span>Get in Touch</span>
