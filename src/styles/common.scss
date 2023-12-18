@@ -12,6 +12,10 @@ body {
   font-family: $defaultFont;
   font-weight: normal;
   background-color: $bc-color;
+  &:hover .cursor {
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
   @media (max-width: 768px) {
     padding: 10px 7px;
   }
@@ -72,6 +76,8 @@ span {
     mix-blend-mode: difference;
     z-index: 9999;
     transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s;
     .enlarged {
         transform: scale(1.5);
     }
