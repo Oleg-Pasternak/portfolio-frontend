@@ -1,0 +1,16 @@
+.description {
+    margin-top: 80px;
+    h2 {
+        font-family: $titleFont;
+        font-size: 80px;
+        font-weight: 500;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 50px;
+    }
+    p {
+        font-weight: 400;
+        column-count: 2;
+        column-gap: 4%;
+    }
+}
