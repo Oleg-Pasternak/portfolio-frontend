@@ -14,7 +14,9 @@ const Boiler: React.FC<BoilerProps> = (props) => {
 
   return (
     <div className="boiler">
-      <ScrollMovingAnimation color1={props.color1} color2={props.color2} />
+      {props.color1 && props.color2 && (
+        <ScrollMovingAnimation color1={props.color1} color2={props.color2} />
+      )}
       {pageData.map((section: any, index: number) => {
         if (section.__typename) {
           let Component = components[section.__typename];

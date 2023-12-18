@@ -27,6 +27,7 @@ export const GET_INITIAL_DATA = gql`
     projects {
       page {
         title
+        slug
       }
       previewImage {
         rendition(format: "webp") {

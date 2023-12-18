@@ -7,8 +7,8 @@
         align-items: center;
         span {
             &:hover {
-                color: #343434;
-                transition: all 0.3s;
+                color: $hover;
+                transition: $transition;
             }
         }
     }

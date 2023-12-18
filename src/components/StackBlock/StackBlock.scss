@@ -1,14 +1,22 @@
 .stack-block {
     margin-top: 90px;
     display: flex;
+    h2 {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 300;
+    }
     &-left {
         width: 50%;
         display: flex;
+        &__inner {
+            width: 100%;
+        }
         &::after {
             content: '';
             width: 1px;
             height: 280px;
-            background-color: #aaa;
+            background-color: $grey;
             margin: auto;
         }
     }

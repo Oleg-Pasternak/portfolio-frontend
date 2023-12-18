@@ -7,9 +7,9 @@ interface ScrollMovingAnimationProps {
 }
 
 const ScrollMovingAnimation = (props: ScrollMovingAnimationProps) => {
-  const squareRef = useRef(null);
-  const lineRef = useRef(null);
-  const rectangleRef = useRef(null);
+  const squareRef = useRef<null | HTMLDivElement>(null);
+  const lineRef = useRef<null | HTMLDivElement>(null);
+  const rectangleRef = useRef<null | HTMLDivElement>(null);
 
   const [scrollY, setScrollY] = useState(0);
 

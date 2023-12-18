@@ -5,10 +5,10 @@
     background: url('/assets/img/github.svg');
     background-size: 30px 30px;
     margin-right: 30px;
-    transition: all 0.3s;
+    transition: $transition;
     &:hover {
         filter: grayscale(100%) brightness(30%) contrast(120%);
-        transition: all 0.3s;
+        transition: $transition;
     }
   }
 
@@ -18,9 +18,9 @@
     height: 30px;
     background: url('/assets/img/linkedin.svg');
     background-size: 30px 30px;
-    transition: all 0.3s;
+    transition: $transition;
     &:hover {
         filter: grayscale(100%) brightness(30%) contrast(120%);
-        transition: all 0.3s;
+        transition: $transition;
     }
   }

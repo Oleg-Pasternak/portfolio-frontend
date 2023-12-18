@@ -29,6 +29,7 @@ export interface ProjectItem {
     page: {
       __typename: string;
       title: string;
+      slug: string;
     };
     previewImage: {
       __typename: string;
@@ -39,3 +40,28 @@ export interface ProjectItem {
     };
   }
   
+  export interface StackBlockProps {
+    leftSide: {
+      title: string;
+      content: {
+        text: string;
+        icons: {
+          rendition: Rendition;
+        }[];
+      }[];
+    };
+    rightSide: {
+      title: string;
+      content: {
+        text: string;
+        icons: {
+          rendition: Rendition;
+        }[];
+      }[];
+    };
+  }
+
+  export interface Rendition {
+    url: string;
+    __typename: string;
+  }
