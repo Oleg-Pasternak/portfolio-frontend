@@ -1,7 +1,6 @@
 import '../styles/main.scss';
 import { gsap } from 'gsap';
 import TweenTarget from 'gsap';
-import DOMTarget from 'gsap';
 import Lenis from '@studio-freight/lenis';
 import { useEffect, useRef } from 'react';
 import Context from 'src/Context';
@@ -29,12 +28,11 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
     // Set up ScrollTrigger
     gsap.registerPlugin(Lenis); // Register Lenis as a GSAP plugin
-    gsap.utils.toArray('.animate-me').forEach((element) => {
-
-        gsap.to(element as typeof TweenTarget, {
+    gsap.utils.toArray('.animate-me').forEach((element: any) => {
+        gsap.to(element, {
         opacity: 1,
         scrollTrigger: {
-          trigger: element as DOMTarget,
+          trigger: element,
           start: 'top bottom', // Adjust as needed
           end: 'bottom top', // Adjust as needed
           scrub: true,
