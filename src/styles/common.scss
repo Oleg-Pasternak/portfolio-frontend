@@ -1,6 +1,9 @@
 html {
   margin: 0;
   overflow: hidden;
+  @media screen and (max-width: 768px) {
+    overflow: auto;
+  }
 }
 
 body {
@@ -71,6 +74,9 @@ span {
     transform: translate(-50%, -50%);
     .enlarged {
         transform: scale(1.5);
+    }
+    @media screen and (max-width: 768px) {
+        display: none;
     }
 }
   
