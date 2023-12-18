@@ -5,9 +5,10 @@ import { components } from 'src/components';
 
 interface BoilerProps {
   pageData: any;
-  color1: string;
-  color2: string;
+  color1?: string;
+  color2?: string;
 }
+
 
 const Boiler: React.FC<BoilerProps> = (props) => {
   const pageData = props.pageData.content;

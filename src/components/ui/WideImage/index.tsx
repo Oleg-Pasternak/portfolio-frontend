@@ -1,16 +1,12 @@
 import React from 'react';
+import { ImageProps } from 'src/constants/interfaces';
 
-interface WideImageProps {
-    src: string;
-    alt: string;
-}
-
-const WideImage: React.FC<WideImageProps> = ({ src, alt }) => {
+export const WideImage = (props: ImageProps) => {
+    const image = props.image.rendition.url
+  
     return (
-        <div className="wide-image">
-            <img src={src} alt={alt} />
-        </div>
+      <div className="wide-image full-width">
+        <img src={image} alt="Wide Image" />
+      </div>
     );
-};
-
-export default WideImage;
+  };

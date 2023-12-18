@@ -1,13 +1,8 @@
 import { ReactSVG } from "react-svg";
-import { Rendition } from "src/constants/interfaces";
+import { ImageProps } from "src/constants/interfaces";
 
-interface LogoProps {
-  image: {
-    rendition: Rendition;
-  };
-}
 
-export const Logo = (props: LogoProps) => {
+export const Logo = (props: ImageProps) => {
   const image = props.image.rendition.url
 
   return (

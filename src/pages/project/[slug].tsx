@@ -8,9 +8,12 @@ import client from 'src/utils/apollo_client';
 import { GetServerSidePropsContext } from 'next';
 import { WebsiteSettings, Project } from "src/constants/interfaces";
 
+interface QueryData {
+  settings: WebsiteSettings;
+  project: Project;
+}
 
-
-export default function Project(props) {
+export default function Project(props: { query_data: QueryData }) {
   const project: Project = props.query_data.project
   const settings: WebsiteSettings = props.query_data.settings
 

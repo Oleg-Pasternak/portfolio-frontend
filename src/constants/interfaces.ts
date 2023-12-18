@@ -19,51 +19,70 @@ export interface Landing {
     title: string;
 }
 
+export interface Project {
+  __typename: string;
+  title: string;
+  seoTitle: string;
+  searchDescription: string;
+  description: string;
+  iosUrl: string;
+  websiteUrl: string;
+  projectLogo: Rendition;
+  mainVideoPreview: Rendition;
+  content: object[];
+}
+
 export interface ProjectItem {
+  __typename: string;
+  employer: {
     __typename: string;
-    employer: {
-      __typename: string;
-      link: string;
-      title: string;
-    };
     link: string;
     title: string;
-    page: {
-      __typename: string;
-      title: string;
-      slug: string;
-    };
-    previewImage: {
-      __typename: string;
-      rendition: {
-        url: string;
-        __typename: string;
-      };
-    };
-  }
-  
-  export interface StackBlockProps {
-    leftSide: {
-      title: string;
-      content: {
-        text: string;
-        icons: {
-          rendition: Rendition;
-        }[];
-      }[];
-    };
-    rightSide: {
-      title: string;
-      content: {
-        text: string;
-        icons: {
-          rendition: Rendition;
-        }[];
-      }[];
-    };
-  }
-
-  export interface Rendition {
-    url: string;
+  };
+  link: string;
+  title: string;
+  page: {
     __typename: string;
-  }
+    title: string;
+    slug: string;
+  };
+  previewImage: {
+    __typename: string;
+    rendition: {
+      url: string;
+      __typename: string;
+    };
+  };
+}
+  
+export interface StackBlockProps {
+  leftSide: {
+    title: string;
+    content: {
+      text: string;
+      icons: {
+        rendition: Rendition;
+      }[];
+    }[];
+  };
+  rightSide: {
+    title: string;
+    content: {
+      text: string;
+      icons: {
+        rendition: Rendition;
+      }[];
+    }[];
+  };
+}
+
+export interface ImageProps {
+  image: {
+    rendition: Rendition;
+  };
+}
+
+export interface Rendition {
+  url: string;
+  __typename: string;
+}

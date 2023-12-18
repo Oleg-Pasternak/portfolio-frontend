@@ -3,7 +3,11 @@ import { gql } from '@apollo/client';
 export const GET_INITIAL_DATA = gql`
   query($site: String) {
     settings (site: $site) {
-      pageIcon
+      pageIcon {
+        rendition(format: "webp") {
+          url
+        }
+      }
       footerText
       contactEmail
       githubLink
