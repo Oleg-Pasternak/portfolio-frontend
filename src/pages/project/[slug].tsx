@@ -39,6 +39,7 @@ export default function Project(props: { query_data: QueryData }) {
           <WideImage 
             image={project.mainVideoPreview} 
             maxHeight="initial" 
+            padding="0 200px"
           />
           <Boiler 
             pageData={project} 

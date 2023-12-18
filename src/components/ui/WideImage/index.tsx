@@ -13,7 +13,7 @@ export const WideImage = (props: ImageProps) => {
   
     return (
       <div className={props.notFullWidth ? "wide-image" : "wide-image full-width"}>
-        <img src={image} alt="Wide Image" style={{maxHeight: props.maxHeight }}/>
+        <img src={image} alt="Wide Image" style={{maxHeight: props.maxHeight, padding: props.padding }}/>
       </div>
     );
   };

@@ -84,6 +84,7 @@ export interface ImageProps {
   };
   maxHeight?: string;
   notFullWidth?: boolean;
+  padding?: string;
 }
 
 export interface Rendition {
