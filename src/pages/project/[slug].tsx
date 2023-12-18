@@ -28,6 +28,13 @@ export default function Project(props: { query_data: QueryData }) {
             logo={settings.pageIcon}
             contactEmail={settings.contactEmail}
           />
+          <Hero 
+            title={project.title}
+            description={project.description}
+            mainVideoPreview={project.mainVideoPreview}
+            projectLogo={project.projectLogo}
+            websiteUrl={project.websiteUrl}
+          />
           <Boiler 
             pageData={project} 
           />

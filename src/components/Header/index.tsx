@@ -1,9 +1,10 @@
-import { Logo } from 'src/components/ui/Logo';
+import { Img } from 'src/components/ui/Img';
 import Link from 'next/link';
 import { Rendition } from 'src/constants/interfaces';
 interface HeaderProps {
     logo: {
         rendition: Rendition;
+        svg?: boolean;
     };
     contactEmail: string;
 }
@@ -12,7 +13,7 @@ const Header = (props: HeaderProps) => {
     return (
         <header className="header">
             <Link href='/' passHref>
-                <Logo image={props.logo} />
+                <Img image={{ ...props.logo, url: '', __typename: '' }} svg={true} />
             </Link>
             <a href={`mailto:${props.contactEmail}`}>
                 <span>Get in Touch</span>

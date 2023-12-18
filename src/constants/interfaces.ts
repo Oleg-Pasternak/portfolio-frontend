@@ -84,5 +84,8 @@ export interface ImageProps {
 
 export interface Rendition {
   url: string;
+  rendition: {
+    url: string;
+  }
   __typename: string;
 }

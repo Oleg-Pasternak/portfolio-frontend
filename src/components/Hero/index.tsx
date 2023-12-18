@@ -1,12 +1,18 @@
 import { useRef, useEffect } from "react";
 import { gsap } from 'gsap';
 import parse from 'html-react-parser';
+import { Rendition } from "src/constants/interfaces";
+import { Img } from "src/components/ui/Img";
+import Button from "../ui/Button";
 
 interface HeroProps {
   title: string;
   description: string;
-  color1: string;
-  color2: string;
+  mainVideoPreview?: Rendition;
+  projectLogo?: Rendition;
+  websiteUrl?: string;
+  color1?: string;
+  color2?: string;
 }
 
 export default function Hero(props : HeroProps) {
@@ -30,13 +36,28 @@ export default function Hero(props : HeroProps) {
     return (
       <div className='hero'>
         <div className="hero-inner">
-            <h1 
-                style={{background: `-webkit-linear-gradient(30deg, ${props.color1} 0%, ${props.color2} 100%, ${props.color2} 100%)`, backgroundClip: 'revert-layer'}}
-                ref={titleRef}
-            >
-                {props.title}
-            </h1>
-            {parse(props.description)}
+            {!props.projectLogo && props.title && (
+              <h1 
+                  style={{background: `-webkit-linear-gradient(30deg, ${props.color1} 0%, ${props.color2} 100%, ${props.color2} 100%)`, backgroundClip: 'revert-layer'}}
+                  className={!props.color1 || !props.color2 ? 'hero-inner-title' : 'hero-inner-title--gradient'}
+                  ref={titleRef}
+              >
+                  {props.title}
+              </h1>
+            )}
+            {props.projectLogo && (
+              <Img image={props.projectLogo} alt='Project logo' />
+            )}
+            <div className="hero-inner-description">
+              {parse(props.description)}
+            </div>
+            {props.websiteUrl && (
+              <Button 
+                link={props.websiteUrl}
+              >
+                Open
+              </Button>
+            )}
         </div>
       </div>
     )
