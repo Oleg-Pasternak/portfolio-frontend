@@ -40,6 +40,7 @@ export default function Project(props: { query_data: QueryData }) {
             image={project.mainVideoPreview} 
             maxHeight="initial" 
             padding="0 200px"
+            disableParallax
           />
           <Boiler 
             pageData={project} 

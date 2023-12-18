@@ -29,11 +29,7 @@ query($site: String, $slug: String) {
 		}
 	}
 	settings (site: $site) {
-		pageIcon {
-			rendition(format:"webp") {
-				url
-			}
-		}
+		pageIcon
 		footerText
 		contactEmail
 		githubLink

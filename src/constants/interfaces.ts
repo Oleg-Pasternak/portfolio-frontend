@@ -83,7 +83,7 @@ export interface ImageProps {
     };
   };
   maxHeight?: string;
-  notFullWidth?: boolean;
+  disableParallax?: boolean;
   padding?: string;
 }
 

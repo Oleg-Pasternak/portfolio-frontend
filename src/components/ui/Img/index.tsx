@@ -2,7 +2,7 @@ import { ReactSVG } from "react-svg";
 import { Rendition } from "src/constants/interfaces";
 
 interface ImgProps {
-  image: Rendition;
+  image: string | Rendition;
   svg?: boolean;
   alt?: string;
   width?: number;
@@ -10,16 +10,16 @@ interface ImgProps {
 }
 
 export const Img = (props: ImgProps) => {
-  const image = props.image.rendition.url
+  const image = (props.svg ? props.image : (props.image as Rendition).rendition.url);
 
   return (
     <div className="image">
       {props.svg && (
-        <ReactSVG src={image} />
+        <ReactSVG src={image.toString()} />
       )}
       {!props.svg && (
         <img 
-          src={image} 
+          src={image.toString()} 
           alt={props.alt} 
           width={props.width} 
           height={props.height} 
