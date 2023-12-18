@@ -4,7 +4,9 @@ export interface WebsiteSettings {
     footerText: string;
     githubLink: string;
     linkedinLink: string;
-    pageIcon: string;
+    pageIcon: {
+      rendition: Rendition;
+    };
 }
 
 export interface Landing {

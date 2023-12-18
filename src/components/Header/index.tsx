@@ -1,8 +1,10 @@
 import { Logo } from 'src/components/ui/Logo';
 import Link from 'next/link';
-
+import { Rendition } from 'src/constants/interfaces';
 interface HeaderProps {
-    logo: string;
+    logo: {
+        rendition: Rendition;
+    };
     contactEmail: string;
 }
 
