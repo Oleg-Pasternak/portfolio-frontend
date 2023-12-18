@@ -5,8 +5,8 @@ export const WideImage = (props: ImageProps) => {
     const image = props.image.rendition.url
   
     return (
-      <div className="wide-image full-width">
-        <img src={image} alt="Wide Image" />
+      <div className={props.notFullWidth ? "wide-image" : "wide-image full-width"}>
+        <img src={image} alt="Wide Image" style={{maxHeight: props.maxHeight }}/>
       </div>
     );
   };

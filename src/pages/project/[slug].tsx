@@ -7,6 +7,7 @@ import { GET_INITIAL_DATA } from 'src/graphql/project.jsx';
 import client from 'src/utils/apollo_client';
 import { GetServerSidePropsContext } from 'next';
 import { WebsiteSettings, Project } from "src/constants/interfaces";
+import { WideImage } from 'src/components/ui/WideImage';
 
 interface QueryData {
   settings: WebsiteSettings;
@@ -35,6 +36,7 @@ export default function Project(props: { query_data: QueryData }) {
             projectLogo={project.projectLogo}
             websiteUrl={project.websiteUrl}
           />
+          <WideImage image={project.mainVideoPreview} maxHeight="initial" />
           <Boiler 
             pageData={project} 
           />

@@ -78,8 +78,12 @@ export interface StackBlockProps {
 
 export interface ImageProps {
   image: {
-    rendition: Rendition;
+    rendition: {
+      url: string;
+    };
   };
+  maxHeight?: string;
+  notFullWidth?: boolean;
 }
 
 export interface Rendition {

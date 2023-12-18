@@ -72,7 +72,7 @@ fragment DescriptionBlock on DescriptionBlock {
 
 fragment WideImage on WideImage {
 	image {
-			rendition(format: "webp") {
+			rendition(format: "webp", jpegquality: 90, webpquality: 90) {
 					url
 			}
 	}
@@ -80,7 +80,7 @@ fragment WideImage on WideImage {
 
 fragment MobilePreview on MobilePreview {
 	images {
-			rendition(format: "webp") {
+			rendition(format: "webp", jpegquality: 90, webpquality: 90) {
 					url
 			}
 	}
@@ -89,7 +89,7 @@ fragment MobilePreview on MobilePreview {
 
 fragment DesktopPreview on DesktopPreview {
 	images {
-			rendition(format: "webp") {
+			rendition(format: "webp", jpegquality: 90, webpquality: 90) {
 					url
 			}
 	}

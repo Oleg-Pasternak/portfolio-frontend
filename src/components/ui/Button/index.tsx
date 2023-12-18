@@ -12,7 +12,7 @@ const Button: React.FC<ButtonProps> = ({ onClick, disabled, children, link }) =>
     if (link) {
         return (
             <div className="button">
-                <a href={link} target='_blank'>
+                <a href={link} target='_blank' rel="noreferrer">
                     <button className='external'>
                         {children}
                     </button>

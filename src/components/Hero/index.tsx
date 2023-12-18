@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import parse from 'html-react-parser';
 import { Rendition } from "src/constants/interfaces";
 import { Img } from "src/components/ui/Img";
-import Button from "../ui/Button";
+import Button from "src/components/ui/Button";
 
 interface HeroProps {
   title: string;
