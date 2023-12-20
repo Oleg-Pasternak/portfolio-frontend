@@ -46,6 +46,7 @@ export default function Home(props: { query_data: QueryData }) {
         pageData={landing} 
         color1={landing.color1}
         color2={landing.color2}
+        darkMode={landing.darkMode}
       />
       <Footer 
         footerText={settings.footerText}

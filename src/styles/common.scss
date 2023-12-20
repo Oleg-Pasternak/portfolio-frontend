@@ -1,3 +1,15 @@
+:root {
+  --bc-color: #fbfbfb;
+  --dark: #050505;
+  --darkGrey: #222222;
+  --grey: #aaaaaa;
+  --grey2: #8f8f8f;
+  --grey3: #898989;
+  --hover: #343434;
+  --white: #ffffff;
+  --project-preview: rgba(232, 232, 232, 0.7);
+}
+
 html {
   margin: 0;
   overflow: hidden;
@@ -15,20 +27,26 @@ html {
     --hover: #343434;
     --white: #ffffff;
     --project-preview: rgba(232, 232, 232, 0.7);
+    --box-shadow: 0px 7px 15px 0px rgba(119, 119, 119, 0.2);
+    --img-filter: invert(0%);
+    --filter: grayscale(100%) brightness(30%) contrast(120%);
   }
   
   &[data-theme="dark"] {
     // Apply dark theme variables
-    --bc-color: #050505;
+    --bc-color: #111111;
     --dark: #fbfbfb;
     --darkGrey: #222222;
-    --grey: #838383;
-    --grey2: #c6c6c6;
+    --grey: #9c9c9c;
+    --grey2: #cbcbcb;
     --grey3: #e5e5e5;
-    --hover: #868686;
+    --hover: #d3d3d3;
     --white: #ffffff;
     --project-preview: rgba(27, 27, 27, 0.75);
     background-color: var(--bc-color);
+    --box-shadow: 0px 11px 15px 0px rgba(17, 17, 17, 0.25);
+    --img-filter: invert(100%);
+    --filter: invert(100%);
   }
 }
 

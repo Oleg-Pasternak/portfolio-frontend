@@ -7,6 +7,7 @@ interface BoilerProps {
   pageData: any;
   color1?: string;
   color2?: string;
+  darkMode?: boolean;
 }
 
 
@@ -16,7 +17,7 @@ const Boiler: React.FC<BoilerProps> = (props) => {
   return (
     <div className="boiler">
       {props.color1 && props.color2 && (
-        <ScrollMovingAnimation color1={props.color1} color2={props.color2} />
+        <ScrollMovingAnimation color1={props.color1} color2={props.color2} darkMode={props.darkMode} />
       )}
       {pageData.map((section: any, index: number) => {
         if (section.__typename) {

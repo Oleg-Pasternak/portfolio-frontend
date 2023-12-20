@@ -14,7 +14,7 @@
 		&:hover {
 			transition: all 0.5s ease;
 			transform: translate(0, -5px);
-			box-shadow: 0px 7px 15px 0px rgba(119, 119, 119, 0.2);
+			box-shadow: var(--box-shadow);
 			border-radius: 5px;
 		}
 	}

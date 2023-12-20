@@ -7,7 +7,7 @@
   margin-right: 30px;
   transition: $transition;
   &:hover {
-      filter: grayscale(100%) brightness(30%) contrast(120%);
+      filter: var(--filter);
       transition: $transition;
   }
 }
@@ -20,7 +20,7 @@
   background-size: 30px 30px;
   transition: $transition;
   &:hover {
-      filter: grayscale(100%) brightness(30%) contrast(120%);
+      filter: var(--filter);
       transition: $transition;
   }
 }
@@ -34,7 +34,7 @@
     &:hover {
       border: 1px solid var(--darkGrey);
       &::after {
-        filter: grayscale(100%) brightness(30%) contrast(120%);
+        filter: var(--filter);
       }
     }
     &:after {
@@ -60,7 +60,7 @@
     transition: $transition;
     padding: 0;
     &:hover {
-        filter: grayscale(100%) brightness(30%) contrast(120%);
+        filter: var(--filter);
         transition: $transition;
     }
   }
