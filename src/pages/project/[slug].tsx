@@ -8,6 +8,7 @@ import client from 'src/utils/apollo_client';
 import { GetServerSidePropsContext } from 'next';
 import { WebsiteSettings, Project } from "src/constants/interfaces";
 import { WideImage } from 'src/components/ui/WideImage';
+import { useEffect } from 'react';
 
 interface QueryData {
   settings: WebsiteSettings;
@@ -18,7 +19,10 @@ export default function Project(props: { query_data: QueryData }) {
   const project: Project = props.query_data.project
   const settings: WebsiteSettings = props.query_data.settings
 
-  console.log(props)
+  useEffect(() => {
+    //remove attribute
+    document.documentElement.removeAttribute('data-theme');
+  }, []);
 
   return (
     <div id='main-container'>
