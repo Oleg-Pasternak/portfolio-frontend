@@ -19,11 +19,6 @@ export default function Project(props: { query_data: QueryData }) {
   const project: Project = props.query_data.project
   const settings: WebsiteSettings = props.query_data.settings
 
-  useEffect(() => {
-    //remove attribute
-    document.documentElement.removeAttribute('data-theme');
-  }, []);
-
   return (
     <div id='main-container'>
       {project && (
