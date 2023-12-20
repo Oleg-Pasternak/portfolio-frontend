@@ -1,17 +1,43 @@
+
 html {
   margin: 0;
   overflow: hidden;
   @media screen and (max-width: 768px) {
     overflow: auto;
   }
+  &[data-theme="light"] {
+    // Apply light theme variables
+    --bc-color: #fbfbfb;
+    --dark: #050505;
+    --darkGrey: #222222;
+    --grey: #aaaaaa;
+    --grey2: #8f8f8f;
+    --grey3: #898989;
+    --hover: #343434;
+    --white: #ffffff;
+    --project-preview: rgba(232, 232, 232, 0.7);
+  }
+  
+  &[data-theme="dark"] {
+    // Apply dark theme variables
+    --bc-color: #050505;
+    --dark: #fbfbfb;
+    --darkGrey: #222222;
+    --grey: #838383;
+    --grey2: #c6c6c6;
+    --grey3: #e5e5e5;
+    --hover: #868686;
+    --white: #ffffff;
+    --project-preview: rgba(27, 27, 27, 0.75);
+  }
 }
 
 body {
   padding: 25px 30px;
-  color: $grey;
+  color: var(--grey);
   font-family: $defaultFont;
   font-weight: normal;
-  background-color: $bc-color;
+  background-color: var(--bc-color);
   &:hover .cursor {
     opacity: 1;
     transition: opacity 0.3s;
@@ -26,7 +52,7 @@ a {
   text-decoration: none;
   transition: $transition;
   &:hover {
-    color: $hover;
+    color: var(--hover);
     transition: $transition;
 }
 }
@@ -53,7 +79,7 @@ p {
 
 span {
     font-size: 14px;
-    color: $grey;
+    color: var(--grey);
     transition: $transition;
     letter-spacing: 0.30px;
     line-height: 150%;
@@ -70,7 +96,7 @@ span {
     top: 0;
     width: 10px;
     height: 10px;
-    background-color: $white;
+    background-color: var(--white);
     border-radius: 50%;
     pointer-events: none;
     mix-blend-mode: difference;
@@ -94,16 +120,16 @@ button {
   font-family: $defaultFont;
   border: none;
   padding: 3px 15px;
-  background-color: $darkGrey;
+  background-color: var(--darkGrey);
   font-size: 16px;
   font-weight: 300;
   line-height: 150%;
-  color: $white;
+  color: var(--white);
   border-radius: 15px;
   transition: $transition;
   &:hover {
-    background-color: $white;
-    color: $darkGrey;
+    background-color: var(--white);
+    color: var(--darkGrey);
     transition: $transition;
   }
 }

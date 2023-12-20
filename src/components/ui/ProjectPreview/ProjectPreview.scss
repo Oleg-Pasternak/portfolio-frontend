@@ -1,7 +1,7 @@
 .project-preview {
 	width: 100%;
 	border-radius: 5px;
-	background: rgba(232, 232, 232, 0.7);
+	background: var(--project-preview);
 	backdrop-filter: blur($container-blur);
 	-webkit-backdrop-filter: blur($container-blur);
 	margin-top: 20px;
@@ -26,17 +26,17 @@
 		width: 100%;
 		p {
 			font-size: 12px;
-			color: $grey2;
+			color: var(--grey2);
 			transition: $transition;
 			font-weight: 400;
 			&:hover {
-				color: $dark;
+				color: var(--hover);
 				transition: $transition;
 			}
 		}
 		span {
 			font-size: 12px;
-			color: $grey3;
+			color: var(--grey);
 			font-weight: 400;
 		}
 	}

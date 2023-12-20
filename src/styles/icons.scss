@@ -30,9 +30,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid $darkGrey;
+    border: 1px solid var(--darkGrey);
     &:hover {
-      border: 1px solid $darkGrey;
+      border: 1px solid var(--darkGrey);
       &::after {
         filter: grayscale(100%) brightness(30%) contrast(120%);
       }

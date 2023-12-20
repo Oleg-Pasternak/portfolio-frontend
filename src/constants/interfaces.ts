@@ -16,6 +16,7 @@ export interface Landing {
     content: object[];
     pageDescription: string;
     seoTitle: string;
+    darkMode: boolean;
     title: string;
 }
 

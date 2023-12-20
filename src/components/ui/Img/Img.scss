@@ -1,10 +1,10 @@
 .image {
     svg {
-        fill: $dark;
+        fill: var(--dark);
         width: 27px;
         height: 35px;
         path {
-            fill: $dark;
+            fill: var(--dark)
         }
     }
 }

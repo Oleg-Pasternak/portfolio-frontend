@@ -7,6 +7,7 @@ import { GET_INITIAL_DATA } from 'src/graphql/index.jsx';
 import client from 'src/utils/apollo_client';
 import { GetServerSidePropsContext } from 'next';
 import { WebsiteSettings, Landing } from "src/constants/interfaces";
+import { useEffect } from 'react';
 
 interface QueryData {
   settings: WebsiteSettings;
@@ -20,8 +21,16 @@ export default function Home(props: { query_data: QueryData }) {
 
   console.log(props)
 
+  const darkMode = landing.darkMode
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
+
   return (
-    <div id='main-container'>
+    <div 
+      id='main-container' 
+    >
       <Head page={landing.seoTitle} />
       <Header 
         logo={settings.pageIcon}

@@ -7,7 +7,7 @@
         align-items: center;
         span {
             &:hover {
-                color: $hover;
+                color: var(--hover);
                 transition: $transition;
             }
         }
