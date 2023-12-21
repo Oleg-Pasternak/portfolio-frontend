@@ -8,6 +8,7 @@
   --hover: #343434;
   --white: #ffffff;
   --project-preview: rgba(232, 232, 232, 0.7);
+
 }
 
 html {
@@ -27,7 +28,8 @@ html {
     --hover: #343434;
     --white: #ffffff;
     --project-preview: rgba(232, 232, 232, 0.7);
-    --box-shadow: 0px 8px 15px 0px rgba(119, 119, 119, 0.2);
+    --hover-box-shadow: 0px 8px 15px 0px rgba(119, 119, 119, 0.2);
+    --box-shadow: 0px 2px 8px 0px rgba(195, 195, 195, 0.30);
     --img-filter: invert(0%);
     --filter: grayscale(100%) brightness(30%) contrast(120%);
   }
@@ -44,7 +46,8 @@ html {
     --white: #ffffff;
     --project-preview: rgba(27, 27, 27, 0.75);
     background-color: var(--bc-color);
-    --box-shadow: 0px 11px 15px 0px rgba(17, 17, 17, 0.25);
+    --hover-box-shadow: 0px 11px 15px 0px rgba(17, 17, 17, 0.25);
+    --box-shadow: 0px 2px 8px 0px rgba(17, 17, 17, 0.2);
     --img-filter: invert(100%);
     --filter: invert(100%);
   }
