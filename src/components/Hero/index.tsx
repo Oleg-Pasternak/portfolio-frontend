@@ -13,6 +13,7 @@ interface HeroProps {
   iosUrl?: string;
   color1?: string;
   color2?: string;
+  darkMode?: boolean;
 }
 
 export default function Hero(props : HeroProps) {
@@ -34,7 +35,7 @@ export default function Hero(props : HeroProps) {
 
     
     return (
-      <div className='hero'>
+      <div className={props.darkMode ? 'hero hero-dark' : 'hero'}>
         <div className="hero-inner">
             {!props.projectLogo && props.title && (
               <h1 

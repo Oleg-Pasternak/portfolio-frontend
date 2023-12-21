@@ -8,7 +8,7 @@ import client from 'src/utils/apollo_client';
 import { GetServerSidePropsContext } from 'next';
 import { WebsiteSettings, Project } from "src/constants/interfaces";
 import { WideImage } from 'src/components/ui/WideImage';
-import { useEffect } from 'react';
+import { use, useEffect } from 'react';
 
 interface QueryData {
   settings: WebsiteSettings;

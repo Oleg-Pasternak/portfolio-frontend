@@ -30,7 +30,7 @@ const ScrollMovingAnimation = (props: ScrollMovingAnimationProps) => {
     const tl = gsap.timeline();
 
     tl.to(squareRef.current, { y: -100 + scrollY * 0.4, x: 400 + scrollY * 0.1, duration: 1 });
-    tl.to(lineRef.current, { y: -100 + scrollY * 0.4, x: -450 - scrollY * 0.4, duration: 1.4 }, '-=1');
+    tl.to(lineRef.current, { y: -50 + scrollY * 0.4, x: -500 - scrollY * 0.4, duration: 1.4 }, '-=1');
     tl.to(rectangleRef.current, { y: 20 - scrollY * 0.05, x: -20 - scrollY * 0.02, duration: 1.1}, '-=1');
   }, [scrollY]);
 

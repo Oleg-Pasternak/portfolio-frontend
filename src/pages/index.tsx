@@ -41,6 +41,7 @@ export default function Home(props: { query_data: QueryData }) {
         description={landing.pageDescription}
         color1={landing.color1}
         color2={landing.color2}
+        darkMode={!landing.darkMode}
       />
       <Boiler 
         pageData={landing} 
