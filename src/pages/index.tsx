@@ -24,7 +24,7 @@ export default function Home(props: { query_data: QueryData }) {
   const darkMode = landing.darkMode
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'dark');
   }, [darkMode]);
 
   return (
@@ -41,7 +41,7 @@ export default function Home(props: { query_data: QueryData }) {
         description={landing.pageDescription}
         color1={landing.color1}
         color2={landing.color2}
-        darkMode={landing.darkMode}
+        darkMode={!landing.darkMode}
       />
       <Boiler 
         pageData={landing} 
