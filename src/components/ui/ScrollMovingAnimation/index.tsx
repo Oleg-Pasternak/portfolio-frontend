@@ -4,6 +4,7 @@ import gsap from 'gsap';
 interface ScrollMovingAnimationProps {
   color1: string;
   color2: string;
+  darkMode?: boolean;
 }
 
 const ScrollMovingAnimation = (props: ScrollMovingAnimationProps) => {
