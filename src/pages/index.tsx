@@ -24,7 +24,7 @@ export default function Home(props: { query_data: QueryData }) {
   const darkMode = landing.darkMode
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', !darkMode ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
   return (
