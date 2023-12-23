@@ -25,7 +25,7 @@ const Boiler: React.FC<BoilerProps> = (props) => {
           return (
             <ErrorBoundary key={index}>
               <div className="section">
-                {Component && <Component {...section} id={index} />}
+                {Component && <Component {...section} id={index} color1={props.color1} color2={props.color2} />}
               </div>
             </ErrorBoundary>
           );

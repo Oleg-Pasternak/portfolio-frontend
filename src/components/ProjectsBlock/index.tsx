@@ -5,9 +5,11 @@ import { ProjectItem } from "src/constants/interfaces";
 
 interface ProjectsBlockProps {
   projects: ProjectItem[];
+  color1?: string;
+  color2?: string;
 }
 
-export const ProjectsBlock: React.FC<ProjectsBlockProps> = ({ projects }) => {
+export const ProjectsBlock: React.FC<ProjectsBlockProps> = ({ projects, color1, color2 }) => {
   
   return (
     <div className='projects'>

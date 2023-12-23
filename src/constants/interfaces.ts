@@ -75,6 +75,8 @@ export interface StackBlockProps {
       }[];
     }[];
   };
+  color1: string;
+  color2: string;
 }
 
 export interface ImageProps {
