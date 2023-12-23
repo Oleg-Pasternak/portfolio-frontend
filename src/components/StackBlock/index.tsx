@@ -3,7 +3,7 @@ import parse from 'html-react-parser';
 import { StackBlockProps } from 'src/constants/interfaces';
 
 export function StackBlock(props: StackBlockProps): ReactElement {
-  const { color1, color2, leftSide, rightSide } = props;
+  const { color1, color2, leftSide, rightSide, darkMode } = props;
 
   const renderIcons = (icons: any[]) => {
     return (
@@ -20,7 +20,7 @@ export function StackBlock(props: StackBlockProps): ReactElement {
   };
 
   return (
-    <div className="stack-block stack-block-gradient">
+    <div className={!darkMode ? "stack-block stack-block-gradient" : "stack-block"}>
       <div className="stack-block-left">
         <div className="stack-block-left__inner">
           <h2>{leftSide.title}</h2>

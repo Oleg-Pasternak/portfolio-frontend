@@ -77,6 +77,7 @@ export interface StackBlockProps {
   };
   color1: string;
   color2: string;
+  darkMode?: boolean;
 }
 
 export interface ImageProps {
