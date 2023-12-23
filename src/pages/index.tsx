@@ -21,7 +21,7 @@ export default function Home(props: { query_data: QueryData }) {
 
   console.log(props)
 
-  const darkMode = !landing.darkMode
+  const darkMode = landing.darkMode
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
