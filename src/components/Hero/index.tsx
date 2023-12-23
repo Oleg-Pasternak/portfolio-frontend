@@ -37,7 +37,7 @@ export default function Hero(props : HeroProps) {
       const updateOpacity = () => {
         const scrollY = window.scrollY || window.pageYOffset;
         const opacity = 1 - scrollY / window.innerHeight * 2;
-        const blur = scrollY / window.innerHeight * 10;
+        const blur = scrollY / window.innerHeight * 5;
   
         // Use gsap.to for a smoother transition
         gsap.to(container, {
