@@ -20,7 +20,7 @@ export function StackBlock(props: StackBlockProps): ReactElement {
   };
 
   return (
-    <div className={!darkMode ? "stack-block stack-block-gradient" : "stack-block"}>
+    <div className={darkMode ? "stack-block stack-block-gradient" : "stack-block"}>
       <div className="stack-block-left">
         <div className="stack-block-left__inner">
           <h2>{leftSide.title}</h2>
