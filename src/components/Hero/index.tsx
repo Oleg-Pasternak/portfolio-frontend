@@ -39,13 +39,19 @@ export default function Hero(props : HeroProps) {
         const opacity = 1 - scrollY / window.innerHeight * 2;
         const blur = scrollY / window.innerHeight * 5;
   
-        // Use gsap.to for a smoother transition
+        // Use gsap.to for a smoother transition with delay
         gsap.to(container, {
           opacity,
-          onUpdate: applyBlur,
-          onUpdateParams: [container, blur],
           duration: 0.05, // Adjust the duration as needed
           ease: "power2.inOut", // Choose an ease that fits your preference
+        });
+
+        // Use another gsap.to for blur with delay
+        gsap.to(container, {
+          webkitFilter: `blur(${blur}px)`,
+          duration: 0.05, // Adjust the duration as needed
+          ease: "power2.inOut", // Choose an ease that fits your preference
+          delay: 0.3, // Add a delay to the blur effect
         });
       };
   
@@ -60,10 +66,6 @@ export default function Hero(props : HeroProps) {
       };
     }
   }, []);
-
-  const applyBlur = (elementId: string, blur: number) => {
-    gsap.set(elementId, { webkitFilter: `blur(${blur}px)` });
-  };
     
   return (
     <div className={props.darkMode ? 'hero hero-dark' : 'hero'}>

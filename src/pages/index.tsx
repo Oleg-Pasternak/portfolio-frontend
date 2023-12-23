@@ -21,7 +21,7 @@ export default function Home(props: { query_data: QueryData }) {
 
   console.log(props)
 
-  const darkMode = landing.darkMode
+  const darkMode = !landing.darkMode
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
@@ -47,7 +47,7 @@ export default function Home(props: { query_data: QueryData }) {
         pageData={landing} 
         color1={landing.color1}
         color2={landing.color2}
-        darkMode={landing.darkMode}
+        darkMode={darkMode}
       />
       <Footer 
         footerText={settings.footerText}
