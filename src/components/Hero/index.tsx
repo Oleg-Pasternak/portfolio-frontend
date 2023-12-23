@@ -20,8 +20,9 @@ export default function Hero(props : HeroProps) {
   const titleRef = useRef(null);
 
   useEffect(() => {
-    const text = titleRef.current;
-  
+    const text: any = titleRef.current;
+    const container = text.parentNode;
+
     gsap.timeline({
       scrollTrigger: {
         trigger: text,
@@ -30,7 +31,28 @@ export default function Hero(props : HeroProps) {
         end: "bottom 30%",
       },
     });
-        
+    
+    const updateOpacity = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const opacity = 1 - scrollY / window.innerHeight * 2;
+
+      // Use gsap.to for a smoother transition
+      gsap.to(container, {
+        opacity,
+        duration: 0.05, // Adjust the duration as needed
+        ease: "power2.inOut", // Choose an ease that fits your preference
+      });
+    };
+
+    updateOpacity(); // Initial opacity setup
+
+    // Listen to the scroll event and update opacity
+    window.addEventListener("scroll", updateOpacity);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", updateOpacity);
+    };
   }, []);
 
     

@@ -6,6 +6,10 @@
     &-dark {
         margin-top: 270px;
         margin-bottom: 270px;
+        height: 204px;
+        .hero-inner {
+            position: fixed;
+        }
         h1 {
             font-size: 90px;
         }
