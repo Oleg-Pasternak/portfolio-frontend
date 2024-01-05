@@ -16,6 +16,7 @@ export const GET_INITIAL_DATA = gql`
       pageDescription
       darkMode
       seoTitle
+      advancedHero
       content {
         __typename
         ...ProjectsBlock

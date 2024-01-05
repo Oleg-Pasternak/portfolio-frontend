@@ -14,6 +14,7 @@ interface HeroProps {
   color1?: string;
   color2?: string;
   darkMode?: boolean;
+  advancedHero?: boolean;
 }
 
 export default function Hero(props : HeroProps) {
@@ -31,7 +32,7 @@ export default function Hero(props : HeroProps) {
       },
     });
 
-    if (props.darkMode) {
+    if (props.darkMode || props.advancedHero) {
       const container = text.parentNode;
 
       const updateOpacity = () => {
@@ -68,7 +69,7 @@ export default function Hero(props : HeroProps) {
   }, []);
     
   return (
-    <div className={props.darkMode ? 'hero hero-dark' : 'hero'}>
+    <div className={props.advancedHero ? 'hero hero-advanced' : 'hero'}>
       <div className="hero-inner">
           {!props.projectLogo && props.title && (
             <h1 
