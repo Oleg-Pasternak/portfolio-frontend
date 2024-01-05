@@ -18,6 +18,10 @@ export interface Landing {
     seoTitle: string;
     darkMode: boolean;
     title: string;
+    pageIcon: {
+      rendition: Rendition;
+    };
+    advancedHero: boolean;
 }
 
 export interface Project {
