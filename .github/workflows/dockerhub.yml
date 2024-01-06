@@ -20,7 +20,7 @@ jobs:
         npm install
     - name: Build Docker image
       run: |
-        apt-get update && apt-get install -y git && apt-get install -y curl
+        apt-get install -y git && apt-get install -y curl
         docker login -u ${{ secrets.DOCKER_HUB_ID }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
         docker build --no-cache -f Dockerfile -t pstrnk/portfolio-frontend:master .
         docker push pstrnk/portfolio-frontend:master
