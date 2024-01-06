@@ -1,8 +1,6 @@
 FROM node:18-buster-slim
 MAINTAINER Oleg Pasternak <oleg@pasternak.work>
 
-ARG branch=dev_stage
-ARG frontend_branch=dev_stage
 RUN apt-get update && apt-get install -y nginx
 RUN rm -f /etc/nginx/sites-enabled/default
 COPY . /app/code
