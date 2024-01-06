@@ -21,6 +21,6 @@ jobs:
     - name: Build Docker image
       run: |
         sudo apt-get install -y git && sudo apt-get install -y apt-utils && sudo apt-get install -y curl
-        echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_HUB_ID }} --password-stdin
+        echo "${{ secrets.DOCKER_HUB_ID }}" | docker login -u ${{ secrets.DOCKER_HUB_ID }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
         docker build --no-cache -f Dockerfile -t pstrnk/portfolio-frontend:master .
         docker push pstrnk/portfolio-frontend:master
