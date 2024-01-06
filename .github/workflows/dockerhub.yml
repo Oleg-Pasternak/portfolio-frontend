@@ -24,3 +24,4 @@ jobs:
         docker login -u ${{ secrets.DOCKER_HUB_ID }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
         docker build --no-cache -f Dockerfile -t pstrnk/portfolio-frontend:master .
         docker push pstrnk/portfolio-frontend:master
+
