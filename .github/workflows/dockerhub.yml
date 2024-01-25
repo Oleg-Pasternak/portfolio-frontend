@@ -18,6 +18,8 @@ jobs:
     - name: Install Dependencies
       run: |
         npm install
+        npm run build
+        npm run start
     - name: Build Docker image
       run: |
         sudo apt-get install -y git && sudo apt-get install -y apt-utils && sudo apt-get install -y curl
