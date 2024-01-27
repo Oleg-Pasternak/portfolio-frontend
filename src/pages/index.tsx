@@ -34,7 +34,7 @@ export default function Home(props: { query_data: QueryData }) {
     <div 
       id='main-container' 
     >
-      <Head page={landing.seoTitle} />
+      <Head page={landing.seoTitle ? landing.seoTitle : landing.title} />
       <Header 
         logo={settings.pageIcon}
         contactEmail={settings.contactEmail}
