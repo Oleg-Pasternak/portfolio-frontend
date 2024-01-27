@@ -34,30 +34,34 @@ export default function Home(props: { query_data: QueryData }) {
     <div 
       id='main-container' 
     >
-      <Head page={landing.seoTitle ? landing.seoTitle : landing.title} />
-      <Header 
-        logo={settings.pageIcon}
-        contactEmail={settings.contactEmail}
-      />
-      <Hero 
-        title={landing.title}
-        description={landing.pageDescription}
-        color1={landing.color1}
-        color2={landing.color2}
-        darkMode={darkMode}
-        advancedHero={landing.advancedHero}
-      />
-      <Boiler 
-        pageData={landing} 
-        color1={landing.color1}
-        color2={landing.color2}
-        darkMode={darkMode}
-      />
-      <Footer 
-        footerText={settings.footerText}
-        githubLink={settings.githubLink}
-        linkedinLink={settings.linkedinLink}
-      />
+      {landing && (
+        <>
+          <Head page={landing.seoTitle ? landing.seoTitle : landing.title} />
+          <Header 
+            logo={settings.pageIcon}
+            contactEmail={settings.contactEmail}
+          />
+          <Hero 
+            title={landing.title}
+            description={landing.pageDescription}
+            color1={landing.color1}
+            color2={landing.color2}
+            darkMode={darkMode}
+            advancedHero={landing.advancedHero}
+          />
+          <Boiler 
+            pageData={landing} 
+            color1={landing.color1}
+            color2={landing.color2}
+            darkMode={darkMode}
+          />
+          <Footer 
+            footerText={settings.footerText}
+            githubLink={settings.githubLink}
+            linkedinLink={settings.linkedinLink}
+          />
+        </>
+      )}
     </div>
   )
 }
