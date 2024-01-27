@@ -20,8 +20,8 @@ export const Img = (props: ImgProps) => {
 
   return (
     <div className="image">
-      {props.svg && (
-        <ReactSVG src={image} />
+      {props.svg && image && (
+        <ReactSVG src={image.toString()} />
       )}
       {!props.svg && (
         <img 
