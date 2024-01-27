@@ -18,10 +18,13 @@ interface QueryData {
 export default function Home(props: { query_data: QueryData }) {
   const settings: WebsiteSettings = props.query_data.settings
   const landing: Landing = props.query_data.landing
+  let darkMode = false
 
   console.log(props)
 
-  const darkMode = landing.darkMode
+  if (landing) {
+    darkMode = landing.darkMode
+  }
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
