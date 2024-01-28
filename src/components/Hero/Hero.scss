@@ -3,6 +3,9 @@
     align-items: center;
     justify-content: center;
     margin-top: 80px;
+    @media screen and (max-width: 768px) {
+        margin-top: 30px;
+    }
     &-advanced {
         margin-top: 270px;
         margin-bottom: 270px;
@@ -35,6 +38,9 @@
             margin-top: 30px;
             p {
                 letter-spacing: 0.5px;
+            }
+            @media screen and (max-width: 768px) {
+                margin-top: 10px;
             }
         }
         &-buttons {

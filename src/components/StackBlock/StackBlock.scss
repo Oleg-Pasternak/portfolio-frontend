@@ -1,6 +1,10 @@
 .stack-block {
     margin-top: 90px;
     display: flex;
+    @media screen and (max-width: 768px) {
+        display: block;
+        margin-top: 40px;
+    }
     &-gradient {
         .stack-block-left {
             &::before {
@@ -29,6 +33,9 @@
         width: 50%;
         display: flex;
         position: relative;
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
         &__inner {
             width: 100%;
         }
@@ -42,6 +49,17 @@
     }
     &-right {
         width: 50%;
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+        &:before {
+            content: '';
+            width: 100%;
+            height: 1px;
+            background-color: var(--grey);
+            margin: auto;
+
+        }
     }
     &__text {
         display: flex;
@@ -49,10 +67,17 @@
         justify-content: center;
         padding: 105px;
         height: 100%;
+        @media screen and (max-width: 768px) {
+            padding: 0px;
+        }
         p {
             font-size: 20px;
             line-height: 150%;
             letter-spacing: 0.2px;
+            @media screen and (max-width: 768px) {
+                font-size: 16px;
+                text-align: center;
+            }
         }
     }
     &__icons {
@@ -62,6 +87,9 @@
         flex-wrap: wrap;
         padding: 40px;
         width: 100%;
+        @media screen and (max-width: 768px) {
+            padding: 10px;
+        }
         h2 {
             text-align: center;
         }
@@ -69,6 +97,10 @@
             padding: 17px;
             max-height: 180px;
             z-index: 2;
+            @media screen and (max-width: 768px) {
+                max-height: 75px;
+                max-width: 150px;
+            }
         }
     }
 }

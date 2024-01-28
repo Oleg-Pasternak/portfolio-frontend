@@ -59,12 +59,13 @@ body {
   font-family: $defaultFont;
   font-weight: normal;
   background-color: var(--bc-color);
+  margin: 0;
   &:hover .cursor {
     opacity: 1;
     transition: opacity 0.3s;
   }
   @media (max-width: 768px) {
-    padding: 10px 7px;
+    padding: 10px 10px;
   }
 }
 
@@ -88,6 +89,9 @@ h1 {
     font-weight: 500;
     background: none;
     margin: 0;
+    @media screen and (max-width: 768px) {
+      font-size: 48px;
+    }
 }
 
 p {
@@ -96,6 +100,9 @@ p {
   letter-spacing: 0.8px;
   line-height: 150%;
   margin: 0;
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
 }
 
 span {
@@ -109,6 +116,9 @@ span {
 /* Reset default cursor styles */
 * {
     cursor: none;
+    @media screen and (max-width: 768px) {
+      cursor: default;
+  }
 }
 
 /* Define styles for the custom cursor */

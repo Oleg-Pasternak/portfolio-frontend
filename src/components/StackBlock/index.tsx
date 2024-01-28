@@ -23,13 +23,21 @@ export function StackBlock(props: StackBlockProps): ReactElement {
     <div className={darkMode ? "stack-block stack-block-gradient" : "stack-block"}>
       <div className="stack-block-left">
         <div className="stack-block-left__inner">
-          <h2>{leftSide.title}</h2>
+          {leftSide.title && (
+            <div className="stack-block-left__title">
+              <h2>{leftSide.title}</h2>
+            </div>
+          )}
           {leftSide.content[0].icons && renderIcons(leftSide.content[0].icons)}
           {leftSide.content[0].text && renderText(leftSide.content[0].text)}
         </div>
       </div>
       <div className="stack-block-right">
-        <h2>{rightSide.title}</h2>
+        {rightSide.title && (
+          <div className="stack-block-right__title">
+            <h2>{rightSide.title}</h2>
+          </div>
+        )}
         {rightSide.content[0].icons && renderIcons(rightSide.content[0].icons)}
         {rightSide.content[0].text && renderText(rightSide.content[0].text)}
       </div>
