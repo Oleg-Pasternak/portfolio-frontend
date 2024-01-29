@@ -34,19 +34,19 @@ export default function Hero(props : HeroProps) {
 
     if (props.darkMode || props.advancedHero) {
       const container = text.parentNode;
-
-      const updateOpacity = () => {
+    
+      const updateOpacityAndPosition = () => {
         const scrollY = window.scrollY || window.pageYOffset;
-        const opacity = 1 - scrollY / window.innerHeight * 2;
+        const opacity = 1 - scrollY / window.innerHeight * 1.4;
         const blur = scrollY / window.innerHeight * 5;
-  
-        // Use gsap.to for a smoother transition with delay
+        
+        // Use gsap.to for a smoother transition without delay
         gsap.to(container, {
           opacity,
           duration: 0.05, // Adjust the duration as needed
           ease: "power2.inOut", // Choose an ease that fits your preference
         });
-
+    
         // Use another gsap.to for blur with delay
         gsap.to(container, {
           webkitFilter: `blur(${blur}px)`,
@@ -54,18 +54,26 @@ export default function Hero(props : HeroProps) {
           ease: "power2.inOut", // Choose an ease that fits your preference
           delay: 0.3, // Add a delay to the blur effect
         });
+    
+        // Use gsap.to to move the container upwards without delay
+        gsap.to(container, {
+          y: -(scrollY)*0.8, // Move the container upwards based on the scroll position
+          duration: 0, // Adjust the duration as needed
+          ease: "power2.inOut", // Choose an ease that fits your preference
+          delay: 0, // No delay for the container movement
+        });
       };
-  
-      updateOpacity(); // Initial opacity setup
-  
-      // Listen to the scroll event and update opacity
-      window.addEventListener("scroll", updateOpacity);
-  
+    
+      updateOpacityAndPosition(); // Initial setup
+    
+      // Listen to the scroll event and update opacity and position
+      window.addEventListener("scroll", updateOpacityAndPosition);
+    
       // Cleanup the event listener on component unmount
       return () => {
-        window.removeEventListener("scroll", updateOpacity);
+        window.removeEventListener("scroll", updateOpacityAndPosition);
       };
-    }
+    }    
   }, []);
     
   return (
