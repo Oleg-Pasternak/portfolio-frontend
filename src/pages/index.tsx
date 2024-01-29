@@ -36,7 +36,10 @@ export default function Home(props: { query_data: QueryData }) {
     >
       {landing && (
         <>
-          <Head page={landing.seoTitle ? landing.seoTitle : landing.title} />
+          <Head 
+            page={landing.seoTitle ? landing.seoTitle : landing.title} 
+            pageIcon={settings.pageIcon}
+          />
           <Header 
             logo={settings.pageIcon}
             contactEmail={settings.contactEmail}

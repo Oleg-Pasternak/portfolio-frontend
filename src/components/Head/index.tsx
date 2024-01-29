@@ -4,6 +4,7 @@ import Head from 'next/head';
 interface HeadComponentProps {
   children?: ReactNode;
   page?: string;
+  pageIcon?: string;
 }
 
 const HeadComponent: React.FC<HeadComponentProps> = (props) => {
@@ -11,7 +12,7 @@ const HeadComponent: React.FC<HeadComponentProps> = (props) => {
     <Head>
       {props.children}
       <meta charSet="utf-8" />
-      <link rel="icon" href="public/assets/favicon.ico" />
+      <link rel="icon" href={props.pageIcon} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
       <meta name="theme-color" content="#000000" />
