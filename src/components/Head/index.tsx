@@ -4,7 +4,11 @@ import Head from 'next/head';
 interface HeadComponentProps {
   children?: ReactNode;
   page?: string;
-  pageIcon?: string;
+  pageIcon?: {
+    rendition: {
+      url: string;
+    }
+  };
 }
 
 const HeadComponent: React.FC<HeadComponentProps> = (props) => {
