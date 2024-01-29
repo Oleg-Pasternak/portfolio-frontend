@@ -10,11 +10,19 @@
         margin-top: 270px;
         margin-bottom: 270px;
         height: 204px;
+        @media screen and (max-width: 768px) {
+            margin-top: 50px;
+            margin-bottom: 0;
+            height: 130px;
+        }
         .hero-inner {
             position: fixed;
         }
         h1 {
             font-size: 90px;
+            @media screen and (max-width: 768px) {
+                font-size: 50px;
+            }
         }
     }
     &-inner {
