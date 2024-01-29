@@ -8,6 +8,10 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	@media screen and (max-width: 768px) {
+		min-width: 384px;
+		min-height: 244px;
+	}
 	a {
 		display: flex;
 		align-items: center;
