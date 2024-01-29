@@ -68,7 +68,6 @@ export default function Home(props: { query_data: QueryData }) {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const domain = context.req.headers.host
-  console.log(domain)
 
   let result = await client.query({
     query: GET_INITIAL_DATA,

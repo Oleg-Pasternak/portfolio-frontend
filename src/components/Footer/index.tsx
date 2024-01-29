@@ -14,7 +14,7 @@ const Footer = (props: FooterProps): ReactElement => {
             {parse(props.footerText)}
         </div>
         <div className="footer-inner">
-            <span>© 2023</span>
+            <span>© 2024</span>
             <div className="footer-links">
                 <a href={props.githubLink} target='_blank' rel="noreferrer">
                     <div className="github" />
