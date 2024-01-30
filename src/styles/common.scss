@@ -8,7 +8,20 @@
   --hover: #343434;
   --white: #ffffff;
   --project-preview: rgba(232, 232, 232, 0.7);
+  --selection-color: #d88826;
+}
 
+::-moz-selection {
+  background: var(--selection-color);
+  color: #fff;
+}
+::-webkit-selection {
+  background: var(--selection-color);
+  color: #fff;
+}
+::selection {
+  background: var(--selection-color);
+  color: #fff;
 }
 
 html {

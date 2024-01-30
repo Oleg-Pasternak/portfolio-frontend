@@ -16,8 +16,7 @@ interface ImgProps {
 
 export const Img = (props: ImgProps) => {
   const image = (props.svg ? props.image : (props.image as Rendition).rendition.url);
-  console.log(image)
-
+  
   return (
     <div className="image">
       {props.svg && image && (

@@ -20,7 +20,7 @@ export default function Project(props: { query_data: QueryData }) {
   const settings: WebsiteSettings = props.query_data.settings
 
   return (
-    <div id='main-container'>
+    <div className='main-container'>
       {project && (
         <>
           <Head page={project.seoTitle ? project.seoTitle : project.title} />

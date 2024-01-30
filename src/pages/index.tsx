@@ -20,8 +20,6 @@ export default function Home(props: { query_data: QueryData }) {
   const landing: Landing = props.query_data.landing
   let darkMode = false
 
-  console.log(props)
-
   if (landing) {
     darkMode = landing.darkMode
   }
@@ -30,9 +28,11 @@ export default function Home(props: { query_data: QueryData }) {
     document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
+  console.log(props)
+
   return (
     <div 
-      id='main-container' 
+      className='main-container'
     >
       {landing && (
         <>
