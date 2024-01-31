@@ -4,6 +4,7 @@ import TweenTarget from 'gsap';
 import Lenis from '@studio-freight/lenis';
 import { useEffect, useRef } from 'react';
 import Context from 'src/Context';
+import TagManager from 'react-gtm-module';
 
 interface MyAppProps {
   Component: React.ComponentType;
@@ -55,6 +56,9 @@ function MyApp({ Component, pageProps }: MyAppProps) {
     };
 
     window.addEventListener('mousemove', onMouseMove as unknown as EventListener);
+
+    TagManager.initialize({ gtmId: 'GTM-KFMNBQF4' });
+    TagManager.initialize({ gtmId: 'GTM-TNTPZDVP' });
 
     // Cleanup: Remove event listeners and destroy Lenis when the component unmounts
     return () => {
