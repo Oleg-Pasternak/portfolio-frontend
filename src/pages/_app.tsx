@@ -57,8 +57,8 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
     window.addEventListener('mousemove', onMouseMove as unknown as EventListener);
 
-    TagManager.initialize({ gtmId: 'GTM-KFMNBQF4' });
-    TagManager.initialize({ gtmId: 'GTM-TNTPZDVP' });
+    TagManager.initialize({ gtmId: 'G-TZEYJMJWHG' });
+    TagManager.initialize({ gtmId: 'G-K2BKRLV2BC' });
 
     // Cleanup: Remove event listeners and destroy Lenis when the component unmounts
     return () => {
