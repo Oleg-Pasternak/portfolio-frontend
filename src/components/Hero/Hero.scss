@@ -63,6 +63,7 @@
     }
     &-scroll-down {
         padding-top: 60px;
+        display: none;
         &:hover {
             span {
                 border-color: var(--grey3);
