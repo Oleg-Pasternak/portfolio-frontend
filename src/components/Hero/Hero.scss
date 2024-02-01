@@ -3,16 +3,17 @@
     align-items: center;
     justify-content: center;
     margin-top: 80px;
+    position: relative;
     @media screen and (max-width: 768px) {
         margin-top: 60px;
     }
     &-advanced {
-        margin-top: 270px;
-        margin-bottom: 270px;
+        padding-top: 270px;
+        padding-bottom: 270px;
         height: 204px;
         @media screen and (max-width: 768px) {
-            margin-top: 50px;
-            margin-bottom: 0;
+            padding-top: 50px;
+            padding-bottom: 0;
             height: 130px;
         }
         .hero-inner {
@@ -60,4 +61,77 @@
             }
         }
     }
+    &-scroll-down {
+        padding-top: 60px;
+        &:hover {
+            span {
+                border-color: var(--grey3);
+                transition: all 0.3s;
+                &:before {
+                    background-color: var(--grey3);
+                    transition: all 0.3s;
+                }
+            }
+        }
+        span {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 30px;
+            height: 50px;
+            margin-left: -15px;
+            border: 2px solid var(--grey);
+            border-radius: 50px;
+            box-sizing: border-box;
+            transition: all 0.3s;
+            &:before {
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                content: '';
+                width: 6px;
+                height: 6px;
+                margin-left: -3px;
+                background-color: var(--grey);
+                border-radius: 100%;
+                -webkit-animation: sdb 2s infinite;
+                animation: sdb 2s infinite;
+                box-sizing: border-box;
+                transition: all 0.3s;
+            }
+        }
+    }
 }
+
+@-webkit-keyframes sdb {
+    0% {
+      -webkit-transform: translate(0, 0);
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    80% {
+      -webkit-transform: translate(0, 20px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes sdb {
+    0% {
+      transform: translate(0, 0);
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    80% {
+      transform: translate(0, 20px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }

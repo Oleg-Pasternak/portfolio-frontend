@@ -12,7 +12,7 @@ interface ProjectsBlockProps {
 export const ProjectsBlock: React.FC<ProjectsBlockProps> = ({ projects, color1, color2 }) => {
   
   return (
-    <div className='projects'>
+    <div className='projects' id='projects'>
         {projects.map((project, index) => {
             return (
                 <Col md={6} className='projects-padding' key={index}>

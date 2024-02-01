@@ -110,6 +110,7 @@ export default function Hero(props : HeroProps) {
             )}
           </div>
       </div>
+      <a href="#projects" className="hero-scroll-down"><span /></a>
     </div>
   )
 }
