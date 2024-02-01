@@ -16,6 +16,12 @@
             padding-bottom: 0;
             height: 130px;
         }
+        .hero-scroll-down {
+            display: block;
+            @media screen and (max-width: 768px) {
+                display: none;
+            }
+        }
         .hero-inner {
             position: fixed;
         }
