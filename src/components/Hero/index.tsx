@@ -19,6 +19,7 @@ interface HeroProps {
 
 export default function Hero(props : HeroProps) {
   const titleRef = useRef(null);
+  const scrollContainerRef = useRef(null);
 
   useEffect(() => {
     const text: any = titleRef.current;
@@ -34,10 +35,12 @@ export default function Hero(props : HeroProps) {
 
     if (props.darkMode || props.advancedHero) {
       const container = text.parentNode;
+      const scrollContainer = scrollContainerRef.current;
     
       const updateOpacityAndPosition = () => {
         const scrollY = window.scrollY || window.pageYOffset;
         const opacity = 1 - scrollY / window.innerHeight * 1.4;
+        const scrollOpacity = 1 - scrollY / window.innerHeight * 3;
         const blur = scrollY / window.innerHeight * 5;
         
         // Use gsap.to for a smoother transition without delay
@@ -61,6 +64,12 @@ export default function Hero(props : HeroProps) {
           duration: 0, // Adjust the duration as needed
           ease: "power2.inOut", // Choose an ease that fits your preference
           delay: 0, // No delay for the container movement
+        });
+
+        gsap.to(scrollContainer, {
+          opacity: scrollOpacity,
+          duration: 0, // Adjust the duration as needed
+          ease: "power2.inOut", // Choose an ease that fits your preference
         });
       };
     
@@ -110,7 +119,7 @@ export default function Hero(props : HeroProps) {
             )}
           </div>
       </div>
-      <a href="#projects" className="hero-scroll-down"><span /></a>
+      <a href="#projects" className="hero-scroll-down" ref={scrollContainerRef}><span /></a>
     </div>
   )
 }
