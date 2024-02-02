@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { gsap } from 'gsap';
 import parse from 'html-react-parser';
 import { Rendition } from "src/constants/interfaces";
@@ -20,6 +20,42 @@ interface HeroProps {
 export default function Hero(props : HeroProps) {
   const titleRef = useRef(null);
   const scrollContainerRef = useRef(null);
+
+  let [title, setTitle] = useState("Hello!");
+  const titles = [
+    'Hello!',
+    'Hola!',
+    'Olá!',
+    'Hei!',
+    '여보세요!',
+    'γεια!',
+    'Kaixo!',
+    '你好!',
+    'こんにちは!',
+		'Ç’kemi!',
+		'اسلا عليكم!',
+		'Вітаю!',
+		'Aloha!',
+		'Ciao!'
+	];
+
+	const updateTitle = () => {
+    // get index of title based on it from titles array
+    const index = titles.indexOf(title);
+    
+    // get next index
+    const nextIndex = index + 1 === titles.length ? 0 : index + 1;
+		setTitle(titles[nextIndex]);
+	};
+
+	useEffect(() => {
+			const intervalID = setInterval(updateTitle, 3000);
+			setTimeout(() => {
+				updateTitle
+			}, 3000);
+			return () => clearInterval(intervalID);
+	}, [updateTitle])
+
 
   useEffect(() => {
     const text: any = titleRef.current;
@@ -88,6 +124,9 @@ export default function Hero(props : HeroProps) {
   return (
     <div className={props.advancedHero ? 'hero hero-advanced' : 'hero'}>
       <div className="hero-inner">
+          {props.advancedHero && titles.map((title_value, index) => (
+            <div key={index} className={title_value == title ? 'hero-greetings hero-greetings-visible' : 'hero-greetings'}>{title_value}</div> 
+          ))}
           {!props.projectLogo && props.title && (
             <h1 
                 style={{background: `-webkit-linear-gradient(30deg, ${props.color1} 0%, ${props.color2} 100%, ${props.color2} 100%)`, backgroundClip: 'revert-layer'}}
