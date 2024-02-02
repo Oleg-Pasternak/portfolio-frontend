@@ -21,7 +21,7 @@ export default function Hero(props : HeroProps) {
   const titleRef = useRef(null);
   const scrollContainerRef = useRef(null);
 
-  let [title, setTitle] = useState("Hi");
+  let [title, setTitle] = useState("Hi!");
   const titles = [
     "Hi!",
     "Hola!",
