@@ -4,6 +4,9 @@
     justify-content: center;
     margin-top: 80px;
     position: relative;
+    h1 {
+        user-select: none;
+    }
     @media screen and (max-width: 768px) {
         margin-top: 60px;
     }
