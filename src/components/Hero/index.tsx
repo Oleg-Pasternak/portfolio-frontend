@@ -21,17 +21,17 @@ export default function Hero(props : HeroProps) {
   const titleRef = useRef(null);
   const scrollContainerRef = useRef(null);
 
-  let [title, setTitle] = useState("Hello!");
+  let [title, setTitle] = useState("Hi");
   const titles = [
-    "Hi",
-    "Hola",
-    'Вітаю!',
-    "Bonjour",
-    "Ciao",
-    "Konnichiwa",
-    "Guten Tag",
-    "Namaste",
-    "Salam",
+    "Hi! I'm",
+    "Hola! I'm",
+    "Вітаю! I'm",
+    "Bonjour! I'm",
+    "Ciao! I'm",
+    "Konnichiwa! I'm",
+    "Guten Tag! I'm",
+    "Namaste! I'm",
+    "Salam! I'm",
   ];
 
 	const updateTitle = () => {
