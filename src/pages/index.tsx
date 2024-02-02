@@ -38,7 +38,7 @@ export default function Home(props: { query_data: QueryData }) {
         <>
           <Head 
             page={landing.seoTitle ? landing.seoTitle : landing.title} 
-            pageIcon={settings.pageIcon}
+            pageIcon={settings.favicon}
           />
           <Header 
             logo={settings.pageIcon}

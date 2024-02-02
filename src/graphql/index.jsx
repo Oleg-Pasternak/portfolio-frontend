@@ -8,6 +8,7 @@ export const GET_INITIAL_DATA = gql`
       contactEmail
       githubLink
       linkedinLink
+      favicon
     }
   landing (site: $site) {
       title

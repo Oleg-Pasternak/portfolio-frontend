@@ -34,6 +34,7 @@ query($site: String, $slug: String) {
 		contactEmail
 		githubLink
 		linkedinLink
+		favicon
 	}
 }
 
