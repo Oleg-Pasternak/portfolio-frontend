@@ -23,21 +23,16 @@ export default function Hero(props : HeroProps) {
 
   let [title, setTitle] = useState("Hello!");
   const titles = [
-    'Hello!',
-    'Hola!',
-    'Olá!',
-    'Hei!',
-    '여보세요!',
-    'γεια!',
-    'Kaixo!',
-    '你好!',
-    'こんにちは!',
-		'Ç’kemi!',
-		'اسلا عليكم!',
-		'Вітаю!',
-		'Aloha!',
-		'Ciao!'
-	];
+    "Hi",
+    "Hola",
+    'Вітаю!',
+    "Bonjour",
+    "Ciao",
+    "Konnichiwa",
+    "Guten Tag",
+    "Namaste",
+    "Salam",
+  ];
 
 	const updateTitle = () => {
     // get index of title based on it from titles array
