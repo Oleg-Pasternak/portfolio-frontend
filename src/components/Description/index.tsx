@@ -3,6 +3,7 @@ import parse from 'html-react-parser';
 import { Col, Row } from 'react-grid-system';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import SplitType from 'split-type'
 
 interface DescriptionProps {
   title: string;
@@ -14,21 +15,26 @@ export const Description = (props: DescriptionProps) => {
   gsap.registerPlugin(ScrollTrigger);
   
   useEffect(() => {
-    const titleElement = titleRef.current;
+    const titleElement: any = titleRef.current;
 
-    // Check if ScrollTrigger is available before using it
-    if (titleElement && ScrollTrigger) {
-      gsap.to(titleElement, {
-        backgroundPositionX: '0%',
-        stagger: 1,
-        scrollTrigger: {
-          trigger: titleElement,
-          scrub: 1,
-          start: 'top center',
-          end: 'bottom center',
-        },
+    const split = new SplitType(titleElement, { types: 'lines' });
+    
+    console.log(split)
+    
+    if (split.lines) {
+      split.lines.forEach((target) => {
+        gsap.to(target, {
+          backgroundPositionX: '0%',
+          ease: "none",
+          scrollTrigger: {
+            trigger: target,
+            scrub: 1,
+            start: "top center",
+            end: "bottom center"
+          }
+        });
       });
-    }
+    };
   }, []);
 
   return (

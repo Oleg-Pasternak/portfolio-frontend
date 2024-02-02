@@ -5,17 +5,20 @@
         margin-top: 60px;
     }
     h2 {
-        background: linear-gradient(to right, var(--lightHover) 50%, var(--grey) 50%);
-        background-position-x: 100%;
-        background-size: 200% 100%;
+        
         font-family: $titleFont;
         font-size: 80px;
         font-weight: 500;
         margin: 0;
         padding: 0;
         margin-bottom: 50px;
-        color: transparent;
-        background-clip: text;
+        .line {
+            background: linear-gradient(to right, var(--lightHover) 50%, var(--grey) 50%);
+            background-position-x: 100%;
+            background-size: 200% 100%;
+            color: transparent;
+            background-clip: text;
+        }
         @media screen and (max-width: 768px) {
             font-size: 48px;
             margin-bottom: 30px;

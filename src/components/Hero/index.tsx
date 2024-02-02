@@ -23,15 +23,15 @@ export default function Hero(props : HeroProps) {
 
   let [title, setTitle] = useState("Hi");
   const titles = [
-    "Hi! I'm",
-    "Hola! I'm",
-    "Вітаю! I'm",
-    "Bonjour! I'm",
-    "Ciao! I'm",
-    "Konnichiwa! I'm",
-    "Guten Tag! I'm",
-    "Namaste! I'm",
-    "Salam! I'm",
+    "Hi!",
+    "Hola!",
+    "Вітаю!",
+    "Bonjour!",
+    "Ciao!",
+    "Konnichiwa!",
+    "Guten Tag!",
+    "Namaste!",
+    "Salam!",
   ];
 
 	const updateTitle = () => {
