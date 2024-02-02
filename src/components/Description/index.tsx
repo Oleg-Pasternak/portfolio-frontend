@@ -23,6 +23,7 @@ export const Description = (props: DescriptionProps) => {
         stagger: 1,
         scrollTrigger: {
           trigger: titleElement,
+          markers: true,
           scrub: 1,
           start: 'top center',
           end: 'bottom center',

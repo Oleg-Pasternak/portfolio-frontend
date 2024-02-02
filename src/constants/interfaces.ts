@@ -7,6 +7,9 @@ export interface WebsiteSettings {
     pageIcon: {
       rendition: Rendition;
     };
+    favicon: {
+      rendition: Rendition;
+    };
 }
 
 export interface Landing {
