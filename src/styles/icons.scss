@@ -34,7 +34,7 @@
     &:hover {
       border: 1px solid var(--darkGrey);
       &::after {
-        filter: var(--filter);
+        filter: invert(100%)
       }
     }
     &:after {
