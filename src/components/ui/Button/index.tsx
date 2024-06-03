@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import React from 'react';
+import Link from "next/link";
+import React from "react";
 
 interface ButtonProps {
     onClick?: () => void;
@@ -7,16 +7,25 @@ interface ButtonProps {
     children?: React.ReactNode;
     link?: string;
     ios?: boolean;
+    websiteUrl?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ onClick, disabled, children, link, ios }) => {
+const Button: React.FC<ButtonProps> = ({
+    onClick,
+    disabled,
+    children,
+    link,
+    ios,
+    websiteUrl,
+}) => {
     if (link) {
         return (
-            <div className={ios ? 'button apple' : 'button external'}>
-                <a href={link} target='_blank' rel="noreferrer">
-                    <button>
-                        {children}
-                    </button>
+            <div
+                className={ios ? "button apple" : "button external"}
+                style={!websiteUrl ? { marginLeft: 0 } : {}}
+            >
+                <a href={link} target="_blank" rel="noreferrer">
+                    <button>{children}</button>
                 </a>
             </div>
         );
