@@ -15,9 +15,9 @@ export const Description = (props: DescriptionProps) => {
     gsap.registerPlugin(ScrollTrigger);
 
     useEffect(() => {
-        const titleElement: any = titleRef.current;
+        const timeout = setTimeout(() => {
+            const titleElement: any = titleRef.current;
 
-        if (!titleElement) {
             const split = new SplitType(titleElement, { types: "lines" });
 
             console.log(split);
@@ -36,8 +36,10 @@ export const Description = (props: DescriptionProps) => {
                     });
                 });
             }
-        }
-    }, [titleRef.current]);
+        }, 1000);
+
+        return () => clearTimeout(timeout);
+    }, [titleRef]);
 
     return (
         <div className="description">
