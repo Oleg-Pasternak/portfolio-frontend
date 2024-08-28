@@ -8,6 +8,9 @@ import client from "src/utils/apollo_client";
 import { GetServerSidePropsContext } from "next";
 import { WebsiteSettings, Landing } from "src/constants/interfaces";
 import { useEffect } from "react";
+import fs from 'fs';
+import path from 'path';
+import { GetStaticPropsContext } from 'next';
 
 interface QueryData {
     settings: WebsiteSettings;
@@ -65,19 +68,43 @@ export default function Home(props: { query_data: QueryData }) {
     );
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const domain = context.req.headers.host;
+const DATA_FOLDER = path.join(process.cwd(), 'src/graph_data');
 
-    let result = await client.query({
-        query: GET_INITIAL_DATA,
-        variables: {
-            site: domain,
-        },
-        fetchPolicy: "no-cache",
-    });
-    return {
-        props: {
-            query_data: result.data,
-        },
-    };
+export async function getStaticProps(context: GetStaticPropsContext) {
+    const domain = "karpenko.work:80";
+    const filePath = path.join(DATA_FOLDER, `karpenko-work.json`);
+
+    // Ensure the data folder exists
+    if (!fs.existsSync(DATA_FOLDER)) {
+        fs.mkdirSync(DATA_FOLDER);
+    }
+
+    // Check if the file exists
+    if (fs.existsSync(filePath)) {
+        const fileData = fs.readFileSync(filePath, 'utf-8');
+        const query_data = JSON.parse(fileData);
+        return {
+            props: {
+                query_data,
+            },
+        };
+    } else {
+        // Query the API
+        let result = await client.query({
+            query: GET_INITIAL_DATA,
+            variables: {
+                site: domain,
+            },
+            fetchPolicy: "no-cache",
+        });
+
+        // Save the result to the file
+        fs.writeFileSync(filePath, JSON.stringify(result.data));
+
+        return {
+            props: {
+                query_data: result.data,
+            },
+        };
+    }
 }

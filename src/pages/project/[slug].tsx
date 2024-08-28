@@ -9,6 +9,9 @@ import { GetServerSidePropsContext } from 'next';
 import { WebsiteSettings, Project } from "src/constants/interfaces";
 import { WideImage } from 'src/components/ui/WideImage';
 import { use, useEffect } from 'react';
+import { GetStaticPropsContext, GetStaticPathsResult } from 'next';
+import fs from 'fs';
+import path from 'path';
 
 interface QueryData {
   settings: WebsiteSettings;
@@ -55,21 +58,107 @@ export default function Project(props: { query_data: QueryData }) {
   )
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const domain = context.req.headers.host
-  const slug = context.query.slug
+const DATA_FOLDER = path.join(process.cwd(), 'src/graph_data');
 
-  let result = await client.query({
-    query: GET_INITIAL_DATA,
-    variables: {
-      site: domain,
-      slug: slug
-    },
-    fetchPolicy: 'no-cache',
-  });
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const domain = "karpenko.work:80";
+  const slug = context.params?.slug;
+  const slugFolder = path.join(DATA_FOLDER, "karpenko-work");
+  const filePath = path.join(slugFolder, `${slug}.json`);
+
+  // Ensure the slug folder exists
+  if (!fs.existsSync(slugFolder)) {
+      fs.mkdirSync(slugFolder, { recursive: true });
+  }
+
+  // Check if the file exists
+  if (fs.existsSync(filePath)) {
+      const fileData = fs.readFileSync(filePath, 'utf-8');
+      const query_data = JSON.parse(fileData);
+      return {
+          props: {
+              query_data,
+          },
+      };
+  } else {
+      // Query the API
+      let result = await client.query({
+          query: GET_INITIAL_DATA,
+          variables: {
+              site: domain,
+              slug: slug,
+          },
+          fetchPolicy: "no-cache",
+      });
+
+      // Save the result to the file
+      fs.writeFileSync(filePath, JSON.stringify(result.data));
+
+      return {
+          props: {
+              query_data: result.data,
+          },
+      };
+  }
+}
+
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+  // Define paths to be pre-rendered
+  // You need to provide the slugs you want to pre-render
+  const paths = [
+      { params: { slug: 'thebritely' } },
+      { params: { slug: 'qlevents' } },
+      { params: { slug: 'aqrm' } },
+      { params: { slug: 'monomono' } },
+      { params: { slug: 'living2022' } },
+      { params: { slug: 'zivjulete' } },
+      // Add more slugs as needed
+  ];
+
   return {
-    props: {
-      query_data: result.data,
-    },
+      paths,
+      fallback: 'blocking', // Adjust as necessary
   };
 }
+
+
+
+
+// export async function getStaticProps(context: GetStaticPropsContext) {
+//     const domain = "karpenko.work:80";
+//     const filePath = path.join(DATA_FOLDER, `karpenko-work.json`);
+
+//     // Ensure the data folder exists
+//     if (!fs.existsSync(DATA_FOLDER)) {
+//         fs.mkdirSync(DATA_FOLDER);
+//     }
+
+//     // Check if the file exists
+//     if (fs.existsSync(filePath)) {
+//         const fileData = fs.readFileSync(filePath, 'utf-8');
+//         const query_data = JSON.parse(fileData);
+//         return {
+//             props: {
+//                 query_data,
+//             },
+//         };
+//     } else {
+//         // Query the API
+//         let result = await client.query({
+//             query: GET_INITIAL_DATA,
+//             variables: {
+//                 site: domain,
+//             },
+//             fetchPolicy: "no-cache",
+//         });
+
+//         // Save the result to the file
+//         fs.writeFileSync(filePath, JSON.stringify(result.data));
+
+//         return {
+//             props: {
+//                 query_data: result.data,
+//             },
+//         };
+//     }
+// }
