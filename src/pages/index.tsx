@@ -8,9 +8,9 @@ import client from "src/utils/apollo_client";
 import { GetServerSidePropsContext } from "next";
 import { WebsiteSettings, Landing } from "src/constants/interfaces";
 import { useEffect } from "react";
-import fs from 'fs';
-import path from 'path';
-import { GetStaticPropsContext } from 'next';
+import fs from "fs";
+import path from "path";
+import { GetStaticPropsContext } from "next";
 
 interface QueryData {
     settings: WebsiteSettings;
@@ -68,11 +68,11 @@ export default function Home(props: { query_data: QueryData }) {
     );
 }
 
-const DATA_FOLDER = path.join(process.cwd(), 'src/graph_data');
+const DATA_FOLDER = path.join(process.cwd(), "src/graph_data");
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-    const domain = "karpenko.work:80";
-    const filePath = path.join(DATA_FOLDER, `karpenko-work.json`);
+    const domain = "pasternak.work:80";
+    const filePath = path.join(DATA_FOLDER, `pasternak-work.json`);
 
     // Ensure the data folder exists
     if (!fs.existsSync(DATA_FOLDER)) {
@@ -81,7 +81,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
     // Check if the file exists
     if (fs.existsSync(filePath)) {
-        const fileData = fs.readFileSync(filePath, 'utf-8');
+        const fileData = fs.readFileSync(filePath, "utf-8");
         const query_data = JSON.parse(fileData);
         return {
             props: {
