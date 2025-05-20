@@ -31,7 +31,7 @@ export const ProjectsBlock: React.FC<ProjectsBlockProps> = ({
       </div>
       {projects.map((project, index) => {
         return (
-          <div className="projects-item">
+          <div className="projects-item" key={index}>
             <ProjectPreview {...project} />
           </div>
         );

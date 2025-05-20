@@ -5,10 +5,8 @@ import Hero from "src/components/Hero";
 import Footer from "src/components/Footer";
 import { GET_INITIAL_DATA } from "src/graphql/project.jsx";
 import client from "src/utils/apollo_client";
-// Removed unused import
 import type { WebsiteSettings, Project } from "src/constants/interfaces";
 import { WideImage } from "src/components/ui/WideImage";
-// Removed unused import
 import { GetStaticPropsContext, GetStaticPathsResult } from "next";
 import fs from "fs";
 import path from "path";
