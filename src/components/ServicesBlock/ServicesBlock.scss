@@ -1,0 +1,43 @@
+.services {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 50px;
+    &_heading {
+        width: 50%;
+        min-width: 50%;
+        position: sticky;
+        top: 8rem;
+        left: 0;
+        padding-right: 20px;
+        h2 {
+            font-size: 130px;
+            font-weight: 600;
+            font-family: $titleFont;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            margin-top: 0;
+        }
+        p {
+            font-size: 20px;
+            font-family: $defaultFont;
+            font-weight: 400;
+            margin-top: 50px;
+            margin-right: 70px;
+            width: 60%;
+            @media screen and (max-width: 768px) {
+                font-size: 12px;
+                margin-top: 5px;
+            }
+        }
+        &-description {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+    &_inner {
+        width: 100%;
+    }
+}

@@ -34,8 +34,8 @@ html {
   &[data-theme="light"] {
     // Apply light theme variables
     --bc-color: #fbfbfb;
-    --dark: #050505;
-    --darkGrey: #222222;
+    --dark: #0d0d0d;
+    --darkGrey: #1a1a1a;
     --grey: #aaaaaa;
     --grey2: #8f8f8f;
     --grey3: #898989;
@@ -68,11 +68,11 @@ html {
 }
 
 body {
-  padding: 25px 30px;
-  color: var(--grey);
+  padding: 25px 0px;
+  color: var(--dark);
   font-family: $defaultFont;
   font-weight: normal;
-  background-color: var(--bc-color);
+  background-color: var(--dark);
   margin: 0;
   &:hover .cursor {
     opacity: 1;
@@ -121,24 +121,16 @@ p {
 
 span {
     font-size: 14px;
-    color: var(--grey);
     transition: $transition;
     letter-spacing: 0.30px;
     line-height: 150%;
-}
-
-/* Reset default cursor styles */
-* {
-    cursor: none;
-    @media screen and (max-width: 768px) {
-      cursor: default;
-  }
 }
 
 /* Define styles for the custom cursor */
 .cursor {
     position: fixed;
     top: 0;
+    margin-top : -2px;
     width: 10px;
     height: 10px;
     background-color: var(--white);

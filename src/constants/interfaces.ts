@@ -62,6 +62,29 @@ export interface ProjectItem {
     };
   };
 }
+
+export interface ServiceItem {
+  __typename: string;
+  link: string;
+  title: string;
+  description: string;
+  videoPreview: {
+    url: string;
+    __typename: string;
+  };
+  page: {
+    __typename: string;
+    title: string;
+    slug: string;
+  };
+  previewImage: {
+    __typename: string;
+    rendition: {
+      url: string;
+      __typename: string;
+    };
+  };
+}
   
 export interface StackBlockProps {
   leftSide: {
@@ -82,6 +105,17 @@ export interface StackBlockProps {
       }[];
     }[];
   };
+  color1: string;
+  color2: string;
+  darkMode?: boolean;
+}
+
+export interface StackOverviewBlockProps {
+  title: string;
+  description: string;
+  icons: {
+    rendition: Rendition;
+  }[];
   color1: string;
   color2: string;
   darkMode?: boolean;

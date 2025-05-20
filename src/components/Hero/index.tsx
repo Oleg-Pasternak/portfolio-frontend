@@ -6,173 +6,106 @@ import { Img } from "src/components/ui/Img";
 import Button from "src/components/ui/Button";
 
 interface HeroProps {
-    title: string;
-    description: string;
-    projectLogo?: Rendition;
-    websiteUrl?: string;
-    iosUrl?: string;
-    color1?: string;
-    color2?: string;
-    darkMode?: boolean;
-    advancedHero?: boolean;
+  title: string;
+  description: string;
+  projectLogo?: Rendition;
+  websiteUrl?: string;
+  iosUrl?: string;
+  color1?: string;
+  color2?: string;
+  darkMode?: boolean;
+  advancedHero?: boolean;
 }
 
 export default function Hero(props: HeroProps) {
-    const titleRef = useRef(null);
-    const scrollContainerRef = useRef(null);
+  const titleRef = useRef(null);
+  const scrollContainerRef = useRef(null);
+  const heroRef = useRef(null);
 
-    let [title, setTitle] = useState("Hi!");
-    const titles = [
-        "Hi!",
-        "Hola!",
-        "Вітаю!",
-        "Bonjour!",
-        "Ciao!",
-        "Konnichiwa!",
-        "Guten Tag!",
-        "Namaste!",
-        "Salam!",
-    ];
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-    const updateTitle = () => {
-        // get index of title based on it from titles array
-        const index = titles.indexOf(title);
-
-        // get next index
-        const nextIndex = index + 1 === titles.length ? 0 : index + 1;
-        setTitle(titles[nextIndex]);
+  useEffect(() => {
+    const handleScroll = () => {
+      const position = window.scrollY;
+      setScrollPosition(position);
     };
 
-    useEffect(() => {
-        const intervalID = setInterval(updateTitle, 3000);
-        setTimeout(() => {
-            updateTitle;
-        }, 3000);
-        return () => clearInterval(intervalID);
-    }, [updateTitle]);
+    const handleMouseMove = (e: MouseEvent) => {
+      const heroElement = heroRef.current as HTMLElement | null;
+      if (heroElement) {
+        const rect = heroElement.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+        setMousePosition({ x, y });
+      }
+    };
 
-    useEffect(() => {
-        const text: any = titleRef.current;
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
 
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: text,
-                scrub: 1,
-                start: "top 90%",
-                end: "bottom 30%",
-            },
-        });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
-        if (props.darkMode || props.advancedHero) {
-            const container = text.parentNode;
-            const scrollContainer = scrollContainerRef.current;
+  useEffect(() => {
+    const text = titleRef.current;
+    if (text) {
+      gsap.to(text, {
+        y: -scrollPosition * 1,
+        scale: 1 + scrollPosition * 0.002,
+        duration: 0.3,
+        ease: "power1.out",
+      });
+    }
+  }, [scrollPosition]);
 
-            const updateOpacityAndPosition = () => {
-                const scrollY = window.scrollY || window.pageYOffset;
-                const opacity = 1 - (scrollY / window.innerHeight) * 1.4;
-                const scrollOpacity = 1 - (scrollY / window.innerHeight) * 3;
-                const blur = (scrollY / window.innerHeight) * 5;
+  useEffect(() => {
+    const text = titleRef.current;
+    if (text) {
+      const limitedY = Math.max(-20, Math.min(20, mousePosition.y));
+      gsap.to(text, {
+        rotationY: -mousePosition.x * 2,
+        rotationX: -limitedY * 0.1,
+        transformPerspective: 1000,
+        transformOrigin: "center center",
+        duration: 0.4,
+        ease: "power1.out",
+      });
+    }
+  }, [mousePosition]);
 
-                // Use gsap.to for a smoother transition without delay
-                gsap.to(container, {
-                    opacity,
-                    duration: 0.05, // Adjust the duration as needed
-                    ease: "power2.inOut", // Choose an ease that fits your preference
-                });
-
-                // Use another gsap.to for blur with delay
-                gsap.to(container, {
-                    webkitFilter: `blur(${blur}px)`,
-                    duration: 0.05, // Adjust the duration as needed
-                    ease: "power2.inOut", // Choose an ease that fits your preference
-                    delay: 0.3, // Add a delay to the blur effect
-                });
-
-                // Use gsap.to to move the container upwards without delay
-                gsap.to(container, {
-                    y: -scrollY * 0.8, // Move the container upwards based on the scroll position
-                    duration: 0, // Adjust the duration as needed
-                    ease: "power2.inOut", // Choose an ease that fits your preference
-                    delay: 0, // No delay for the container movement
-                });
-
-                gsap.to(scrollContainer, {
-                    opacity: scrollOpacity,
-                    duration: 0, // Adjust the duration as needed
-                    ease: "power2.inOut", // Choose an ease that fits your preference
-                });
-            };
-
-            updateOpacityAndPosition(); // Initial setup
-
-            // Listen to the scroll event and update opacity and position
-            window.addEventListener("scroll", updateOpacityAndPosition);
-
-            // Cleanup the event listener on component unmount
-            return () => {
-                window.removeEventListener("scroll", updateOpacityAndPosition);
-            };
-        }
-    }, []);
-
-    return (
-        <div className={props.advancedHero ? "hero hero-advanced" : "hero"}>
-            <div className="hero-inner">
-                {props.advancedHero &&
-                    titles.map((title_value, index) => (
-                        <div
-                            key={index}
-                            className={
-                                title_value == title
-                                    ? "hero-greetings hero-greetings-visible"
-                                    : "hero-greetings"
-                            }
-                        >
-                            {title_value}
-                        </div>
-                    ))}
-                {!props.projectLogo && props.title && (
-                    <h1
-                        style={{
-                            background: `-webkit-linear-gradient(30deg, ${props.color1} 0%, ${props.color2} 100%, ${props.color2} 100%)`,
-                            backgroundClip: "revert-layer",
-                        }}
-                        className={
-                            !props.color1 || !props.color2
-                                ? "hero-inner-title"
-                                : "hero-inner-title--gradient"
-                        }
-                        ref={titleRef}
-                    >
-                        {props.title}
-                    </h1>
-                )}
-                {props.projectLogo && (
-                    <Img image={props.projectLogo} alt="Project logo" />
-                )}
-                <div className="hero-inner-description">
-                    {parse(props.description)}
-                </div>
-                <div className="hero-inner-buttons">
-                    {props.websiteUrl && (
-                        <Button link={props.websiteUrl}>Open</Button>
-                    )}
-                    {props.iosUrl && (
-                        <Button
-                            link={props.iosUrl}
-                            ios
-                            websiteUrl={props.websiteUrl}
-                        />
-                    )}
-                </div>
-            </div>
-            <a
-                href="#projects"
-                className="hero-scroll-down"
-                ref={scrollContainerRef}
-            >
-                <span />
-            </a>
+  return (
+    <div
+      ref={heroRef}
+      className={props.advancedHero ? "hero hero-advanced" : "hero"}
+    >
+      <div className="hero-inner">
+        {!props.projectLogo && props.title && (
+          <h1 className="hero-inner-title" ref={titleRef}>
+            {props.title}
+          </h1>
+        )}
+        {props.projectLogo && (
+          <Img image={props.projectLogo} alt="Project logo" />
+        )}
+        {props.description && (
+          <div className="hero-inner-description">
+            {parse(props.description)}
+          </div>
+        )}
+        <div className="hero-inner-buttons">
+          {props.websiteUrl && <Button link={props.websiteUrl}>Open</Button>}
+          {props.iosUrl && (
+            <Button link={props.iosUrl} ios websiteUrl={props.websiteUrl} />
+          )}
         </div>
-    );
+      </div>
+      <a href="#projects" className="hero-scroll-down" ref={scrollContainerRef}>
+        <span />
+      </a>
+    </div>
+  );
 }

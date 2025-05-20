@@ -1,6 +1,7 @@
 .stack-block {
     margin-top: 90px;
     display: flex;
+    background-color: var(--white);
     @media screen and (max-width: 768px) {
         display: block;
         margin-top: 40px;
@@ -73,6 +74,7 @@
             font-size: 20px;
             line-height: 150%;
             letter-spacing: 0.2px;
+            color: var(--dark);
             @media screen and (max-width: 768px) {
                 font-size: 16px;
                 text-align: center;

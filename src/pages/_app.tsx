@@ -1,10 +1,10 @@
-import '../styles/main.scss';
-import { gsap } from 'gsap';
-import TweenTarget from 'gsap';
-import Lenis from '@studio-freight/lenis';
-import { useEffect, useRef } from 'react';
-import Context from 'src/Context';
-import TagManager from 'react-gtm-module';
+import "../styles/main.scss";
+import { gsap } from "gsap";
+import TweenTarget from "gsap";
+import Lenis from "@studio-freight/lenis";
+import { useEffect, useRef } from "react";
+import Context from "src/Context";
+import TagManager from "react-gtm-module";
 
 interface MyAppProps {
   Component: React.ComponentType;
@@ -29,13 +29,13 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
     // Set up ScrollTrigger
     gsap.registerPlugin(Lenis); // Register Lenis as a GSAP plugin
-    gsap.utils.toArray('.animate-me').forEach((element: any) => {
-        gsap.to(element, {
+    gsap.utils.toArray(".animate-me").forEach((element: any) => {
+      gsap.to(element, {
         opacity: 1,
         scrollTrigger: {
           trigger: element,
-          start: 'top bottom', // Adjust as needed
-          end: 'bottom top', // Adjust as needed
+          start: "top bottom", // Adjust as needed
+          end: "bottom top", // Adjust as needed
           scrub: true,
           pin: true,
         },
@@ -44,25 +44,36 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
     const onMouseMove = (e: React.MouseEvent) => {
       const tagName = (e.target as Element).tagName.toLowerCase();
-      const isLink = tagName === 'svg' || tagName === 'a' || tagName === 'span' || tagName === 'img' || tagName === 'button';
+      const isLink =
+        tagName === "svg" ||
+        tagName === "a" ||
+        tagName === "span" ||
+        tagName === "img" ||
+        tagName === "button";
 
       gsap.to(cursorRef.current, {
         left: e.clientX,
         top: e.clientY,
         scale: isLink ? 1.5 : 1, // Adjust the scale factor as needed
         duration: 0.3,
-        ease: 'power2.out',
+        ease: "power2.out",
       });
     };
 
-    window.addEventListener('mousemove', onMouseMove as unknown as EventListener);
+    window.addEventListener(
+      "mousemove",
+      onMouseMove as unknown as EventListener
+    );
 
-    TagManager.initialize({ gtmId: 'G-TZEYJMJWHG' });
-    TagManager.initialize({ gtmId: 'G-BN2RYC8Y38' });
+    TagManager.initialize({ gtmId: "G-TZEYJMJWHG" });
+    TagManager.initialize({ gtmId: "G-BN2RYC8Y38" });
 
     // Cleanup: Remove event listeners and destroy Lenis when the component unmounts
     return () => {
-      window.removeEventListener('mousemove', onMouseMove as unknown as EventListener);
+      window.removeEventListener(
+        "mousemove",
+        onMouseMove as unknown as EventListener
+      );
       lenis.destroy();
     };
   }, []);
@@ -74,7 +85,7 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
   return (
     <Context.Provider value={value}>
-      <div ref={scrollContainerRef} style={{position: 'relative'}}>
+      <div ref={scrollContainerRef} style={{ position: "relative" }}>
         <Component {...pageProps} />
         <div className="cursor" ref={cursorRef} />
       </div>

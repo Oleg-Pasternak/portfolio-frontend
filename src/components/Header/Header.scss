@@ -3,6 +3,7 @@
     justify-content: space-between;
     width: 100%;
     min-height: 69px;
+    padding: 0 50px;
     @media screen and (max-width: 768px) {
         padding: 15px 0px;
     }
@@ -10,6 +11,8 @@
         display: flex;
         align-items: center;
         span {
+            color: var(--dark);
+            font-weight: 400;
             &:hover {
                 color: var(--hover);
                 transition: $transition;
