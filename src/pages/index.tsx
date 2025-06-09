@@ -1,16 +1,17 @@
 import Header from "src/components/Header";
 import Head from "src/components/Head";
-import Boiler from "src/components/_Boiler";
 import Hero from "src/components/Hero";
-import Footer from "src/components/Footer";
+import Boiler from "src/components/_Boiler";
 import { GET_INITIAL_DATA } from "src/graphql/index.jsx";
 import client from "src/utils/apollo_client";
-import { GetServerSidePropsContext } from "next";
 import { WebsiteSettings, Landing } from "src/constants/interfaces";
 import { useEffect } from "react";
 import fs from "fs";
 import path from "path";
 import { GetStaticPropsContext } from "next";
+import MobiusStrip from "src/components/MobiusStrip";
+import { useRevealer } from "src/hooks/useRevealer";
+import { useRef } from "react";
 
 interface QueryData {
   settings: WebsiteSettings;
@@ -21,6 +22,8 @@ export default function Home(props: { query_data: QueryData }) {
   const settings: WebsiteSettings = props.query_data.settings;
   const landing: Landing = props.query_data.landing;
   let darkMode = landing.darkMode;
+  const elementRef = useRef<HTMLDivElement>(null);
+  const { reveal } = useRevealer();
 
   useEffect(() => {
     document.documentElement.setAttribute(
@@ -29,10 +32,17 @@ export default function Home(props: { query_data: QueryData }) {
     );
   }, [darkMode]);
 
+  useEffect(() => {
+    if (elementRef.current) {
+      reveal(elementRef.current);
+    }
+  }, []);
+
   return (
     <div className="main-container">
       {landing && (
         <>
+          <div ref={elementRef} className="reveal" />
           <Head
             page={landing.seoTitle ? landing.seoTitle : landing.title}
             pageIcon={settings.favicon}
@@ -55,11 +65,7 @@ export default function Home(props: { query_data: QueryData }) {
             color2={landing.color2}
             darkMode={darkMode}
           />
-          <Footer
-            footerText={settings.footerText}
-            githubLink={settings.githubLink}
-            linkedinLink={settings.linkedinLink}
-          />
+          <MobiusStrip />
         </>
       )}
     </div>

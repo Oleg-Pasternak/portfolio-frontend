@@ -44,6 +44,9 @@ export default function Hero(props: HeroProps) {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("mousemove", handleMouseMove);
 
+    // Initial call to set the initial position
+    handleScroll();
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
@@ -75,7 +78,7 @@ export default function Hero(props: HeroProps) {
         ease: "power1.out",
       });
     }
-  }, [mousePosition]);
+  }, [mousePosition.x, mousePosition.y]);
 
   return (
     <div

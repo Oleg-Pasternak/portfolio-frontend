@@ -160,8 +160,9 @@ const MobiusStrip: React.FC = () => {
     let phase = 0;
     let opacity = 1;
 
+    let animationFrameId: number;
     const animate = () => {
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
 
       phase += CONFIG.animation.phaseSpeed;
       if (phase >= 2 * Math.PI) {
@@ -258,7 +259,10 @@ const MobiusStrip: React.FC = () => {
         ease: "power1.out",
       });
 
-      document.body.style.color = newOpacity < 0.5 ? "#fff" : "";
+      if (scrollProgress < 0.166) {
+        document.body.style.color = newOpacity < 0.5 ? "#fff" : "";
+        document.body.style.backgroundColor = newOpacity < 0.5 ? "#050505" : "";
+      }
     };
 
     createMobiusPoints(0);
@@ -274,11 +278,11 @@ const MobiusStrip: React.FC = () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(animationFrameId);
       mount.removeChild(renderer.domElement);
       sphereGeometry.dispose();
       material.dispose();

@@ -19,7 +19,7 @@
                 "services": [
                     {
                         "title": "Shopify Development",
-                        "description": "I create custom Shopify solutions that enhance your e-commerce business. From theme development to app integrations, I deliver tailored solutions that improve conversion rates and customer experience.",
+                        "description": "Custom Shopify solutions that enhance your e-commerce business. From theme development to app integrations, delivering tailored experiences that improve conversion rates and customer satisfaction.",
                         "page": {
                             "slug": "shopify-development",
                             "title": "Shopify Development",
@@ -40,7 +40,7 @@
                     },
                     {
                         "title": "React / Next.js Development",
-                        "description": "I build responsive, performant web applications using React.js and Next.js. My solutions leverage modern frameworks and best practices to create fast, SEO-friendly websites with excellent user experiences.",
+                        "description": "Responsive, performant web applications built with React.js and Next.js. Solutions leveraging modern frameworks and best practices to create fast, SEO-friendly websites with excellent user experiences.",
                         "page": {
                             "slug": "react-nextjs-development",
                             "title": "React / Next.js Development",
@@ -48,7 +48,7 @@
                         },
                         "previewImage": {
                             "rendition": {
-                                "url": "https://karportfolio.s3.amazonaws.com/images/thebritely-preview.format-webp.webp",
+                                "url": "/images/react-next.png",
                                 "__typename": "WagtailImageRendition"
                             },
                             "__typename": "WagtailImageNode"
@@ -57,7 +57,7 @@
                     },
                     {
                         "title": "WordPress Development",
-                        "description": "I develop custom WordPress themes and plugins tailored to your specific requirements. My solutions combine flexibility, ease of use, and performance to create websites that are simple to maintain and scale.",
+                        "description": "Custom WordPress themes and plugins tailored to specific requirements. Solutions combining flexibility, ease of use, and performance to create websites that are simple to maintain and scale.",
                         "page": {
                             "slug": "wordpress-development",
                             "title": "WordPress Development",
@@ -65,7 +65,7 @@
                         },
                         "previewImage": {
                             "rendition": {
-                                "url": "https://karportfolio.s3.amazonaws.com/images/thebritely-preview.format-webp.webp",
+                                "url": "/images/wordpress.png",
                                 "__typename": "WagtailImageRendition"
                             },
                             "__typename": "WagtailImageNode"
@@ -74,7 +74,7 @@
                     },
                     {
                         "title": "Performance Optimization",
-                        "description": "I optimize website performance to improve loading speeds, user experience, and search engine rankings. Through code optimization, asset management, and caching strategies, I ensure your site performs at its best.",
+                        "description": "Website optimization services that improve loading speeds, user experience, and search engine rankings. Through code optimization, asset management, and caching strategies, ensuring your site performs at its best.",
                         "page": {
                             "slug": "performance-optimization",
                             "title": "Performance Optimization",
@@ -82,7 +82,7 @@
                         },
                         "previewImage": {
                             "rendition": {
-                                "url": "https://karportfolio.s3.amazonaws.com/images/thebritely-preview.format-webp.webp",
+                                "url": "/images/perfomance.png",
                                 "__typename": "WagtailImageRendition"
                             },
                             "__typename": "WagtailImageNode"
@@ -91,7 +91,7 @@
                     },
                     {
                         "title": "Static Site Development",
-                        "description": "I create lightning-fast static websites with modern tools and technologies. These solutions provide superior performance, robust security, and cost-effective hosting while delivering excellent user experiences.",
+                        "description": "Lightning-fast static websites built with modern tools and technologies. These solutions provide superior performance, robust security, and cost-effective hosting while delivering excellent user experiences.",
                         "page": {
                             "slug": "static-site-development",
                             "title": "Static Site Development",
@@ -99,7 +99,7 @@
                         },
                         "previewImage": {
                             "rendition": {
-                                "url": "https://karportfolio.s3.amazonaws.com/images/thebritely-preview.format-webp.webp",
+                                "url": "/images/static-site.png",
                                 "__typename": "WagtailImageRendition"
                             },
                             "__typename": "WagtailImageNode"
@@ -108,7 +108,7 @@
                     },
                     {
                         "title": "Website Maintenance",
-                        "description": "I provide ongoing website maintenance services to keep your site secure, up-to-date, and performing optimally. Regular updates, backups, and monitoring ensure your website remains a valuable business asset.",
+                        "description": "Ongoing website maintenance services to keep your site secure, up-to-date, and performing optimally. Regular updates, backups, and monitoring ensure your website remains a valuable business asset.",
                         "page": {
                             "slug": "website-maintenance",
                             "title": "Website Maintenance",
@@ -116,7 +116,7 @@
                         },
                         "previewImage": {
                             "rendition": {
-                                "url": "https://karportfolio.s3.amazonaws.com/images/thebritely-preview.format-webp.webp",
+                                "url": "/images/maintenance.png",
                                 "__typename": "WagtailImageRendition"
                             },
                             "__typename": "WagtailImageNode"
@@ -209,6 +209,7 @@
                             "link": "https://minimuminc.com/",
                             "__typename": "Employer"
                         },
+                        "backgroundColor": "#B58800",
                         "__typename": "ProjectItem"
                     },
                     {
@@ -229,6 +230,7 @@
                             "link": "https://minimuminc.com/",
                             "__typename": "Employer"
                         },
+                        "backgroundColor": "#56001E",
                         "__typename": "ProjectItem"
                     },
                     {
@@ -249,6 +251,7 @@
                             "link": "https://minimuminc.com/",
                             "__typename": "Employer"
                         },
+                        "backgroundColor": "#00246B",
                         "__typename": "ProjectItem"
                     },
                     {
@@ -269,6 +272,7 @@
                             "link": "https://minimuminc.com/",
                             "__typename": "Employer"
                         },
+                        "backgroundColor": "#825200",
                         "__typename": "ProjectItem"
                     },
                     {
@@ -289,6 +293,7 @@
                             "link": "https://minimuminc.com/",
                             "__typename": "Employer"
                         },
+                        "backgroundColor": "#304C09",
                         "__typename": "ProjectItem"
                     },
                     {
@@ -308,7 +313,8 @@
                             "title": "minimuminc",
                             "link": "https://minimuminc.com/",
                             "__typename": "Employer"
-                        },
+                        }, 
+                        "backgroundColor": "#4F594F",
                         "__typename": "ProjectItem"
                     }
                 ]

@@ -5,6 +5,7 @@ import Lenis from "@studio-freight/lenis";
 import { useEffect, useRef } from "react";
 import Context from "src/Context";
 import TagManager from "react-gtm-module";
+import { ViewTransitions } from "next-view-transitions";
 
 interface MyAppProps {
   Component: React.ComponentType;
@@ -85,10 +86,12 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
   return (
     <Context.Provider value={value}>
-      <div ref={scrollContainerRef} style={{ position: "relative" }}>
-        <Component {...pageProps} />
-        <div className="cursor" ref={cursorRef} />
-      </div>
+      <ViewTransitions>
+        <div ref={scrollContainerRef} style={{ position: "relative" }}>
+          <Component {...pageProps} />
+          <div className="cursor" ref={cursorRef} />
+        </div>
+      </ViewTransitions>
     </Context.Provider>
   );
 }

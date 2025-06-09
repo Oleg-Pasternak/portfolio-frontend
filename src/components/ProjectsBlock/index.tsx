@@ -1,7 +1,7 @@
 import React from "react";
 import { ProjectPreview } from "src/components/ui/ProjectPreview";
-import { Col } from "react-grid-system";
 import { ProjectItem } from "src/constants/interfaces";
+import AnimatedSvg from "src/components/ui/AnimatedSvg";
 
 interface ProjectsBlockProps {
   projects: ProjectItem[];
@@ -17,6 +17,13 @@ export const ProjectsBlock: React.FC<ProjectsBlockProps> = ({
   return (
     <div className="projects" id="projects">
       <div className="projects-heading">
+        <AnimatedSvg
+          width={120}
+          height={120}
+          color={color1 || "#000"}
+          duration={5}
+          svgUrl="/svg/badge.svg"
+        />
         <h2>
           Featured <br /> Work
         </h2>

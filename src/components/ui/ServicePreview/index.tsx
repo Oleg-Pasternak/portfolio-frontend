@@ -7,13 +7,13 @@ export function ServicePreview(props: ServiceItem): ReactElement {
     <div className="service-preview">
       <div className="service-preview-heading">
         <p>{props.page.title}</p>
-        <Link
+        {/* <Link
           href={`/service/${props.page.slug}`}
           as={`/service/${props.page.slug}`}
           className="service-preview-link"
         >
           <span>Learn more</span>
-        </Link>
+        </Link> */}
       </div>
       <Link
         href={`/service/${props.page.slug}`}

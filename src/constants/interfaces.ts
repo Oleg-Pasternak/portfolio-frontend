@@ -61,6 +61,7 @@ export interface ProjectItem {
       __typename: string;
     };
   };
+  backgroundColor: string;
 }
 
 export interface ServiceItem {

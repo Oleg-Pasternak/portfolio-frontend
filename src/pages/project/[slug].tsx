@@ -10,6 +10,7 @@ import { WideImage } from "src/components/ui/WideImage";
 import { GetStaticPropsContext, GetStaticPathsResult } from "next";
 import fs from "fs";
 import path from "path";
+import { useRef, useEffect } from "react";
 
 interface QueryData {
   settings: WebsiteSettings;
