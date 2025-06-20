@@ -1,95 +1,89 @@
 import "../styles/main.scss";
 import { gsap } from "gsap";
-import TweenTarget from "gsap";
 import Lenis from "@studio-freight/lenis";
 import { useEffect, useRef } from "react";
 import Context from "src/Context";
 import TagManager from "react-gtm-module";
 import { ViewTransitions } from "next-view-transitions";
+import { useRouter } from "next/router";
+import type { AppProps } from "next/app";
 
-interface MyAppProps {
-  Component: React.ComponentType;
-  pageProps: any;
-}
-
-function MyApp({ Component, pageProps }: MyAppProps) {
-  const scrollContainerRef = useRef(null);
-  const cursorRef = useRef(null);
+function MyApp({ Component, pageProps }: AppProps) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const lenisRef = useRef<Lenis | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
-    // Initialize Lenis
-    const lenis = new Lenis();
+    if (typeof window === "undefined" || !scrollContainerRef.current) return;
 
-    // Set up GSAP ticker to work with Lenis
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
+    lenisRef.current = new Lenis({
+      lerp: 0.1,
+      touchMultiplier: 1.5,
     });
 
-    // Disable lag smoothing for better performance
-    gsap.ticker.lagSmoothing(0);
+    const raf = (time: number) => {
+      lenisRef.current?.raf(time);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
 
-    // Set up ScrollTrigger
-    gsap.registerPlugin(Lenis); // Register Lenis as a GSAP plugin
-    gsap.utils.toArray(".animate-me").forEach((element: any) => {
-      gsap.to(element, {
-        opacity: 1,
-        scrollTrigger: {
-          trigger: element,
-          start: "top bottom", // Adjust as needed
-          end: "bottom top", // Adjust as needed
-          scrub: true,
-          pin: true,
-        },
-      });
-    });
+    const handleRouteChange = () => {
+      if (lenisRef.current) {
+        lenisRef.current.stop();
+        lenisRef.current.scrollTo(0, { immediate: true });
+        lenisRef.current.start();
+      }
+      window.scrollTo(0, 0);
+    };
 
-    const onMouseMove = (e: React.MouseEvent) => {
-      const tagName = (e.target as Element).tagName.toLowerCase();
-      const isLink =
-        tagName === "svg" ||
-        tagName === "a" ||
-        tagName === "span" ||
-        tagName === "img" ||
-        tagName === "button";
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!cursorRef.current) return;
+
+      const target = e.target as HTMLElement;
+      const isInteractive =
+        target.closest("a, button, [data-cursor-hover]") !== null;
 
       gsap.to(cursorRef.current, {
-        left: e.clientX,
-        top: e.clientY,
-        scale: isLink ? 1.5 : 1, // Adjust the scale factor as needed
+        x: e.clientX,
+        y: e.clientY,
+        scale: isInteractive ? 1.5 : 1,
         duration: 0.3,
         ease: "power2.out",
       });
     };
 
-    window.addEventListener(
-      "mousemove",
-      onMouseMove as unknown as EventListener
-    );
+    window.addEventListener("mousemove", onMouseMove);
 
-    TagManager.initialize({ gtmId: "G-TZEYJMJWHG" });
-    TagManager.initialize({ gtmId: "G-BN2RYC8Y38" });
+    if (process.env.NODE_ENV === "production") {
+      TagManager.initialize({ gtmId: "G-TZEYJMJWHG" });
+      TagManager.initialize({ gtmId: "G-BN2RYC8Y38" });
+    }
 
-    // Cleanup: Remove event listeners and destroy Lenis when the component unmounts
     return () => {
-      window.removeEventListener(
-        "mousemove",
-        onMouseMove as unknown as EventListener
-      );
-      lenis.destroy();
+      router.events.off("routeChangeComplete", handleRouteChange);
+      window.removeEventListener("mousemove", onMouseMove);
+      lenisRef.current?.destroy();
+      lenisRef.current = null;
     };
-  }, []);
+  }, [router]);
 
-  const value = {
+  const contextValue = {
     scrollContainerRef,
     cursorRef,
+    lenis: lenisRef.current,
   };
 
   return (
-    <Context.Provider value={value}>
+    <Context.Provider value={contextValue}>
       <ViewTransitions>
-        <div ref={scrollContainerRef} style={{ position: "relative" }}>
-          <Component {...pageProps} />
-          <div className="cursor" ref={cursorRef} />
+        <div className="smooth-scroll-wrapper">
+          <div ref={scrollContainerRef} className="smooth-scroll-content">
+            <Component {...pageProps} />
+            <div className="cursor" ref={cursorRef} />
+          </div>
         </div>
       </ViewTransitions>
     </Context.Provider>

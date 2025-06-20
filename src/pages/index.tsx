@@ -22,7 +22,7 @@ export default function Home(props: { query_data: QueryData }) {
   const settings: WebsiteSettings = props.query_data.settings;
   const landing: Landing = props.query_data.landing;
   let darkMode = landing.darkMode;
-  const elementRef = useRef<HTMLDivElement>(null);
+  const revealRef = useRef<HTMLDivElement>(null);
   const { reveal } = useRevealer();
 
   useEffect(() => {
@@ -33,8 +33,8 @@ export default function Home(props: { query_data: QueryData }) {
   }, [darkMode]);
 
   useEffect(() => {
-    if (elementRef.current) {
-      reveal(elementRef.current);
+    if (revealRef.current) {
+      reveal(revealRef.current);
     }
   }, []);
 
@@ -42,7 +42,7 @@ export default function Home(props: { query_data: QueryData }) {
     <div className="main-container">
       {landing && (
         <>
-          <div ref={elementRef} className="reveal" />
+          <div ref={revealRef} className="reveal" />
           <Head
             page={landing.seoTitle ? landing.seoTitle : landing.title}
             pageIcon={settings.favicon}

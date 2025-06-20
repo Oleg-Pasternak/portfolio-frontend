@@ -1,7 +1,7 @@
 .stack-block {
     margin-top: 90px;
     display: flex;
-    background-color: var(--white);
+    background-color: var(--bc-color);
     @media screen and (max-width: 768px) {
         display: block;
         margin-top: 40px;

@@ -14,32 +14,30 @@ export const Description = (props: DescriptionProps) => {
   const titleRef = useRef(null);
   gsap.registerPlugin(ScrollTrigger);
 
-  // useEffect(() => {
-  //     const timeout = setTimeout(() => {
-  //         const titleElement: any = titleRef.current;
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const titleElement: any = titleRef.current;
 
-  //         const split = new SplitType(titleElement, { types: "lines" });
+      const split = new SplitType(titleElement, { types: "lines" });
 
-  //         console.log(split);
+      if (split.lines) {
+        split.lines.forEach((target) => {
+          gsap.to(target, {
+            backgroundPositionX: "0%",
+            ease: "none",
+            scrollTrigger: {
+              trigger: target,
+              scrub: 1,
+              start: "top center",
+              end: "bottom center",
+            },
+          });
+        });
+      }
+    }, 1000);
 
-  //         if (split.lines) {
-  //             split.lines.forEach((target) => {
-  //                 gsap.to(target, {
-  //                     backgroundPositionX: "0%",
-  //                     ease: "none",
-  //                     scrollTrigger: {
-  //                         trigger: target,
-  //                         scrub: 1,
-  //                         start: "top center",
-  //                         end: "bottom center",
-  //                     },
-  //                 });
-  //             });
-  //         }
-  //     }, 1000);
-
-  //     return () => clearTimeout(timeout);
-  // }, [titleRef]);
+    return () => clearTimeout(timeout);
+  }, [titleRef]);
 
   return (
     <div className="description">

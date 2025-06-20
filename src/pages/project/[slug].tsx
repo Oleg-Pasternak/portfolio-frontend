@@ -11,6 +11,8 @@ import { GetStaticPropsContext, GetStaticPathsResult } from "next";
 import fs from "fs";
 import path from "path";
 import { useRef, useEffect } from "react";
+import { useRevealer } from "src/hooks/useRevealer";
+import gsap from "gsap";
 
 interface QueryData {
   settings: WebsiteSettings;
@@ -20,11 +22,36 @@ interface QueryData {
 export default function Project(props: { query_data: QueryData }) {
   const project: Project = props.query_data.project;
   const settings: WebsiteSettings = props.query_data.settings;
+  const pageRef = useRef<HTMLDivElement>(null);
+  const revealRef = useRef<HTMLDivElement>(null);
+  const { reveal } = useRevealer();
+
+  useEffect(() => {
+    // Page entrance animation
+    if (pageRef.current) {
+      gsap.fromTo(
+        pageRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 1.2, ease: "power2.inOut" }
+      );
+    }
+  }, []);
+
+  // useEffect(() => {
+  //   if (revealRef.current) {
+  //     reveal(revealRef.current);
+  //   }
+  // }, []);
 
   return (
-    <div className="main-container">
+    <div className="main-container" ref={pageRef} style={{ opacity: 0 }}>
       {project && (
         <>
+          {/* <div
+            ref={revealRef}
+            className="reveal"
+            style={{ backgroundColor: "#f5f5f5" }}
+          /> */}
           <Head page={project.seoTitle ? project.seoTitle : project.title} />
           <Header
             logo={settings.pageIcon}

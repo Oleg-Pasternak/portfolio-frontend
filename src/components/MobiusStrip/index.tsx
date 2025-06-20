@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { ParametricGeometry } from "three/examples/jsm/geometries/ParametricGeometry";
 import gsap from "gsap";
@@ -9,8 +9,8 @@ const CONFIG = {
   twists: 4,
   size: {
     radius: 1,
-    pointSize: 0.022,
-    pointDetail: 16,
+    pointSize: 0.021,
+    pointDetail: 8,
   },
 
   // Particle physics
@@ -24,7 +24,7 @@ const CONFIG = {
   // Colors and appearance
   colors: {
     background: 0xd9d9d9,
-    points: 0x101010,
+    points: 0x050505,
   },
 
   // Camera and animation
@@ -43,9 +43,33 @@ const CONFIG = {
   },
 };
 
+// Add type declaration for deviceMemory
+interface NavigatorWithMemory extends Navigator {
+  deviceMemory?: number;
+}
+
+// Function to detect if device is low-end
+const isLowEndDevice = () => {
+  // Cast navigator to include deviceMemory property
+  const nav = navigator as NavigatorWithMemory;
+
+  // Check for indicators of a low-end device
+  return (
+    // Check CPU cores if available
+    (nav.hardwareConcurrency && nav.hardwareConcurrency <= 4) ||
+    // Check for mobile device
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      nav.userAgent
+    ) ||
+    // Check for memory limitations (if supported)
+    (nav.deviceMemory && nav.deviceMemory <= 4)
+  );
+};
+
 const MobiusStrip: React.FC = () => {
   const mobiusRef = useRef<HTMLDivElement | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
+  const [isLowEnd] = useState(isLowEndDevice());
 
   useEffect(() => {
     const mount = mobiusRef.current;
@@ -61,9 +85,9 @@ const MobiusStrip: React.FC = () => {
     camera.position.z = CONFIG.camera.initialZ;
     cameraRef.current = camera;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: !isLowEnd });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(isLowEnd ? 1 : Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(CONFIG.colors.background, 1);
     mount.appendChild(renderer.domElement);
 
@@ -72,8 +96,8 @@ const MobiusStrip: React.FC = () => {
 
     const sphereGeometry = new THREE.SphereGeometry(
       CONFIG.size.pointSize,
-      CONFIG.size.pointDetail,
-      CONFIG.size.pointDetail
+      isLowEnd ? CONFIG.size.pointDetail / 2 : CONFIG.size.pointDetail,
+      isLowEnd ? CONFIG.size.pointDetail / 2 : CONFIG.size.pointDetail
     );
     const material = new THREE.MeshStandardMaterial({
       color: CONFIG.colors.points,
@@ -100,6 +124,9 @@ const MobiusStrip: React.FC = () => {
       }
       ballsPhysics.length = 0;
 
+      const pointsCount = isLowEnd ? 50 : 100;
+      const ringCount = isLowEnd ? 10 : 20;
+
       const geometry = new ParametricGeometry(
         (u, v, target) => {
           u *= Math.PI * 2;
@@ -122,8 +149,8 @@ const MobiusStrip: React.FC = () => {
 
           target.set(x, y, z);
         },
-        100,
-        20
+        pointsCount,
+        ringCount
       );
 
       const positions = geometry.attributes.position.array;
@@ -169,10 +196,13 @@ const MobiusStrip: React.FC = () => {
         phase = 0;
       }
 
-      raycaster.setFromCamera(mouse, camera);
-      raycaster.ray.at(5, mouseWorldPos);
-      invertedBallMatrix.copy(balls.matrixWorld).invert();
-      mouseWorldPos.applyMatrix4(invertedBallMatrix);
+      // Only process mouse interaction if not a low-end device
+      if (!isLowEnd) {
+        raycaster.setFromCamera(mouse, camera);
+        raycaster.ray.at(5, mouseWorldPos);
+        invertedBallMatrix.copy(balls.matrixWorld).invert();
+        mouseWorldPos.applyMatrix4(invertedBallMatrix);
+      }
 
       for (let i = 0; i < balls.children.length; i++) {
         const ball = balls.children[i] as THREE.Mesh;
@@ -182,14 +212,17 @@ const MobiusStrip: React.FC = () => {
         springForce.multiplyScalar(CONFIG.physics.springStrength);
         physics.force.copy(springForce);
 
-        const distToMouse = ball.position.distanceTo(mouseWorldPos);
-        if (distToMouse < CONFIG.physics.repelDistance) {
-          repelForce.subVectors(ball.position, mouseWorldPos);
-          repelForce.normalize();
-          repelForce.multiplyScalar(
-            CONFIG.physics.repelStrength / (distToMouse * distToMouse + 0.01)
-          );
-          physics.force.add(repelForce);
+        // Only apply mouse repel forces if not a low-end device
+        if (!isLowEnd) {
+          const distToMouse = ball.position.distanceTo(mouseWorldPos);
+          if (distToMouse < CONFIG.physics.repelDistance) {
+            repelForce.subVectors(ball.position, mouseWorldPos);
+            repelForce.normalize();
+            repelForce.multiplyScalar(
+              CONFIG.physics.repelStrength / (distToMouse * distToMouse + 0.01)
+            );
+            physics.force.add(repelForce);
+          }
         }
 
         physics.velocity.add(physics.force);
@@ -204,8 +237,11 @@ const MobiusStrip: React.FC = () => {
     };
 
     const handleMouseMove = (event: MouseEvent) => {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      // Only track mouse movement if not on a low-end device
+      if (!isLowEnd) {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      }
     };
 
     const handleScroll = () => {
@@ -268,7 +304,10 @@ const MobiusStrip: React.FC = () => {
     createMobiusPoints(0);
     animate();
 
-    window.addEventListener("mousemove", handleMouseMove);
+    // Only add mousemove listener if not a low-end device
+    if (!isLowEnd) {
+      window.addEventListener("mousemove", handleMouseMove);
+    }
     window.addEventListener("scroll", handleScroll);
 
     const handleResize = () => {
@@ -280,7 +319,9 @@ const MobiusStrip: React.FC = () => {
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("mousemove", handleMouseMove);
+      if (!isLowEnd) {
+        window.removeEventListener("mousemove", handleMouseMove);
+      }
       window.removeEventListener("scroll", handleScroll);
       cancelAnimationFrame(animationFrameId);
       mount.removeChild(renderer.domElement);
@@ -288,7 +329,7 @@ const MobiusStrip: React.FC = () => {
       material.dispose();
       renderer.dispose();
     };
-  }, []);
+  }, [isLowEnd]);
 
   return (
     <div
