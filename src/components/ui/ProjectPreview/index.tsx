@@ -5,6 +5,8 @@ import { useTransitionRouter } from "next-view-transitions";
 import { triggerPageTransition } from "src/constants/triggerPageTransition";
 import { useRouter } from "next/router";
 import gsap from "gsap";
+import { useMousePosition } from "src/hooks/useMousePosition";
+import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 export function ProjectPreview(props: ProjectItem): ReactElement {
   const [isHovering, setIsHovering] = useState(false);
@@ -12,6 +14,7 @@ export function ProjectPreview(props: ProjectItem): ReactElement {
   const router = useTransitionRouter();
   const nextRouter = useRouter();
   const cardRef = useRef<HTMLDivElement>(null);
+  const mouse = useMousePosition();
 
   // Check if device is mobile
   useEffect(() => {
@@ -56,34 +59,35 @@ export function ProjectPreview(props: ProjectItem): ReactElement {
     isMobile,
   ]);
 
-  // Handle mouse move for 3D effect
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isMobile || !cardRef.current) return;
+  // Use mouse position and scroll position for 3D effect
+  useEffect(() => {
+    if (!isHovering || isMobile || !cardRef.current) return;
 
     const card = cardRef.current;
     const rect = card.getBoundingClientRect();
 
     // Calculate mouse position relative to card
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = mouse.x - rect.left;
+    const y = mouse.y - rect.top;
 
-    // Calculate rotation based on mouse position
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+    // Only animate if mouse is inside the card
+    if (x >= 0 && y >= 0 && x <= rect.width && y <= rect.height) {
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
 
-    const rotateY = ((x - centerX) / centerX) * 2;
-    const rotateX = -((y - centerY) / centerY) * 2;
+      const rotateY = ((x - centerX) / centerX) * 2;
+      const rotateX = -((y - centerY) / centerY) * 2;
 
-    // Animate with GSAP
-    gsap.to(card, {
-      duration: 0.5,
-      rotateX: rotateX,
-      rotateY: rotateY,
-      transformPerspective: 1000,
-      ease: "power2.out",
-      transformStyle: "preserve-3d",
-    });
-  };
+      gsap.to(card, {
+        duration: 0.5,
+        rotateX: rotateX,
+        rotateY: rotateY,
+        transformPerspective: 1000,
+        ease: "power2.out",
+        transformStyle: "preserve-3d",
+      });
+    }
+  }, [mouse, isHovering, isMobile]);
 
   // Reset card on mouse leave
   const handleMouseLeave = () => {
@@ -93,6 +97,7 @@ export function ProjectPreview(props: ProjectItem): ReactElement {
         duration: 0.5,
         rotateX: 0,
         rotateY: 0,
+        y: 0,
         transformPerspective: 1000,
         ease: "power2.out",
       });
@@ -105,10 +110,8 @@ export function ProjectPreview(props: ProjectItem): ReactElement {
       className="project-preview"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={handleMouseLeave}
-      onMouseMove={handleMouseMove}
       style={{
         transformStyle: "preserve-3d",
-        borderRadius: "8px",
         overflow: "hidden",
       }}
     >

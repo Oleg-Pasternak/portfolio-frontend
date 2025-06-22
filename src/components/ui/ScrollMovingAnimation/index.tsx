@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
+import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 interface ScrollMovingAnimationProps {
   color1: string;
@@ -12,19 +13,7 @@ const ScrollMovingAnimation = (props: ScrollMovingAnimationProps) => {
   const lineRef = useRef<null | HTMLDivElement>(null);
   const rectangleRef = useRef<null | HTMLDivElement>(null);
 
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const scrollY = useScrollPosition();
 
   useEffect(() => {
     const tl = gsap.timeline();

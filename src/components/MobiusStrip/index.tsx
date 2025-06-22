@@ -43,14 +43,11 @@ const CONFIG = {
   },
 };
 
-// Add type declaration for deviceMemory
 interface NavigatorWithMemory extends Navigator {
   deviceMemory?: number;
 }
 
-// Function to detect if device is low-end
 const isLowEndDevice = () => {
-  // Cast navigator to include deviceMemory property
   const nav = navigator as NavigatorWithMemory;
 
   // Check for indicators of a low-end device

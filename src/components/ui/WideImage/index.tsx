@@ -1,39 +1,32 @@
 import React, { useEffect, useRef } from "react";
 import { ImageProps } from "src/constants/interfaces";
 import gsap from "gsap";
+import { useScrollPosition } from "src/hooks/useScrollPosition";
 
 export const WideImage = (props: ImageProps) => {
   const imageRef = useRef<HTMLImageElement>(null);
+  const scrollY = useScrollPosition();
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (imageRef.current) {
-        const scrollY = window.scrollY;
-        const translateY = scrollY * 0.1; // Invert the calculation
+    if (!props.disableParallax && imageRef.current) {
+      const translateY = scrollY * 0.1;
+      gsap.to(imageRef.current, {
+        y: translateY,
+        ease: "none",
+        duration: 0.05,
+      });
+    }
+  }, [scrollY, props.disableParallax]);
 
-        gsap.to(imageRef.current, {
-          y: translateY,
-          ease: "none",
-          duration: 0.05,
-        });
-      }
-    };
-
-    if (!props.disableParallax) {
-      // Attach the scroll event listener
-      window.addEventListener("scroll", handleScroll);
-      // Cleanup the event listener on component unmount
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    } else {
+  useEffect(() => {
+    if (props.disableParallax) {
       gsap.fromTo(
         ".wide-image",
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 1 }
       );
     }
-  }, []);
+  }, [props.disableParallax]);
 
   return (
     <div
