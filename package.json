@@ -12,11 +12,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@apollo/client": "^3.11.8",
+    "@apollo/client": "^3.13.8",
     "@studio-freight/lenis": "^1.0.42",
     "@types/react-html-parser": "^2.0.6",
-    "apollo-link-context": "^1.0.20",
-    "apollo-link-http": "^1.5.17",
     "axios": "^1.7.7",
     "cannon-es": "^0.20.0",
     "classnames": "^2.5.1",
@@ -26,8 +24,8 @@
     "html-react-parser": "^5.1.16",
     "next": "^15.3.3",
     "next-view-transitions": "github:Oleg-Pasternak/next-view-transitions#main",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-grid-system": "^8.2.1",
     "react-gtm-module": "^2.0.11",
     "react-svg": "^16.1.34",
@@ -38,7 +36,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.15.30",
-    "@types/react": "^18.3.23",
+    "@types/react": "^18.2.0",
     "@types/react-gtm-module": "^2.0.3",
     "@types/three": "^0.176.0",
     "eslint": "^8.57.1",
