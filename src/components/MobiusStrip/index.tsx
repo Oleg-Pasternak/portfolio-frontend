@@ -53,13 +53,13 @@ const isLowEndDevice = () => {
   // Check for indicators of a low-end device
   return (
     // Check CPU cores if available
-    (nav.hardwareConcurrency && nav.hardwareConcurrency <= 4) ||
+    (nav.hardwareConcurrency && nav.hardwareConcurrency <= 8) ||
     // Check for mobile device
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       nav.userAgent
     ) ||
     // Check for memory limitations (if supported)
-    (nav.deviceMemory && nav.deviceMemory <= 4)
+    (nav.deviceMemory && nav.deviceMemory <= 8)
   );
 };
 
@@ -121,8 +121,8 @@ const MobiusStrip: React.FC = () => {
       }
       ballsPhysics.length = 0;
 
-      const pointsCount = isLowEnd ? 50 : 100;
-      const ringCount = isLowEnd ? 10 : 20;
+      const pointsCount = isLowEnd ? 80 : 100;
+      const ringCount = 20;
 
       const geometry = new ParametricGeometry(
         (u, v, target) => {

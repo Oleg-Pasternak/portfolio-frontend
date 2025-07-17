@@ -6,11 +6,12 @@ interface FooterProps {
   githubLink: string;
   linkedinLink: string;
   style?: React.CSSProperties;
+  darkMode?: boolean;
 }
 
 const Footer = (props: FooterProps): ReactElement => {
   return (
-    <footer className="footer" style={props.style}>
+    <footer className={props.darkMode ? 'footer footer-dark' : 'footer'} style={props.style}>
       <div className="footer-text">{parse(props.footerText)}</div>
       <div className="footer-inner">
         <span>© 2025</span>

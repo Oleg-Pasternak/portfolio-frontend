@@ -39,6 +39,7 @@ export function StackOverviewBlock(
               className="stack-overview-head__link"
             >
               Let’s create
+              <div className="orange-arrow" />
             </Link>
           </div>
         )}

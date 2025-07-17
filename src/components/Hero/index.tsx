@@ -19,22 +19,37 @@ interface HeroProps {
   advancedHero?: boolean;
 }
 
+function isMobile() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(max-width: 767px)").matches;
+}
+
 export default function Hero(props: HeroProps) {
   const titleRef = useRef(null);
   const scrollContainerRef = useRef(null);
   const heroRef = useRef<HTMLDivElement>(null);
 
   const scrollPosition = useScrollPosition({
-    throttle: 50,
+    throttle: 20,
   });
   const mousePosition = useMousePosition();
 
   useEffect(() => {
     const text = titleRef.current;
-    if (text) {
+    if (!text) return;
+
+    if (isMobile()) {
+      gsap.to(text, {
+        opacity: scrollPosition > 150 ? 0 : 1,
+        duration: 0.2,
+        ease: "power1.out",
+        overwrite: true,
+      });
+    } else {
       gsap.to(text, {
         y: -scrollPosition,
         scale: 1 + scrollPosition * 0.002,
+        opacity: 1,
         duration: 0.3,
         ease: "power1.out",
         overwrite: true,
@@ -44,7 +59,7 @@ export default function Hero(props: HeroProps) {
 
   useEffect(() => {
     const text = titleRef.current;
-    if (text && heroRef.current) {
+    if (text && heroRef.current && !isMobile()) {
       const rect = heroRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;

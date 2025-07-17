@@ -85,6 +85,7 @@ export interface ServiceItem {
       __typename: string;
     };
   };
+  isOpen?: boolean;
 }
   
 export interface StackBlockProps {

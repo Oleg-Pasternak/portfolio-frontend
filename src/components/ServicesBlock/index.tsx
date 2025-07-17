@@ -114,7 +114,6 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({ services }) => {
       className="services"
       id="services"
       ref={servicesRef}
-      style={{ marginTop: "1500px" }}
     >
       <div className="services_heading" ref={headingRef}>
         <h2 ref={titleRef}>Services</h2>
@@ -124,7 +123,13 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({ services }) => {
       </div>
       <div className="services_inner" ref={innerRef}>
         {services.map((service, index) => {
-          return <ServicePreview {...service} key={index} />;
+            return (
+            <ServicePreview
+              {...service}
+              key={index}
+              isOpen={index === 0}
+            />
+            );
         })}
       </div>
     </div>

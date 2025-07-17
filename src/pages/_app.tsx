@@ -44,6 +44,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       const target = e.target as HTMLElement;
       const isInteractive =
+        target && typeof (target as any).closest === "function" &&
         target.closest("a, button, [data-cursor-hover]") !== null;
 
       gsap.to(cursorRef.current, {

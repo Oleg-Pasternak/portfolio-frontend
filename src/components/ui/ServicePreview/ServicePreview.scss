@@ -10,6 +10,17 @@
     &:last-child {
         margin-bottom: 0;
     }
+    @media screen and (max-width: 768px) {
+        padding: 1rem 1.5rem;
+        margin-bottom: 0px;
+        border-radius: 0;
+    }
+    &-arrow {
+        display: none;
+        @media screen and (max-width: 768px) {
+            display: block;
+        }
+    }
     &-heading { 
         width: 100%;
         display: flex;
@@ -22,7 +33,9 @@
             margin: 0;
             margin-bottom: 60px;
             @media screen and (max-width: 768px) {
-                font-size: 16px;
+                font-size: 20px;
+                margin-bottom: 0px;
+                padding: 20px 0
             }
         }
         span {
@@ -35,21 +48,47 @@
             line-height: 150%;
             margin: 0;
             text-transform: uppercase;
-            @media screen and (max-width: 768px) {
-                font-size: 12px;
-            }
         }
     }
-    img {
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-        border-radius: 50px;
+    &-open {
+        @media screen and (max-width: 768px) {
+            height: auto !important;
+            overflow: visible !important;
+            opacity: 1 !important;
+            padding: 40px 0;
+        }
     }
-    video {
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-        border-radius: 50px;
+    &-inner {
+        @media screen and (max-width: 768px) {
+            height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: $transition;
+        }
+        &__description {
+            display: none;
+            margin-top: 20px;
+            @media screen and (max-width: 768px) {
+                display: block;
+            }
+        }
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            border-radius: 50px;
+            @media screen and (max-width: 768px) {
+                 border-radius: 30px;
+            }
+        }
+        video {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            border-radius: 50px;
+            @media screen and (max-width: 768px) {
+                 border-radius: 30px;
+            }
+        }
     }
 }

@@ -47,6 +47,9 @@ export function ProjectPreview(props: ProjectItem): ReactElement {
         document.body.style.backgroundColor = "#050505";
       }
     }
+    if (isMobile) {
+      nextRouter.prefetch(`/project/${props.page.slug}`);
+    }
     return () => {
       document.body.style.color = "#050505";
       document.body.style.backgroundColor = "#fbfbfb";
@@ -129,7 +132,7 @@ export function ProjectPreview(props: ProjectItem): ReactElement {
           src={props.previewImage.rendition.url}
           alt="Project Image"
           style={{
-            filter: isHovering && !isMobile ? "none" : "grayscale(100%)",
+            filter: isHovering || isMobile ? "none" : "grayscale(100%)",
             transition: "filter 0.5s ease",
             transformStyle: "preserve-3d",
             transform: "translateZ(20px)",

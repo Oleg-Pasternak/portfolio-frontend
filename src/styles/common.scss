@@ -9,7 +9,7 @@
   --lightHover: #6a6a6a;
   --white: #ffffff;
   --project-preview: rgba(232, 232, 232, 0.7);
-  --selection-color: #f69c2d;
+  --selection-color: #FF6620;
 }
 
 ::-moz-selection {
@@ -77,9 +77,6 @@ body {
   &:hover .cursor {
     opacity: 1;
     transition: opacity 0.3s;
-  }
-  @media (max-width: 768px) {
-    padding: 10px 15px;
   }
 }
 
@@ -203,6 +200,68 @@ button {
   background-color: var(--dark);
   pointer-events: none;
   z-index: 2;
+}
+
+.about-page {
+  main {
+    padding: 0 50px;
+    @media screen and (max-width: 768px) {
+        padding: 0 20px;
+    }
+  }
+  h1 {
+    font-size: clamp(70px,16vw,140px);
+    @media screen and (max-width: 768px) {
+        margin-top: 30px;
+    }
+  }
+  h2 {
+    font-size: 100px;
+    font-family: $titleFont;
+    font-weight: 400;
+    margin-top: 20px;
+    @media screen and (max-width: 768px) {
+      font-size: 36px;
+    }
+  }
+  p {
+    font-size: 18px;
+    font-weight: 400;
+    width: 90%;
+  }
+  &-description {
+    display: flex;
+    margin-top: 100px;
+    @media screen and (max-width: 768px) {
+      flex-direction: column-reverse;
+      margin-top: 50px;
+    }
+    &__l {
+      width: 50%;
+      margin-right: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        margin: 0;
+        
+      }
+    }
+    &__r {
+      width: 50%;
+      background-color: var(--white);
+      border-radius: 50px;
+      overflow: hidden;
+      height: 500px;
+      margin-left: 10px;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        height: 350px;
+        margin: 0;
+      }
+    }
+  }
 }
 
 ::view-transition-group(root) {

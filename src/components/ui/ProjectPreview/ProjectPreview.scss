@@ -5,6 +5,9 @@
 	position: relative;
 	width: 60%;
 	margin-top: 90px;
+	@media screen and (max-width: 768px) {
+		width: 100%;
+	}
 	a {
 		display: flex;
 		align-items: center;
@@ -16,6 +19,9 @@
 		height: 100%;
 		object-fit: cover;
 		min-height: 300px;
+		@media screen and (max-width: 768px) {
+			min-height: 200px;
+		}
 	}
 	&-description {
 		display: flex;
@@ -23,6 +29,9 @@
 		justify-content: space-between;
 		padding: 10px 0;
 		width: 100%;
+		@media screen and (max-width: 768px) {
+            color: var(--white);
+        }
 		a {
 			width: initial;
 		}

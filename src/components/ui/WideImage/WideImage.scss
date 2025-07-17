@@ -1,8 +1,10 @@
 .wide-image {
     margin-top: 80px;
+    padding: 0 50px;
     @media screen and (max-width: 768px) {
         opacity: 1 !important;
         margin-top: 60px;
+        padding: 0 20px;
     }
     &-parallax {
         position: relative;

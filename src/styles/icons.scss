@@ -7,7 +7,7 @@
   margin-right: 30px;
   transition: $transition;
   &:hover {
-      filter: var(--filter);
+      filter: brightness(0) saturate(100%) invert(55%) sepia(19%) saturate(7414%) hue-rotate(1deg) brightness(103%) contrast(105%);
       transition: $transition;
   }
 }
@@ -20,7 +20,7 @@
   background-size: 30px 30px;
   transition: $transition;
   &:hover {
-      filter: var(--filter);
+      filter: brightness(0) saturate(100%) invert(55%) sepia(19%) saturate(7414%) hue-rotate(1deg) brightness(103%) contrast(105%);
       transition: $transition;
   }
 }
@@ -73,4 +73,20 @@
   background: url('/assets/icons/star.svg');
   background-size: 24px 24px;
   margin: 0 20px;
+}
+
+.arrow {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url('/assets/icons/arrow.svg');
+  background-size: 20px 20px;
+}
+
+.orange-arrow {
+  display: block;
+  width: 2.7rem;
+  height: 2.7rem;
+  background: url('/assets/icons/orange-arrow.svg');
+  background-size: 2.75rem 2.7rem;
 }

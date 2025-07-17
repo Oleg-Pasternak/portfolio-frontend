@@ -10,12 +10,13 @@ interface HeaderProps {
     svg?: boolean;
   };
   contactEmail: string;
+  darkMode?: boolean;
 }
 
 const Header = (props: HeaderProps) => {
   const router = useTransitionRouter();
   return (
-    <header className="header">
+    <header className={props.darkMode ? "header header-dark" : "header"}>
       <Link
         href="/"
         passHref
@@ -28,9 +29,14 @@ const Header = (props: HeaderProps) => {
       >
         <Img image={props.logo} svg={true} />
       </Link>
-      <a href={`mailto:${props.contactEmail}`}>
-        <span>MENU</span>
-      </a>
+      <Link href='/about' onClick={(e) => {
+          e.preventDefault();
+          router.push(`/about`, {
+            onTransitionReady: triggerPageTransition,
+          });
+        }}>
+        <span>ABOUT</span>
+      </Link>
     </header>
   );
 };

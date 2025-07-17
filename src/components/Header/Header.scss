@@ -4,15 +4,17 @@
     width: 100%;
     min-height: 69px;
     padding: 0 50px;
+    z-index: 1;
+    position: relative;
     @media screen and (max-width: 768px) {
-        padding: 15px 0px;
+        padding: 15px 20px;
     }
     a {
         display: flex;
         align-items: center;
         span {
             color: var(--dark);
-            font-weight: 400;
+            font-weight: 500;
             &:hover {
                 color: var(--hover);
                 transition: $transition;
@@ -20,6 +22,21 @@
             @media screen and (max-width: 768px) {
                 font-size: 12px;
             }
+        }
+    }
+}
+
+.header-dark {
+    a {
+        span {
+            @media screen and (max-width: 768px) {
+                color: var(--white);
+            }
+        }
+    }
+    svg {
+        @media screen and (max-width: 768px) {
+            filter: invert(100%);
         }
     }
 }

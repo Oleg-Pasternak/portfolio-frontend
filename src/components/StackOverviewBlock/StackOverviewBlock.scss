@@ -3,11 +3,20 @@
     color: var(--dark);
     padding: 80px 50px;
     margin-top: 90px;
+    @media screen and (max-width: 768px) {
+        padding: 60px 20px;
+    }
     &-head {
         display: flex;
         justify-content: space-between;
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+        }
         &__title {
             width: 50%;
+            @media screen and (max-width: 768px) {
+                width: 100%;
+            }
         }
         &__description {
             width: 50%;
@@ -15,12 +24,20 @@
             flex-direction: column;
             position: relative;
             min-height: 170px;
+            @media screen and (max-width: 768px) {
+                width: 100%;
+                flex-wrap: wrap-reverse;
+            }
         }
         h2 {
             font-size: 40px;
             font-weight: 500;
             margin: 0;
             width: 80%;
+            @media screen and (max-width: 768px) {
+                font-size: 40px;
+                width: 100%;
+            }
         }
         p {
             font-size: 20px;
@@ -28,13 +45,15 @@
             line-height: 150%;
             width: 70%;
             @media screen and (max-width: 768px) {
-                font-size: 12px;
-                margin-top: 5px;
+                margin-top: 40px;
                 margin-right: 0;
-                width: 100%;
+                width: 70%;
             }
         }
-        a {
+        &__link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: absolute;
             font-size: 45px;
             font-weight: 500;
@@ -46,7 +65,22 @@
             right: 0;
             bottom: -20px;
             text-transform: uppercase;
+            @media screen and (max-width: 768px) {
+                position: relative;
+                margin-top: 30px;
+                font-size: 40px;
+            }
             &:hover {
+                transition: all 0.3s ease;
+                color: #ff6620;
+                .orange-arrow {
+                    margin-left: 5px;
+                    margin-right: 20px;
+                    transition: all 0.3s ease;
+                }
+            }
+            .orange-arrow {
+                margin-left: 25px;
                 transition: all 0.3s ease;
             }
         }
@@ -62,6 +96,10 @@
         overflow: hidden;
         margin-top: 80px;
         position: relative;
+        @media screen and (max-width: 768px) {
+            min-height: 7rem;
+            margin-top: 60px;
+        }
     }
     &__icons {
         display: flex;
@@ -69,12 +107,15 @@
         align-items: center;
         animation: scroll 30s linear infinite;
         position: absolute;
-        
         img {
             filter: grayscale(100%) brightness(0.8) contrast(1.2);
             padding: 0 1.5rem;
             scale: 0.8;
             transition: all 0.5s ease;
+            @media screen and (max-width: 768px) {
+                scale: 0.7;
+                padding: 0 0.7rem;
+            }
         }
         
         &:nth-child(2) {
