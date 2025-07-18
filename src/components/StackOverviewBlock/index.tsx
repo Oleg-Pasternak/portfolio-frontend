@@ -20,6 +20,7 @@ export function StackOverviewBlock(
             width={50} 
             height={50}
             style={{ width: 'auto', height: 'auto' }}
+            priority={true}
           />
         ))}
       </div>

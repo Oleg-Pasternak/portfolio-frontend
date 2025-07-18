@@ -41,7 +41,7 @@ export default function Hero(props: HeroProps) {
     if (isMobile()) {
       gsap.to(text, {
         opacity: scrollPosition > 250 ? 0 : 1,
-        duration: 0.5,
+        duration: 0.3,
         ease: "power1.out",
         overwrite: true,
       });
