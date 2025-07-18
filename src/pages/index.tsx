@@ -88,7 +88,7 @@ export default function Home(props: { query_data: QueryData }) {
               linkedinLink={settings.linkedinLink}
               darkMode={true}
           />
-          {isMobile ? <ScrollVideo src="/videos/mobius.mp4" /> : <MobiusStrip />}
+          {isMobile ? <ScrollVideo src="https://pstrkstorage.s3.eu-north-1.amazonaws.com/mobius.mp4" /> : <MobiusStrip />}
         </>
       )}
     </div>

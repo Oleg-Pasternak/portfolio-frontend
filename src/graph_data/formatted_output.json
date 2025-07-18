@@ -33,7 +33,7 @@
                             "__typename": "WagtailImageNode"
                         },
                         "videoPreview": {
-                            "url": "/videos/shopify.mp4",
+                            "url": "https://pstrkstorage.s3.eu-north-1.amazonaws.com/shopify.mp4",
                             "__typename": "Video"
                         },
                         "__typename": "ServiceItem"
