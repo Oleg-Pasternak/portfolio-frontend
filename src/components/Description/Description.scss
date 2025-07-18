@@ -6,6 +6,22 @@
         margin-top: 60px;
         padding: 0 20px;
     }
+    
+    .description-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .description-inner {
+        width: 75%; // Equivalent to 9/12 columns
+        margin-left: 16.666%; // Equivalent to 2/12 offset
+        @media screen and (max-width: 768px) {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+    
     h2 {
         font-family: $defaultFont;
         font-size: 80px;

@@ -53,7 +53,7 @@
             @media screen and (max-width: 768px) {
                 flex-direction: column;
                 color: var(--white);
-                align-items: end;
+                align-items: flex-end;
             }
         }
         .animated-svg {
@@ -66,7 +66,7 @@
         .staricon {
             @media screen and (max-width: 768px) {
                 display: flex;
-                align-items: end;
+                align-items: flex-end;
                 margin: 0;
                 margin-top: 20px;
             }
