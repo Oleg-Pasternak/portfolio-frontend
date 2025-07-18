@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import parse from "html-react-parser";
-import { Col, Row } from "react-grid-system";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import SplitType from "split-type";
@@ -41,16 +40,14 @@ export const Description = (props: DescriptionProps) => {
 
   return (
     <div className="description">
-      <Row>
-        <Col md={2} />
-        <Col md={9} className="description-innert">
+      <div className="description-container">
+        <div className="description-inner">
           {props.title && <h2 ref={titleRef}>{props.title}</h2>}
           {props.text && (
             <div className="description__content">{parse(props.text)}</div>
           )}
-        </Col>
-        <Col md={1} />
-      </Row>
+        </div>
+      </div>
     </div>
   );
 };

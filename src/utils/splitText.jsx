@@ -1,4 +1,3 @@
-"use strict";
 
 // // coded by: Ayhanexe with <3
 // // I do not care about money

@@ -34,7 +34,7 @@ const About = (props: { query_data: QueryData }) => {
                   <div className="about-page-description__l">
                     <h1>About</h1>
                     <p>
-                      Hello! I'm Oleg Pasternak.<br />
+                      Hello! I&apos;m Oleg Pasternak.<br />
                       Frontend developer based in Kiyv, Ukraine. I specialize in creating web applications that are not only functional but also visually appealing.
                     </p>
                   </div>
@@ -69,7 +69,7 @@ export default About;
 
 const DATA_FOLDER = path.join(process.cwd(), "src/graph_data");
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getStaticProps() {
   const domain = "pasternak.work:80";
   const filePath = path.join(DATA_FOLDER, `pasternak-work.json`);
 

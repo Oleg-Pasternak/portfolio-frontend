@@ -8,7 +8,9 @@ const AsciiDonut: React.FC = () => {
 
     useEffect(() => {
         if (!containerRef.current) return;
-
+        
+        const container = containerRef.current;
+        
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0, 0, 0);
 
@@ -63,11 +65,11 @@ const AsciiDonut: React.FC = () => {
             camera.updateProjectionMatrix();
             effect.setSize(window.innerWidth, window.innerHeight);
         };
-
-        window.addEventListener('resize', handleResize);
-
         return () => {
             window.removeEventListener('resize', handleResize);
+            if (container && effect.domElement.parentNode) {
+                container.removeChild(effect.domElement);
+            }
             if (containerRef.current && effect.domElement.parentNode) {
                 containerRef.current.removeChild(effect.domElement);
             }
