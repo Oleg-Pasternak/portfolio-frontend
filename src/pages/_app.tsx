@@ -1,6 +1,6 @@
 import "../styles/main.scss";
 import { gsap } from "gsap";
-import Lenis from "@studio-freight/lenis";
+import Lenis from "lenis";
 import { useEffect, useRef } from "react";
 import Context from "src/Context";
 import TagManager from "react-gtm-module";

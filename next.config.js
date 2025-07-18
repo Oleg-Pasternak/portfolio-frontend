@@ -8,4 +8,9 @@ module.exports = {
     domains: ['res.cloudinary.com', '127.0.0.1'],
   },
   output: 'export',
+  transpilePackages: [
+    'lenis',
+    'three-stdlib',
+    'split-type',
+  ],
 };
