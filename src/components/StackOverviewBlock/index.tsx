@@ -42,7 +42,7 @@ export function StackOverviewBlock(
           <div className="stack-overview-head__description">
             <p>{description}</p>
             <a href="mailto:oleg@pasternak.work?subject=Let's Work Together" className="stack-overview-head__link">
-              Let's create
+              Let&apos;s create
               <div className="orange-arrow" />
             </a>
           </div>
