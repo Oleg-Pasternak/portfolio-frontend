@@ -31,7 +31,7 @@ const CONFIG = {
   camera: {
     fov: 60,
     initialZ: 5,
-    scrollFactor: 45, // How much camera pulls back on scroll
+    scrollFactor: 45,
   },
 
   // Animation timing
@@ -39,7 +39,7 @@ const CONFIG = {
     phaseSpeed: 0.005,
     transitionDuration: 0.3,
     fadeThreshold: 0.1,
-    rotationFactor: 1.5, // Rotation speed multiplier
+    rotationFactor: 1.5,
   },
 };
 
@@ -50,7 +50,7 @@ interface NavigatorWithMemory extends Navigator {
 const isLowEndDevice = (): boolean => {
   // Check if we're in the browser environment
   if (typeof window === 'undefined' || typeof navigator === 'undefined') {
-    return false; // Default to high-end device for SSR
+    return false;
   }
   
   const nav = navigator as NavigatorWithMemory;
@@ -71,7 +71,7 @@ const isLowEndDevice = (): boolean => {
 const MobiusStrip: React.FC = () => {
   const mobiusRef = useRef<HTMLDivElement | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
-  const [isLowEnd, setIsLowEnd] = useState(false); // Default to false for SSR
+  const [isLowEnd, setIsLowEnd] = useState(false);
 
   // Detect device capabilities on client side only
   useEffect(() => {

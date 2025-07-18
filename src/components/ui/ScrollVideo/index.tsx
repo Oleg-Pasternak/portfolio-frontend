@@ -33,7 +33,6 @@ export const ScrollVideo: React.FC<ScrollVideoProps> = ({
             if (!videoLoadedRef.current) {
                 container.style.height = Math.floor(video.duration) * playbackConst + "px";
                 videoLoadedRef.current = true;
-                console.log("Video loaded successfully");
             }
         };
 

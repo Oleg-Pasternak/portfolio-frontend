@@ -17,21 +17,19 @@ interface HeadComponentProps {
 const HeadComponent: React.FC<HeadComponentProps> = (props) => {
   
   const defaultPreloads: PreloadAsset[] = [
-    // Critical videos
     { href: "/videos/mobius.mp4", as: "video", type: "video/mp4" },
     { href: "/videos/shopify.mp4", as: "video", type: "video/mp4" },
 
     { href: "/svg/badge.svg", as: "image", type: "image/svg+xml" },
-    { href: "/svg/hero-pattern.svg", as: "image", type: "image/svg+xml" },
     { href: "/images/react-next.png", as: "image", type: "image/png" },
     { href: "/images/static-site.png", as: "image", type: "image/png" },
     { href: "/images/wordpress.png", as: "image", type: "image/png" },
     { href: "/images/perfomance.png", as: "image", type: "image/png" },
     { href: "/images/maintenance.png", as: "image", type: "image/png" },
-    { href: "/fonts/ClashDisplay/ClashDisplay-Medium.otf", as: "font", type: "font/otf", crossOrigin: "anonymous" },
-    { href: "/fonts/ClashDisplay/ClashDisplay-Bold.otf", as: "font", type: "font/otf", crossOrigin: "anonymous" },
-    { href: "/fonts/THICCCBOI/THICCCBOI-Regular.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
-    { href: "/fonts/THICCCBOI/THICCCBOI-Medium.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
+    { href: "/fonts/ClashDisplay/ClashDisplay-Medium.otf", as: "font", crossOrigin: "anonymous" },
+    { href: "/fonts/ClashDisplay/ClashDisplay-Bold.otf", as: "font", crossOrigin: "anonymous" },
+    { href: "/fonts/THICCCBOI/THICCCBOI-Regular.ttf", as: "font", crossOrigin: "anonymous" },
+    { href: "/fonts/THICCCBOI/THICCCBOI-Medium.ttf", as: "font", crossOrigin: "anonymous" },
   ];
 
   return (
@@ -44,15 +42,14 @@ const HeadComponent: React.FC<HeadComponentProps> = (props) => {
       <meta name="theme-color" content="#000000" />
       {props.page && <title>{props.page}</title>}
       
-      {/* Preload assets */}
       {defaultPreloads.map((asset, index) => (
         <link
           key={`preload-${index}`}
           rel="preload"
           href={asset.href}
           as={asset.as}
-          type={asset.type}
-          crossOrigin={asset.crossOrigin}
+          {...(asset.type && { type: asset.type })}
+          {...(asset.crossOrigin && { crossOrigin: asset.crossOrigin })}
         />
       ))}
     </Head>

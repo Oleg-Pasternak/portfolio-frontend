@@ -42,19 +42,6 @@ const About = (props: { query_data: QueryData }) => {
                     <AsciiDonut />
                   </div>
                 </div>
-                {/* <div className="about-page-skills">
-                  <h2>Skills</h2>
-                  <ul>
-                    <li>JavaScript</li>
-                    <li>TypeScript</li>
-                    <li>React</li>
-                    <li>Next.js</li>
-                    <li>GraphQL</li>
-                    <li>Node.js</li>
-                    <li>CSS / SCSS / Tailwind CSS</li>
-                    <li>HTML5</li>
-                  </ul>
-                </div> */}
             </main>
             <Footer
                 footerText={settings.footerText}

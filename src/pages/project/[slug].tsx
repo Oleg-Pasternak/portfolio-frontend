@@ -27,7 +27,6 @@ export default function Project(props: { query_data: QueryData }) {
   const { reveal } = useRevealer();
 
   useEffect(() => {
-    // Page entrance animation
     if (pageRef.current) {
       gsap.fromTo(
         pageRef.current,
@@ -37,21 +36,10 @@ export default function Project(props: { query_data: QueryData }) {
     }
   }, []);
 
-  // useEffect(() => {
-  //   if (revealRef.current) {
-  //     reveal(revealRef.current);
-  //   }
-  // }, []);
-
   return (
     <div className="main-container" ref={pageRef} style={{ opacity: 0 }}>
       {project && (
         <>
-          {/* <div
-            ref={revealRef}
-            className="reveal"
-            style={{ backgroundColor: "#f5f5f5" }}
-          /> */}
           <Head page={project.seoTitle ? project.seoTitle : project.title} />
           <Header
             logo={settings.pageIcon}

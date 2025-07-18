@@ -1,8 +1,4 @@
 
-// // coded by: Ayhanexe with <3
-// // I do not care about money
-// // This code is fully free
-// // use it as you want ;)
 export class SplitText {
   #options = {
     charClass: "aki__char",
@@ -190,7 +186,6 @@ export class SplitText {
         if (element) {
           this.target = element;
           this.#getTextContent();
-          // window.addEventListener("resize", () => resizeFunction(element))
         } else {
           this.#logAndThrowError(
             `can't found %c${elementOrSelector}%c in DOM tree!`
