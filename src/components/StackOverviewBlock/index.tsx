@@ -41,14 +41,10 @@ export function StackOverviewBlock(
         {description && (
           <div className="stack-overview-head__description">
             <p>{description}</p>
-            <Link
-              href="/about"
-              as="/services"
-              className="stack-overview-head__link"
-            >
-              Let’s create
+            <a href="mailto:oleg@pasternak.work?subject=Let's Work Together" className="stack-overview-head__link">
+              Let's create
               <div className="orange-arrow" />
-            </Link>
+            </a>
           </div>
         )}
       </div>
