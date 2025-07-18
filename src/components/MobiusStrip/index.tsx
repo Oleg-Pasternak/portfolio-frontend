@@ -47,26 +47,36 @@ interface NavigatorWithMemory extends Navigator {
   deviceMemory?: number;
 }
 
-const isLowEndDevice = () => {
+const isLowEndDevice = (): boolean => {
+  // Check if we're in the browser environment
+  if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+    return false; // Default to high-end device for SSR
+  }
+  
   const nav = navigator as NavigatorWithMemory;
 
   // Check for indicators of a low-end device
   return (
     // Check CPU cores if available
-    (nav.hardwareConcurrency && nav.hardwareConcurrency <= 8) ||
+    (nav.hardwareConcurrency !== undefined && nav.hardwareConcurrency <= 4) ||
     // Check for mobile device
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       nav.userAgent
     ) ||
     // Check for memory limitations (if supported)
-    (nav.deviceMemory && nav.deviceMemory <= 8)
+    (nav.deviceMemory !== undefined && nav.deviceMemory <= 4)
   );
 };
 
 const MobiusStrip: React.FC = () => {
   const mobiusRef = useRef<HTMLDivElement | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
-  const [isLowEnd] = useState(isLowEndDevice());
+  const [isLowEnd, setIsLowEnd] = useState(false); // Default to false for SSR
+
+  // Detect device capabilities on client side only
+  useEffect(() => {
+    setIsLowEnd(isLowEndDevice());
+  }, []);
 
   useEffect(() => {
     const mount = mobiusRef.current;
