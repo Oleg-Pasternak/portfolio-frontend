@@ -42,13 +42,10 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({ services }) => {
         const bottomOffset = topOffset + rect.height;
         if (scrollPosition >= topOffset && scrollPosition <= bottomOffset) {
           setActiveIndex(index);
-          if (services[index]?.description) {
-            setCurrentDescription(services[index].description);
-          }
         }
       });
     }
-  }, [scrollY, services]);
+  }, [scrollY]);
 
   useEffect(() => {
     if (descriptionRef.current && services[activeIndex]?.description) {
@@ -67,7 +64,7 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({ services }) => {
         },
       });
     }
-  }, [activeIndex, services]);
+  }, [activeIndex]);
 
   useEffect(() => {
     const services = servicesRef.current;
