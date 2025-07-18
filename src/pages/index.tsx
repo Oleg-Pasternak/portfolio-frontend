@@ -11,7 +11,7 @@ import fs from "fs";
 import path from "path";
 import { GetStaticPropsContext } from "next";
 import MobiusStrip from "src/components/MobiusStrip";
-import { ScrollVideo } from "src/components/ui/ScrollVideo";
+import { HeroVideo } from "src/components/ui/HeroVideo";
 import { useRevealer } from "src/hooks/useRevealer";
 
 interface QueryData {
@@ -88,7 +88,7 @@ export default function Home(props: { query_data: QueryData }) {
               linkedinLink={settings.linkedinLink}
               darkMode={true}
           />
-          {isMobile ? <ScrollVideo src="https://pstrkstorage.s3.eu-north-1.amazonaws.com/mobius.mp4" /> : <MobiusStrip />}
+          {isMobile ? <HeroVideo src="https://pstrkstorage.s3.eu-north-1.amazonaws.com/mobius.mp4" /> : <MobiusStrip />}
         </>
       )}
     </div>

@@ -78,9 +78,8 @@
             justify-content: center;
             text-align: center;
             @media screen and (max-width: 768px) {
-                display: block;
-                margin-top: 320px;
-                color: var(--white)
+                color: var(--white);
+                font-size: 14vw;
             }
             &--gradient {
                 background-clip: revert-layer;
