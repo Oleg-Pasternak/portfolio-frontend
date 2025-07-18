@@ -23,6 +23,7 @@ export const Img = (props: ImgProps) => {
         <ReactSVG src={image.toString()} />
       )}
       {!props.svg && (
+        // eslint-disable-next-line @next/next/no-img-element
         <img 
           src={image.toString()} 
           alt={props.alt} 

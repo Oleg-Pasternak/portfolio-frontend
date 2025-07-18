@@ -105,24 +105,40 @@ export async function getStaticProps(context: GetStaticPropsContext) {
       },
     };
   } else {
-    // Query the API
-    let result = await client.query({
-      query: GET_INITIAL_DATA,
-      variables: {
-        site: domain,
-        slug: slug,
-      },
-      fetchPolicy: "no-cache",
-    });
+    try {
+      // Query the API
+      let result = await client.query({
+        query: GET_INITIAL_DATA,
+        variables: {
+          site: domain,
+          slug: slug,
+        },
+        fetchPolicy: "no-cache",
+      });
 
-    // Save the result to the file
-    fs.writeFileSync(filePath, JSON.stringify(result.data));
+      // Save the result to the file
+      fs.writeFileSync(filePath, JSON.stringify(result.data));
 
-    return {
-      props: {
-        query_data: result.data,
-      },
-    };
+      return {
+        props: {
+          query_data: result.data,
+        },
+      };
+    } catch (error) {
+      console.error('Apollo Client error during build:', error);
+      // Fallback to empty data or default values
+      return {
+        props: {
+          query_data: {
+            settings: {},
+            project: {
+              title: 'Project Not Found',
+              description: 'This project could not be loaded.',
+            },
+          },
+        },
+      };
+    }
   }
 }
 

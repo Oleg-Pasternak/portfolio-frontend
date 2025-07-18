@@ -65,13 +65,13 @@ const AsciiDonut: React.FC = () => {
             camera.updateProjectionMatrix();
             effect.setSize(window.innerWidth, window.innerHeight);
         };
+        
+        window.addEventListener('resize', handleResize);
+        
         return () => {
             window.removeEventListener('resize', handleResize);
             if (container && effect.domElement.parentNode) {
                 container.removeChild(effect.domElement);
-            }
-            if (containerRef.current && effect.domElement.parentNode) {
-                containerRef.current.removeChild(effect.domElement);
             }
             if (requestRef.current) {
                 cancelAnimationFrame(requestRef.current);
@@ -81,7 +81,7 @@ const AsciiDonut: React.FC = () => {
             material.dispose();
             renderer.dispose();
         };
-    }, []);
+    }, [containerRef]);
 
     return <div ref={containerRef} className="ascii" />;
 };

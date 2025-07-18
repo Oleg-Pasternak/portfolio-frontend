@@ -11,14 +11,15 @@
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .description-inner {
-        width: 75%; // Equivalent to 9/12 columns
-        margin-left: 16.666%; // Equivalent to 2/12 offset
+        width: 85%;
         @media screen and (max-width: 768px) {
             width: 100%;
-            margin-left: 0;
         }
     }
     
@@ -29,6 +30,7 @@
         margin: 0;
         padding: 0;
         margin-bottom: 50px;
+        width: 100%;
         .line {
             background: linear-gradient(to right, var(--lightHover) 50%, var(--grey) 50%);
             background-position-x: 100%;

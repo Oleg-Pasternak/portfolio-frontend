@@ -51,7 +51,7 @@ export default function Home(props: { query_data: QueryData }) {
     if (revealRef.current) {
       reveal(revealRef.current);
     }
-  }, []);
+  }, [reveal]);
 
   useEffect(() => {
     document.body.style.backgroundColor = "#050505";
@@ -116,22 +116,38 @@ export async function getStaticProps(context: GetStaticPropsContext) {
       },
     };
   } else {
-    // Query the API
-    let result = await client.query({
-      query: GET_INITIAL_DATA,
-      variables: {
-        site: domain,
-      },
-      fetchPolicy: "no-cache",
-    });
+    try {
+      // Query the API
+      let result = await client.query({
+        query: GET_INITIAL_DATA,
+        variables: {
+          site: domain,
+        },
+        fetchPolicy: "no-cache",
+      });
 
-    // Save the result to the file
-    fs.writeFileSync(filePath, JSON.stringify(result.data));
+      // Save the result to the file
+      fs.writeFileSync(filePath, JSON.stringify(result.data));
 
-    return {
-      props: {
-        query_data: result.data,
-      },
-    };
+      return {
+        props: {
+          query_data: result.data,
+        },
+      };
+    } catch (error) {
+      console.error('Apollo Client error during build:', error);
+      // Fallback to empty data or default values
+      return {
+        props: {
+          query_data: {
+            settings: {},
+            landing: {
+              title: 'Portfolio',
+              pageDescription: 'Frontend Developer Portfolio',
+            },
+          },
+        },
+      };
+    }
   }
 }

@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import parse from "html-react-parser";
+import Image from "next/image";
 import { StackOverviewBlockProps } from "src/constants/interfaces";
 import Link from "next/link";
 
@@ -12,7 +13,14 @@ export function StackOverviewBlock(
     return (
       <div className="stack-overview__icons">
         {icons.map((icon, idx) => (
-          <img src={icon.rendition.url} alt="Icon" key={idx} />
+          <Image 
+            src={icon.rendition.url} 
+            alt="Icon" 
+            key={idx}
+            width={50} 
+            height={50}
+            style={{ width: 'auto', height: 'auto' }}
+          />
         ))}
       </div>
     );

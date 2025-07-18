@@ -36,6 +36,7 @@ export const WideImage = (props: ImageProps) => {
           : "wide-image wide-image-parallax full-width"
       }
     >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         ref={imageRef}
         src={props.image.rendition.url}

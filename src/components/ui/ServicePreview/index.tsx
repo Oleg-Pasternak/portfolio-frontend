@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import React, { ReactElement, useRef, useState } from "react";
 import { ServiceItem } from "src/constants/interfaces";
 
@@ -44,7 +45,13 @@ export function ServicePreview(props: ServiceItem): ReactElement {
               playsInline
             />
           ) : (
-            <img src={props.previewImage.rendition.url} alt="Service Image" />
+            <Image 
+              src={props.previewImage.rendition.url} 
+              alt="Service Image" 
+              width={400}
+              height={300}
+              style={{ width: '100%', height: 'auto' }}
+            />
           )}
         </Link>
         <div className="service-preview-inner__description">

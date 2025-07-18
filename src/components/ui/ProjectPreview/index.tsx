@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import React, { ReactElement, useState, useEffect, useRef } from "react";
 import { ProjectItem } from "src/constants/interfaces";
 import { useTransitionRouter } from "next-view-transitions";
@@ -128,9 +129,11 @@ export function ProjectPreview(props: ProjectItem): ReactElement {
           });
         }}
       >
-        <img
+        <Image
           src={props.previewImage.rendition.url}
           alt="Project Image"
+          width={600}
+          height={400}
           style={{
             filter: isHovering || isMobile ? "none" : "grayscale(100%)",
             transition: "filter 0.5s ease",
