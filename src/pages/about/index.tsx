@@ -31,7 +31,7 @@ const About = (props: { query_data: QueryData }) => {
 					<div className="about-page-description__l">
 						<h1>About</h1>
 						<p>
-							Hello! I'm Oleg Pasternak.
+							Hello! I&apos;m Oleg Pasternak.
 							<br />
 							Frontend developer based in Kyiv, Ukraine. I specialize in
 							creating web applications that are not only functional but also
